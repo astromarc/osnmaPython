@@ -1,3 +1,5 @@
+#The aim of this code is to create a CSV file from a SFBRX messages from ublox M9, taking into account only GALILEO satellites
+#The output for the csv is set to data.csv
 from serial import Serial
 from pyubx2 import UBXReader
 import csv

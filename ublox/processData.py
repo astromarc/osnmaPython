@@ -1,3 +1,5 @@
+# This code aims to process an input data named "data.csv" from an ublo M9 Receiver, especially the UBX messages SBFRX concerning GALILEO only (no GPS, GLONASS and others) 
+
 import pandas as pd
 
 fields = ['gnssId', 'svId', 'reserved0', 'freqId', 'numWords', 'chn', 'version', 'reserved1', 'dwrd_01', 'dwrd_02', 'dwrd_03'
