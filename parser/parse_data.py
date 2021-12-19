@@ -8,12 +8,15 @@ def parse_nma_hdr(x):
     cpks = (x & 0x0E) >> 1
     return "NMA HDR: " + nmas_str[nmas] + " | Chain ID: " + str(chainID) + " | CPKS: " + cpks_str[cpks]
 
+page_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), (0,), (1,), (3,), (5,), (0,), (0,)]
+
 hkroot_sequence = ""
 
 with open('../data2.csv') as csvfile:
     parsed_data = csv.reader(csvfile, delimiter=',')
     first = True
     last_osnma = 0
+    page_counter = 0
     for row in parsed_data:
         if first:
             first=False
@@ -39,11 +42,20 @@ with open('../data2.csv') as csvfile:
             hkroot_byte = (osnma & 0xFF00000000) >> 32  # Take first byte (Starting from the end)
             log_string = "SVID: " + row[1] + " Page type (even): " + hex(page_type) + " OSNMA field (40 bit): " + hex(osnma) + " HKROOT BYTE: " + hex(hkroot_byte) + " "
             if page_type == 2:
+                page_counter = 0
                 log_string += "[HKROOT HEADER BYTE] " + parse_nma_hdr(hkroot_byte)
             elif page_type == 4:
                 log_string += "[DSM BLOCK HEADER BYTE] DSM ID = " + hex((hkroot_byte & 0xF0) >> 4) + " DSM BLOCK ID = " + hex(hkroot_byte & 0x0F)
             else:
                 log_string += "[DSM BLOCK n byte] " + hex(hkroot_byte)
+            
+            if page_type not in page_types_sequence[page_counter]:
+                log_string += " ¡¡ PAGE SEQUENCE BROKEN !! Expected page Type = " + str(page_counter)
+            
+            if page_counter == 14:
+                page_counter = 0
+            else:
+                page_counter += 1
             
             print (log_string)
             hkroot_sequence += hex(hkroot_byte) + ","
