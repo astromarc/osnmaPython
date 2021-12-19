@@ -40,7 +40,7 @@ with open('../data2.csv') as csvfile:
             last_osnma = osnma
         if row[1] != "8" and osnma != 0:
             hkroot_byte = (osnma & 0xFF00000000) >> 32  # Take first byte (Starting from the end)
-            log_string = "SVID: " + row[1] + " Page type (even): " + hex(page_type) + " OSNMA field (40 bit): " + hex(osnma) + " HKROOT BYTE: " + hex(hkroot_byte) + " "
+            log_string = "SVID: " + row[1] + " Page type (even): " + str(page_type) + " OSNMA field (40 bit): " + hex(osnma) + " HKROOT BYTE: " + hex(hkroot_byte) + " "
             if page_type == 2:
                 page_counter = 0
                 log_string += "[HKROOT HEADER BYTE] " + parse_nma_hdr(hkroot_byte)
@@ -53,6 +53,7 @@ with open('../data2.csv') as csvfile:
                 log_string += " ¡¡ PAGE SEQUENCE BROKEN !! Expected page Type = " + str(page_counter)
             
             if page_counter == 14:
+                log_string += " ¡¡PAGE SQUENCE COMPLETE!!"
                 page_counter = 0
             else:
                 page_counter += 1
