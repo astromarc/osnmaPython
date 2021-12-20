@@ -46,6 +46,10 @@ with open('../data2.csv') as csvfile:
                 log_string += "[HKROOT HEADER BYTE] " + parse_nma_hdr(hkroot_byte)
             elif page_type == 4:
                 log_string += "[DSM BLOCK HEADER BYTE] DSM ID = " + hex((hkroot_byte & 0xF0) >> 4) + " DSM BLOCK ID = " + hex(hkroot_byte & 0x0F)
+                if ((hkroot_byte & 0xF0) >> 4) <= 11:
+                    log_string += " (DSM-KROOT MESSAGE)"
+                else:
+                    log_string += " (DSM-PKR MESSAGE)"
             else:
                 log_string += "[DSM BLOCK n byte] " + hex(hkroot_byte)
             
