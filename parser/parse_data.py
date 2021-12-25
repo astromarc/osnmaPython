@@ -8,9 +8,22 @@ def parse_nma_hdr(x):
     cpks = (x & 0x0E) >> 1
     return "NMA HDR: " + nmas_str[nmas] + " | Chain ID: " + str(chainID) + " | CPKS: " + cpks_str[cpks]
 
+
+class DSMMessage:
+    def __init__(self, id):
+        self.__dsm_id = id
+        self.__dsm_blocks = [None for i in range(16)]
+    def getDSMId(self):
+        return self.__dsm_id
+    def addBlock(self, index, block):
+        assert (index < 16)
+        self.__dsm_blocks[index] = block
+    def isComplete(self):
+        pass
+
 page_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), (0,), (1,), (3,), (5,), (0,), (0,)]
 page_counters = {}
-
+sv_dsm_buffers = {}
 hkroot_sequence = ""
 
 with open('../data_processed_04122021.csv') as csvfile:
@@ -50,18 +63,24 @@ with open('../data_processed_04122021.csv') as csvfile:
                 log_string += "[HKROOT HEADER BYTE] " + parse_nma_hdr(hkroot_byte)
             elif page_type == 4:
                 log_string += "[DSM BLOCK HEADER BYTE] DSM ID = " + hex((hkroot_byte & 0xF0) >> 4) + " DSM BLOCK ID = " + hex(hkroot_byte & 0x0F)
+                sv_dsm_buffers[row[1]] = [hkroot_byte]
                 if ((hkroot_byte & 0xF0) >> 4) <= 11:
                     log_string += " (DSM-KROOT MESSAGE)"
                 else:
                     log_string += " (DSM-PKR MESSAGE)"
             else:
                 log_string += "[DSM BLOCK n byte] " + hex(hkroot_byte)
+                if row[1] in sv_dsm_buffers:
+                     sv_dsm_buffers[row[1]].append(hkroot_byte)
             
             if page_type not in page_types_sequence[page_counters[row[1]]]:
                 log_string += " ¡¡ PAGE SEQUENCE BROKEN !! Expected page Type = " + str(page_counters[row[1]])
+                sv_dsm_buffers[row[1]] = []
             
             if page_counters[row[1]] == 14:
-                log_string += " ¡¡PAGE SQUENCE COMPLETE!!"
+                log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
+                log_string += str(bytearray(sv_dsm_buffers[row[1]]))
+                sv_dsm_buffers[row[1]] = []
                 page_counters[row[1]] = 0
             else:
                 page_counters[row[1]] += 1
