@@ -1,4 +1,7 @@
 import csv
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 def parse_nma_hdr(x):
     nmas_str = ["Reserved", "Test", "Operational", "Don't use"]
@@ -93,7 +96,7 @@ with open('../data_processed.csv') as csvfile:
             else:
                 page_counters[row[1]] += 1
             
-            print (log_string)
+            logging.debug(log_string)
             hkroot_sequence += hex(hkroot_byte) + ","
-print("HKROOT Stream for SVID 27: " + hkroot_sequence)
-print (str(dsm_messages))
+logging.debug("HKROOT Stream for SVID 27: " + hkroot_sequence)
+logging.info (str(dsm_messages))
