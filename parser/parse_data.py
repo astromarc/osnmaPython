@@ -20,13 +20,16 @@ class DSMMessage:
         self.__dsm_blocks[index] = block
     def isComplete(self):
         pass
+    def __repr__(self):
+        return str(self.__dsm_blocks)
 
 page_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), (0,), (1,), (3,), (5,), (0,), (0,)]
 page_counters = {}
 sv_dsm_buffers = {}
+dsm_messages = {}
 hkroot_sequence = ""
 
-with open('../data_processed_04122021.csv') as csvfile:
+with open('../data_processed.csv') as csvfile:
     parsed_data = csv.reader(csvfile, delimiter=',')
     first = True
     last_osnma = 0
@@ -80,6 +83,11 @@ with open('../data_processed_04122021.csv') as csvfile:
             if page_counters[row[1]] == 14:
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
                 log_string += str(bytearray(sv_dsm_buffers[row[1]]))
+                dsm_id = (sv_dsm_buffers[row[1]][0] & 0xF0) >> 4
+                block_id = sv_dsm_buffers[row[1]][0] & 0x0F
+                if dsm_id not in dsm_messages:
+                    dsm_messages[dsm_id] = DSMMessage(dsm_id)
+                dsm_messages[dsm_id].addBlock(block_id, sv_dsm_buffers[row[1]][1:])
                 sv_dsm_buffers[row[1]] = []
                 page_counters[row[1]] = 0
             else:
@@ -88,3 +96,4 @@ with open('../data_processed_04122021.csv') as csvfile:
             print (log_string)
             hkroot_sequence += hex(hkroot_byte) + ","
 print("HKROOT Stream for SVID 27: " + hkroot_sequence)
+print (str(dsm_messages))
