@@ -1,7 +1,7 @@
 import csv
 import logging
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
 def parse_nma_hdr(x):
     nmas_str = ["Reserved", "Test", "Operational", "Don't use"]
@@ -81,9 +81,11 @@ with open('../data_processed.csv') as csvfile:
             
             if page_type not in page_types_sequence[page_counters[row[1]]]:
                 log_string += " ¡¡ PAGE SEQUENCE BROKEN !! Expected page Type = " + str(page_counters[row[1]])
+                #page_counters[row[1]] = 0
                 sv_dsm_buffers[row[1]] = []
             
             if page_counters[row[1]] == 14:
+                logging.info("SVID: " + row[1] + " BLOCK COMPLETE (" + hex(sv_dsm_buffers[row[1]][0]) + "): " + str(list(map(hex,sv_dsm_buffers[row[1]][1:]))))
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
                 log_string += str(bytearray(sv_dsm_buffers[row[1]]))
                 dsm_id = (sv_dsm_buffers[row[1]][0] & 0xF0) >> 4
@@ -95,6 +97,8 @@ with open('../data_processed.csv') as csvfile:
                 page_counters[row[1]] = 0
             else:
                 page_counters[row[1]] += 1
+
+            log_string += " page_counters["+row[1]+"]= " + str(page_counters[row[1]])
             
             logging.debug(log_string)
             hkroot_sequence += hex(hkroot_byte) + ","
