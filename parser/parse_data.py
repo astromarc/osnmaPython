@@ -32,7 +32,7 @@ sv_dsm_buffers = {}
 dsm_messages = {}
 hkroot_sequence = ""
 
-with open('../data_processed.csv') as csvfile:
+with open('../data_mataro2.csv') as csvfile:
     parsed_data = csv.reader(csvfile, delimiter=',')
     first = True
     last_osnma = 0
@@ -102,5 +102,7 @@ with open('../data_processed.csv') as csvfile:
             
             logging.debug(log_string)
             hkroot_sequence += hex(hkroot_byte) + ","
+        else:
+            logging.debug("0 OSNMA WORD for SVID: " + row[1])
 logging.debug("HKROOT Stream for SVID 27: " + hkroot_sequence)
 logging.info (str(dsm_messages))
