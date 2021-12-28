@@ -1,7 +1,7 @@
 import csv
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 def parse_nma_hdr(x):
     nmas_str = ["Reserved", "Test", "Operational", "Don't use"]
@@ -81,7 +81,7 @@ with open('../data_processed.csv') as csvfile:
             
             if page_type not in page_types_sequence[page_counters[row[1]]]:
                 log_string += " ¡¡ PAGE SEQUENCE BROKEN !! Expected page Type = " + str(page_counters[row[1]])
-                #page_counters[row[1]] = 0
+                page_counters[row[1]] = 0
                 sv_dsm_buffers[row[1]] = []
             
             if page_counters[row[1]] == 14:
