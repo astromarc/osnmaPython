@@ -1,7 +1,7 @@
 import csv
 import logging
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
 def parse_nma_hdr(x):
     nmas_str = ["Reserved", "Test", "Operational", "Don't use"]
@@ -16,15 +16,24 @@ class DSMMessage:
     def __init__(self, id):
         self.__dsm_id = id
         self.__dsm_blocks = [None for i in range(16)]
+        self.__dsm_type = "DSM-PKR"
+        self.__num_blocks = None
+        if id <= 11:
+            self.__dsm_type = "DSM-KROOT"
     def getDSMId(self):
         return self.__dsm_id
     def addBlock(self, index, block):
         assert (index < 16)
         self.__dsm_blocks[index] = block
+        if index == 0:
+            self.__num_blocks = ((block[0] & 0xF0) >> 4) + 6
     def isComplete(self):
-        pass
+        if self.__num_blocks != None:
+            if (16 - self.__dsm_blocks.count(None)) == self.__num_blocks:
+                return True
+        return False
     def __repr__(self):
-        return str(self.__dsm_blocks)
+        return self.__dsm_type + " (Type: " + str(self.__dsm_id) + ") " + "Num blocks: " + str(self.__num_blocks) + " Blocks: " + str(self.__dsm_blocks)
 
 page_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), (0,), (1,), (3,), (5,), (0,), (0,)]
 page_counters = {}
@@ -93,6 +102,8 @@ with open('../data_mataro2.csv') as csvfile:
                 if dsm_id not in dsm_messages:
                     dsm_messages[dsm_id] = DSMMessage(dsm_id)
                 dsm_messages[dsm_id].addBlock(block_id, sv_dsm_buffers[row[1]][1:])
+                if dsm_messages[dsm_id].isComplete():
+                    log_string += "¡¡¡DSM MESSAGE COMPLETE!!! " + dsm_messages[dsm_id].__repr__() # Take care that no different SV buffers used for the same DSM Message (Assumming all sats transmit equally)
                 sv_dsm_buffers[row[1]] = []
                 page_counters[row[1]] = 0
             else:
