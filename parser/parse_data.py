@@ -17,6 +17,14 @@ def convert_mack_words_to_bytearray(words):
         last <<= 32
         last |= i
     return last
+
+def parse_dsm_kroot_msg (msg):
+    parsed_dsm_kroot = {}
+    stream = msg.getDSMStream()
+
+def parse_dsm_pkr_msg (msg):
+    parsed_dsm_pkr = {}
+
 class DSMMessage:
     def __init__(self, id):
         self.__dsm_id = id
@@ -37,18 +45,19 @@ class DSMMessage:
             if (16 - self.__dsm_blocks.count(None)) == self.__num_blocks:
                 return True
         return False
+    def getDSMStream(self):
+        if self.isComplete():
+            value = 0
+            for block in self.__dsm_blocks:
+                if block == None:
+                    break
+                for b in block:
+                    value <<= 8
+                    value |= b
+            return value
+        return None
     def __repr__(self):
         return self.__dsm_type + " (Type: " + str(self.__dsm_id) + ") " + "Num blocks: " + str(self.__num_blocks) + " Blocks: " + str(self.__dsm_blocks)
-
-class DSMKRootMessage:
-    def __init__(self, dsmMsg):
-        #parse dsmMsg
-        pass
-
-class DSMPkrMessage:
-    def __init__(self, dsmMsg):
-        #parse dsmMsg
-        pass
 
 page_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), (0,), (1,), (3,), (5,), (0,), (0,)]
 page_counters = {}
