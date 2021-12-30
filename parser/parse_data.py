@@ -35,6 +35,16 @@ class DSMMessage:
     def __repr__(self):
         return self.__dsm_type + " (Type: " + str(self.__dsm_id) + ") " + "Num blocks: " + str(self.__num_blocks) + " Blocks: " + str(self.__dsm_blocks)
 
+class DSMKRootMessage:
+    def __init__(self, dsmMsg):
+        #parse dsmMsg
+        pass
+
+class DSMPkrMessage:
+    def __init__(self, dsmMsg):
+        #parse dsmMsg
+        pass
+
 page_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), (0,), (1,), (3,), (5,), (0,), (0,)]
 page_counters = {}
 sv_dsm_buffers = {}
