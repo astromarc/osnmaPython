@@ -21,6 +21,20 @@ def convert_mack_words_to_bytearray(words):
 def parse_dsm_kroot_msg (msg):
     parsed_dsm_kroot = {}
     stream = msg.getDSMStream()
+    parsed_dsm_kroot["NB_dk"] = (stream[0] & 0xF0) >> 4
+    parsed_dsm_kroot["PKID"] = stream[0] & 0x0F
+    parsed_dsm_kroot["CIDKR"] = (stream[1] & 0xC0) >> 6
+    parsed_dsm_kroot["Reserved1"] = (stream[1] & 0x30) >> 4
+    parsed_dsm_kroot["HF"] = (stream[1] & 0x0C) >> 2
+    parsed_dsm_kroot["MF"] = stream[1] & 0x03
+    parsed_dsm_kroot["KS"] = (stream[2] & 0xF0) >> 4
+    parsed_dsm_kroot["TS"] = stream[2] & 0x0F
+    parsed_dsm_kroot["MACLT"] = stream[3]
+    parsed_dsm_kroot["Reserved2"] = (stream[4] & 0xF0) >> 4
+    parsed_dsm_kroot["WNk"] = ((stream[4] & 0x0F) << 8) |stream[5]
+    parsed_dsm_kroot["TOWHk"] = stream[6]
+    parsed_dsm_kroot["alfa"] = (stream[7] << 40) | (stream[8] << 32) | (stream[9] << 24) | (stream[10] << 16) | (stream[11] << 8) | stream[12]
+
 
 def parse_dsm_pkr_msg (msg):
     parsed_dsm_pkr = {}
@@ -45,16 +59,9 @@ class DSMMessage:
             if (16 - self.__dsm_blocks.count(None)) == self.__num_blocks:
                 return True
         return False
-    def getDSMStream(self):
+    def getDSMBytes(self):
         if self.isComplete():
-            value = 0
-            for block in self.__dsm_blocks:
-                if block == None:
-                    break
-                for b in block:
-                    value <<= 8
-                    value |= b
-            return value
+            return [b for block in self.__dsm_blocks[:self.__num_blocks] for b in block]
         return None
     def __repr__(self):
         return self.__dsm_type + " (Type: " + str(self.__dsm_id) + ") " + "Num blocks: " + str(self.__num_blocks) + " Blocks: " + str(self.__dsm_blocks)
