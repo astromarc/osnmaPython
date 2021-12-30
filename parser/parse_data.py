@@ -11,7 +11,12 @@ def parse_nma_hdr(x):
     cpks = (x & 0x0E) >> 1
     return "NMA HDR: " + nmas_str[nmas] + " | Chain ID: " + str(chainID) + " | CPKS: " + cpks_str[cpks]
 
-
+def convert_mack_words_to_bytearray(words):
+    last=0
+    for i in words:
+        last <<= 32
+        last |= i
+    return last
 class DSMMessage:
     def __init__(self, id):
         self.__dsm_id = id
@@ -112,6 +117,7 @@ with open('../data_mataro2.csv') as csvfile:
             
             if page_counters[row[1]] == 14:
                 logging.debug("SVID: " + row[1] + "DSM/MACK BLOCK COMPLETE (" + hex(sv_dsm_buffers[row[1]][0]) + "): " + str(list(map(hex,sv_dsm_buffers[row[1]][1:]))) + " | " + str(list(map(hex,sv_mack_buffers[row[1]]))))
+                logging.debug(hex(convert_mack_words_to_bytearray(sv_mack_buffers[row[1]])))
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
                 log_string += str(bytearray(sv_dsm_buffers[row[1]]))
                 dsm_id = (sv_dsm_buffers[row[1]][0] & 0xF0) >> 4
