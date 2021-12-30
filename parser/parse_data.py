@@ -1,7 +1,7 @@
 import csv
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 def parse_nma_hdr(x):
     nmas_str = ["Reserved", "Test", "Operational", "Don't use"]
@@ -48,6 +48,7 @@ class DSMPkrMessage:
 page_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), (0,), (1,), (3,), (5,), (0,), (0,)]
 page_counters = {}
 sv_dsm_buffers = {}
+sv_mack_buffers = {}
 dsm_messages = {}
 hkroot_sequence = ""
 
@@ -85,10 +86,13 @@ with open('../data_mataro2.csv') as csvfile:
             log_string = "SVID: " + row[1] + " Page type (even): " + str(page_type) + " OSNMA field (40 bit): " + hex(osnma) + " HKROOT BYTE: " + hex(hkroot_byte) + " "
             if page_type == 2:
                 page_counters[row[1]] = 0
+                sv_mack_buffers[row[1]] = [osnma & 0x00FFFFFFFF]
                 log_string += "[HKROOT HEADER BYTE] " + parse_nma_hdr(hkroot_byte)
             elif page_type == 4:
                 log_string += "[DSM BLOCK HEADER BYTE] DSM ID = " + hex((hkroot_byte & 0xF0) >> 4) + " DSM BLOCK ID = " + hex(hkroot_byte & 0x0F)
                 sv_dsm_buffers[row[1]] = [hkroot_byte]
+                if row[1] in sv_mack_buffers:
+                    sv_mack_buffers[row[1]].append(osnma & 0x00FFFFFFFF)
                 if ((hkroot_byte & 0xF0) >> 4) <= 11:
                     log_string += " (DSM-KROOT MESSAGE)"
                 else:
@@ -97,14 +101,17 @@ with open('../data_mataro2.csv') as csvfile:
                 log_string += "[DSM BLOCK n byte] " + hex(hkroot_byte)
                 if row[1] in sv_dsm_buffers:
                      sv_dsm_buffers[row[1]].append(hkroot_byte)
+                if row[1] in sv_mack_buffers:
+                     sv_mack_buffers[row[1]].append(osnma & 0x00FFFFFFFF)
             
             if page_type not in page_types_sequence[page_counters[row[1]]]:
                 log_string += " ¡¡ PAGE SEQUENCE BROKEN !! Expected page Type = " + str(page_counters[row[1]])
                 page_counters[row[1]] = 0
                 sv_dsm_buffers[row[1]] = []
+                sv_mack_buffers[row[1]] = []
             
             if page_counters[row[1]] == 14:
-                logging.info("SVID: " + row[1] + " BLOCK COMPLETE (" + hex(sv_dsm_buffers[row[1]][0]) + "): " + str(list(map(hex,sv_dsm_buffers[row[1]][1:]))))
+                logging.debug("SVID: " + row[1] + "DSM/MACK BLOCK COMPLETE (" + hex(sv_dsm_buffers[row[1]][0]) + "): " + str(list(map(hex,sv_dsm_buffers[row[1]][1:]))) + " | " + str(list(map(hex,sv_mack_buffers[row[1]]))))
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
                 log_string += str(bytearray(sv_dsm_buffers[row[1]]))
                 dsm_id = (sv_dsm_buffers[row[1]][0] & 0xF0) >> 4
