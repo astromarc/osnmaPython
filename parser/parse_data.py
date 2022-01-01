@@ -1,5 +1,6 @@
 import csv
 import logging
+from math import floor
 
 logging.basicConfig(level=logging.INFO)
 
@@ -48,6 +49,33 @@ def parse_dsm_kroot_msg (msg):
 
 def parse_dsm_pkr_msg (msg):
     parsed_dsm_pkr = {}
+
+def unpack_mack_array(mack_array):
+    arr = []
+    for quad in mack_array:
+        arr.append((quad & 0xFF000000) >> 24)
+        arr.append((quad & 0x00FF0000) >> 16)
+        arr.append((quad & 0x0000FF00) >> 8)
+        arr.append(quad & 0x000000FF)
+    return arr
+
+def parse_mack_msg(msg, dsm_kroot):
+    mbytes = unpack_mack_array(msg)
+    parsed_mack_msg = {}
+    parsed_mack_msg["Tag0"] = bytearray(mbytes[0:6])  #Fixed to 40 bits (5 bytes) but should be variable depending on TS value in DSM-KROOT message
+    parsed_mack_msg["MACSEQ"] = (mbytes[6] << 4) | (mbytes[7] & 0xF0) >> 4
+    num_tags = floor((480-128)/(40+16)) # Key(128) and tag(40) sizes shall be extracted from DSM-KROOT
+    tags_and_info = []
+    next_index = 8
+    for i in range(num_tags):
+        ti = {}
+        ti["Tag"] = bytearray(mbytes[next_index:next_index+5])
+        ti["Tag-Info"] = mbytes[next_index+5:next_index+7]
+        tags_and_info.append(ti)
+        next_index +=7
+    parsed_mack_msg["TagsAndInfo"] = tags_and_info
+    parsed_mack_msg["Key"] = bytearray(mbytes[next_index:next_index+16])
+    return parsed_mack_msg
 
 class DSMMessage:
     def __init__(self, id):
@@ -144,6 +172,7 @@ with open('../data_mataro2.csv') as csvfile:
             if page_counters[row[1]] == 14:
                 logging.debug("SVID: " + row[1] + "DSM/MACK BLOCK COMPLETE (" + hex(sv_dsm_buffers[row[1]][0]) + "): " + str(list(map(hex,sv_dsm_buffers[row[1]][1:]))) + " | " + str(list(map(hex,sv_mack_buffers[row[1]]))))
                 logging.debug(hex(convert_mack_words_to_bytearray(sv_mack_buffers[row[1]])))
+                logging.debug(str(parse_mack_msg(sv_mack_buffers[row[1]], None)))
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
                 log_string += str(bytearray(sv_dsm_buffers[row[1]]))
                 dsm_id = (sv_dsm_buffers[row[1]][0] & 0xF0) >> 4
