@@ -62,15 +62,17 @@ def unpack_mack_array(mack_array):
 def parse_mack_msg(msg, dsm_kroot):
     mbytes = unpack_mack_array(msg)
     parsed_mack_msg = {}
-    parsed_mack_msg["Tag0"] = bytearray(mbytes[0:6])  #Fixed to 40 bits (5 bytes) but should be variable depending on TS value in DSM-KROOT message
-    parsed_mack_msg["MACSEQ"] = (mbytes[6] << 4) | (mbytes[7] & 0xF0) >> 4
+    parsed_mack_msg["Tag0"] = bytearray(mbytes[0:5])  #Fixed to 40 bits (5 bytes) but should be variable depending on TS value in DSM-KROOT message
+    parsed_mack_msg["MACSEQ"] = (mbytes[5] << 4) | (mbytes[6] & 0xF0) >> 4
     num_tags = floor((480-128)/(40+16)) # Key(128) and tag(40) sizes shall be extracted from DSM-KROOT
     tags_and_info = []
-    next_index = 8
+    next_index = 7
     for i in range(num_tags):
         ti = {}
         ti["Tag"] = bytearray(mbytes[next_index:next_index+5])
         ti["Tag-Info"] = mbytes[next_index+5:next_index+7]
+        ti["PRN"] = ti["Tag-Info"][0]
+        ti["ADKD"] = (ti["Tag-Info"][1] & 0xF0) >> 4
         tags_and_info.append(ti)
         next_index +=7
     parsed_mack_msg["TagsAndInfo"] = tags_and_info
@@ -172,7 +174,7 @@ with open('../data_mataro2.csv') as csvfile:
             if page_counters[row[1]] == 14:
                 logging.debug("SVID: " + row[1] + "DSM/MACK BLOCK COMPLETE (" + hex(sv_dsm_buffers[row[1]][0]) + "): " + str(list(map(hex,sv_dsm_buffers[row[1]][1:]))) + " | " + str(list(map(hex,sv_mack_buffers[row[1]]))))
                 logging.debug(hex(convert_mack_words_to_bytearray(sv_mack_buffers[row[1]])))
-                logging.debug(str(parse_mack_msg(sv_mack_buffers[row[1]], None)))
+                logging.info(str(parse_mack_msg(sv_mack_buffers[row[1]], None)))
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
                 log_string += str(bytearray(sv_dsm_buffers[row[1]]))
                 dsm_id = (sv_dsm_buffers[row[1]][0] & 0xF0) >> 4
@@ -194,4 +196,8 @@ with open('../data_mataro2.csv') as csvfile:
         else:
             logging.debug("0 OSNMA WORD for SVID: " + row[1])
 logging.info (str(dsm_messages))
-logging.info(str(parse_dsm_kroot_msg(dsm_messages[4])))
+dsm_kr = parse_dsm_kroot_msg(dsm_messages[4])
+logging.info(str(dsm_kr))
+logging.info(str(sv_mack_buffers))
+logging.info(str(parse_mack_msg(sv_mack_buffers['14'], dsm_kr)))
+#logging.info(str(parse_mack_msg(convert_mack_words_to_bytearray(sv_mack_buffers['14']), dsm_kr)))
