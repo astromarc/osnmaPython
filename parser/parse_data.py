@@ -2,7 +2,7 @@ import csv
 import logging
 from math import floor
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(filename='osnma.log', format='%(asctime)s %(message)s', encoding='utf-8', level=logging.DEBUG)
 
 def parse_nma_hdr(x):
     nmas_str = ["Reserved", "Test", "Operational", "Don't use"]
@@ -174,7 +174,6 @@ with open('../data_mataro2.csv') as csvfile:
             if page_counters[row[1]] == 14:
                 logging.debug("SVID: " + row[1] + "DSM/MACK BLOCK COMPLETE (" + hex(sv_dsm_buffers[row[1]][0]) + "): " + str(list(map(hex,sv_dsm_buffers[row[1]][1:]))) + " | " + str(list(map(hex,sv_mack_buffers[row[1]]))))
                 logging.debug(hex(convert_mack_words_to_bytearray(sv_mack_buffers[row[1]])))
-                logging.info(str(parse_mack_msg(sv_mack_buffers[row[1]], None)))
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
                 log_string += str(bytearray(sv_dsm_buffers[row[1]]))
                 dsm_id = (sv_dsm_buffers[row[1]][0] & 0xF0) >> 4
@@ -183,6 +182,7 @@ with open('../data_mataro2.csv') as csvfile:
                     dsm_messages[dsm_id] = DSMMessage(dsm_id)
                 dsm_messages[dsm_id].addBlock(block_id, sv_dsm_buffers[row[1]][1:])
                 if dsm_messages[dsm_id].isComplete():
+                    logging.info("DSM MESSAGE COMPLETE !!")
                     log_string += "¡¡¡DSM MESSAGE COMPLETE!!! " + dsm_messages[dsm_id].__repr__() # Take care that no different SV buffers used for the same DSM Message (Assumming all sats transmit equally)
                 sv_dsm_buffers[row[1]] = []
                 page_counters[row[1]] = 0
@@ -200,4 +200,3 @@ dsm_kr = parse_dsm_kroot_msg(dsm_messages[4])
 logging.info(str(dsm_kr))
 logging.info(str(sv_mack_buffers))
 logging.info(str(parse_mack_msg(sv_mack_buffers['14'], dsm_kr)))
-#logging.info(str(parse_mack_msg(convert_mack_words_to_bytearray(sv_mack_buffers['14']), dsm_kr)))
