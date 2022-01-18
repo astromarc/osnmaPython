@@ -1,8 +1,12 @@
 import csv
 import logging
+import time
 from math import floor
+from console import fg, bg, fx
+from console.screen import sc
+from console.utils import cls, set_title
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(filename='osnma.log', format='%(asctime)s %(message)s', encoding='utf-8', level=logging.DEBUG)
 
 def parse_nma_hdr(x):
     nmas_str = ["Reserved", "Test", "Operational", "Don't use"]
@@ -62,15 +66,17 @@ def unpack_mack_array(mack_array):
 def parse_mack_msg(msg, dsm_kroot):
     mbytes = unpack_mack_array(msg)
     parsed_mack_msg = {}
-    parsed_mack_msg["Tag0"] = bytearray(mbytes[0:6])  #Fixed to 40 bits (5 bytes) but should be variable depending on TS value in DSM-KROOT message
-    parsed_mack_msg["MACSEQ"] = (mbytes[6] << 4) | (mbytes[7] & 0xF0) >> 4
+    parsed_mack_msg["Tag0"] = bytearray(mbytes[0:5])  #Fixed to 40 bits (5 bytes) but should be variable depending on TS value in DSM-KROOT message
+    parsed_mack_msg["MACSEQ"] = (mbytes[5] << 4) | (mbytes[6] & 0xF0) >> 4
     num_tags = floor((480-128)/(40+16)) # Key(128) and tag(40) sizes shall be extracted from DSM-KROOT
     tags_and_info = []
-    next_index = 8
+    next_index = 7
     for i in range(num_tags):
         ti = {}
         ti["Tag"] = bytearray(mbytes[next_index:next_index+5])
         ti["Tag-Info"] = mbytes[next_index+5:next_index+7]
+        ti["PRN"] = ti["Tag-Info"][0]
+        ti["ADKD"] = (ti["Tag-Info"][1] & 0xF0) >> 4
         tags_and_info.append(ti)
         next_index +=7
     parsed_mack_msg["TagsAndInfo"] = tags_and_info
@@ -83,15 +89,24 @@ class DSMMessage:
         self.__dsm_blocks = [None for i in range(16)]
         self.__dsm_type = "DSM-PKR"
         self.__num_blocks = None
+        self.__curr_blocks = 0
         if id <= 11:
             self.__dsm_type = "DSM-KROOT"
     def getDSMId(self):
         return self.__dsm_id
+    def getDSMType(self):
+        return self.__dsm_type
+    def getNumBlocks(self):
+        return self.__num_blocks
+    def getCurrBlocks(self):
+        return self.__curr_blocks
     def addBlock(self, index, block):
         assert (index < 16)
         self.__dsm_blocks[index] = block
         if index == 0:
             self.__num_blocks = ((block[0] & 0xF0) >> 4) + 6
+        if not self.isComplete():
+            self.__curr_blocks += 1
     def isComplete(self):
         if self.__num_blocks != None:
             if (16 - self.__dsm_blocks.count(None)) == self.__num_blocks:
@@ -109,7 +124,32 @@ page_counters = {}
 sv_dsm_buffers = {}
 sv_mack_buffers = {}
 dsm_messages = {}
+sats_in_view = {}
 hkroot_sequence = ""
+
+def setup_screen (title):
+    set_title(title)
+
+def update_screen (sv_list):
+    cls()
+    with sc.location(1,1):
+        sv_list_str = ""
+        for sv in sv_list:
+            if sv_list[sv][1]:
+                sv_list_str += fg.green + sv + fg.default + ', '
+            else:
+                sv_list_str += fg.red + sv + fg.default + ', '
+        print ('SV in View: ', sv_list_str[:-2])
+        for dsmid in dsm_messages:
+            print('\n', 'Type: ', dsm_messages[dsmid].getDSMType(), ' Blocks Available: ', str(dsm_messages[dsmid].getCurrBlocks()), '/', str(dsm_messages[dsmid].getNumBlocks()))
+            if dsm_messages[dsmid].isComplete():
+                parsed_dsm = parse_dsm_kroot_msg(dsm_messages[dsmid]) #avoid parsing at each iteration, to be cached
+                print('\n\tHash Function: ', parsed_dsm["HF"])
+                print('\tMAC Function: ', parsed_dsm["MF"])
+                print('\tKey Size: ', parsed_dsm["KS"])
+                print('\tTag Size: ', parsed_dsm["TS"])
+
+setup_screen('OSNMA Processor')
 
 with open('../data_mataro2.csv') as csvfile:
     parsed_data = csv.reader(csvfile, delimiter=',')
@@ -117,6 +157,7 @@ with open('../data_mataro2.csv') as csvfile:
     last_osnma = 0
 
     for row in parsed_data:
+        time.sleep(0.1) #simulated delay
         if first:
             first=False
             continue
@@ -133,6 +174,7 @@ with open('../data_mataro2.csv') as csvfile:
         res2 = (word6 & 0xFFFFFFC0) >> 6
         osnma = res1 | res2
         page_type = (word1 & 0x3F000000) >> 24
+        sats_in_view[row[1]] = (time.time(), osnma != 0)
 
         if osnma != 0 and last_osnma == osnma:  # Skip repeated OSNMA frames which are different from 0
             continue
@@ -172,7 +214,6 @@ with open('../data_mataro2.csv') as csvfile:
             if page_counters[row[1]] == 14:
                 logging.debug("SVID: " + row[1] + "DSM/MACK BLOCK COMPLETE (" + hex(sv_dsm_buffers[row[1]][0]) + "): " + str(list(map(hex,sv_dsm_buffers[row[1]][1:]))) + " | " + str(list(map(hex,sv_mack_buffers[row[1]]))))
                 logging.debug(hex(convert_mack_words_to_bytearray(sv_mack_buffers[row[1]])))
-                logging.debug(str(parse_mack_msg(sv_mack_buffers[row[1]], None)))
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
                 log_string += str(bytearray(sv_dsm_buffers[row[1]]))
                 dsm_id = (sv_dsm_buffers[row[1]][0] & 0xF0) >> 4
@@ -181,6 +222,7 @@ with open('../data_mataro2.csv') as csvfile:
                     dsm_messages[dsm_id] = DSMMessage(dsm_id)
                 dsm_messages[dsm_id].addBlock(block_id, sv_dsm_buffers[row[1]][1:])
                 if dsm_messages[dsm_id].isComplete():
+                    logging.info("DSM MESSAGE COMPLETE !!")
                     log_string += "¡¡¡DSM MESSAGE COMPLETE!!! " + dsm_messages[dsm_id].__repr__() # Take care that no different SV buffers used for the same DSM Message (Assumming all sats transmit equally)
                 sv_dsm_buffers[row[1]] = []
                 page_counters[row[1]] = 0
@@ -193,5 +235,9 @@ with open('../data_mataro2.csv') as csvfile:
             hkroot_sequence += hex(hkroot_byte) + ","
         else:
             logging.debug("0 OSNMA WORD for SVID: " + row[1])
+        update_screen(sats_in_view)
 logging.info (str(dsm_messages))
-logging.info(str(parse_dsm_kroot_msg(dsm_messages[4])))
+dsm_kr = parse_dsm_kroot_msg(dsm_messages[4])
+logging.info(str(dsm_kr))
+logging.info(str(sv_mack_buffers))
+logging.info(str(parse_mack_msg(sv_mack_buffers['14'], dsm_kr)))
