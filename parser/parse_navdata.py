@@ -5,48 +5,80 @@ word_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), 
 
 
 
-class sv_idata:
-    def __init__(self,sv_id,word_type,data,reserved,sv_line):
-        word_position = 0
-        sv_line = []
-        self.sv_id = sv_id
-        self.word_position = word_position
-    def sequence(word_type):
-        if int(word_type,2) in word_types_sequence[word_position]:
-            word_position = word_position+1
+class sv_data:
+    def __init__(self,sv_id,word_type=0,data=None,reserved1=None):
+        self.__sv_id = sv_id
+        self.__page_position = 0
+        self.__data_subframe = [None for i in range(15)]
+        self.__osnma_subframe = [None for i in range(15)]
+        self.__pageDummy = False
+        self.__dataFrameCompleteStatus = False
+    def getSVId(self):
+        return self.__sv_id
+    def getPagePosition(self):
+        return self.__page_position
+    def getDataFrameCompleteStatus(self):
+        return self.__dataFrameCompleteStatus
+    def getdataSubframe(self):
+        return self.__data_subframe
+    def sequence(self,word_type,data,reserved1):
+        if int(word_type,2) == 63:  
+            self.__pageDummy = True #Word Type as value 11111 (or 63) is considered as dummmy Page
+            self.__dataFrameCompleteStatus = False
         else:
-            word_position = 0
-            sv_line = []
+            self.__pageDummy = False
+            if int(word_type,2) in word_types_sequence[self.__page_position]:
+                self.__data_subframe[self.__page_position]=data
+                self.__page_position = self.__page_position+1
+                if self.__page_position == len(word_types_sequence):
+                    self.__dataFrameCompleteStatus = True
+                    self.__page_position = 0
+                else: self.__dataFrameCompleteStatus = False
+            else:
+                self.__page_position = 0
+                self.__data_subframe = [None for i in range(15)]
+                self.__dataFrameCompleteStatus = False
 
 
-maxmaxindex = 0
+sv_vector = [None for i in range(36)] #Current Issue of Galileo OS ICD states that SV (satellites) are up to 36
 
-for sviter in range(40): #Currently around 40 galileo satellites (note: constellation is walker delta 24/3/1)
-    maxdata = []
-    index = 0
-    maxindex = 0
-    with open('../data4.csv') as csvfile:
+for i in range(36):
+    sv_vector[i] = sv_data(i)
+sv_vector[1].getPagePosition()
+previousdata = ""
+timestamp_av = False
+repeated = True
+dataold = ""
+with open('../data2.csv') as csvfile:
         parsed_data = csv.reader(csvfile, delimiter=',')
         first = True
-        last_osnma = 0
-        
         
         for row in parsed_data:
             if first:
                 first=False
                 continue
-            timestamp=str(row[0])
-            sv_id=int(row[2])
-            word1=int(row[9])
-            word2=int(row[10])
-            word3=int(row[11])
-            word4=int(row[12])
-            word5=int(row[13])
-            word6=int(row[14])
-            word7=int(row[15])
-            word8=int(row[16])
+            if timestamp_av:
+                timestamp=str(row[0])
+                sv_id=int(row[2])
+                word1=int(row[9])
+                word2=int(row[10])
+                word3=int(row[11])
+                word4=int(row[12])
+                word5=int(row[13])
+                word6=int(row[14])
+                word7=int(row[15])
+                word8=int(row[16])
+            else:
+                sv_id=int(row[2-1])
+                word1=int(row[9-1])
+                word2=int(row[10-1])
+                word3=int(row[11-1])
+                word4=int(row[12-1])
+                word5=int(row[13-1])
+                word6=int(row[14-1])
+                word7=int(row[15-1])
+                word8=int(row[16-1])
             data_k_word = bin((word1 & 0x3F000000) >> 24)[2:].zfill(6) #as per uBlox ICD, it is the same as I/NAV Word types
-            
             #Even Page
             odd_even_0 = (word1 & 0x80000000) >> 31 # Always shuld be 0
             page_type_0 = (word1 & 0x40000000) >> 30 # In Nominal, 0
@@ -76,20 +108,13 @@ for sviter in range(40): #Currently around 40 galileo satellites (note: constell
             #Total Info
             data = data_k + data_j
             data_noword = data_k_1 + data_k_2 + data_k_3 + data_k_4 + data_j
-            #print(index)
-            if sv_id == sviter:
-                if int(data_k_word,2) in word_types_sequence[index]:
-                    sv_line.append(data)
-                    #print(sv_line)
-                    index=index+1;
-                    if index > maxindex: maxindex = index
-                if index == 15:
-                    print("Sub-Frame Completed")
-                else:
-                    index = 0
-                    sv_line = []
-        print("SVID:",sviter, "Num max", maxindex)
-        if maxindex > maxmaxindex: 
-            maxmaxindex = maxindex
-            maxsv = sviter
-print("SVIDmax:",maxsv,"maxindex" , maxmaxindex)
+            if data == dataold:
+                repeated = True
+            else:
+                dataold = data
+                repeated = False
+            #print(int(data_k_word,2))
+            if not repeated:
+                sv_vector[sv_id].sequence(data_k_word,data, reserved_1)
+                if sv_vector[sv_id].getDataFrameCompleteStatus():
+                    print("SVID: ",sv_vector[sv_id].getSVId(), "Sub-Frame Completed Status:", sv_vector[sv_id].getDataFrameCompleteStatus())
