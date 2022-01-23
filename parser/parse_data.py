@@ -1,12 +1,13 @@
 import csv
 import logging
 import time
+import binascii
 from math import floor
 from console import fg, bg, fx
 from console.screen import sc
 from console.utils import cls, set_title
 
-logging.basicConfig(filename='osnma.log', format='%(asctime)s %(message)s', encoding='utf-8', level=logging.DEBUG)
+logging.basicConfig(filename='osnma.log', format='%(asctime)s %(message)s', encoding='utf-8', level=logging.INFO)
 
 def parse_nma_hdr(x):
     nmas_str = ["Reserved", "Test", "Operational", "Don't use"]
@@ -102,11 +103,11 @@ class DSMMessage:
         return self.__curr_blocks
     def addBlock(self, index, block):
         assert (index < 16)
+        if self.__dsm_blocks[index] == None:
+            self.__curr_blocks += 1
         self.__dsm_blocks[index] = block
         if index == 0:
             self.__num_blocks = ((block[0] & 0xF0) >> 4) + 6
-        if not self.isComplete():
-            self.__curr_blocks += 1
     def isComplete(self):
         if self.__num_blocks != None:
             if (16 - self.__dsm_blocks.count(None)) == self.__num_blocks:
@@ -125,6 +126,7 @@ sv_dsm_buffers = {}
 sv_mack_buffers = {}
 dsm_messages = {}
 sats_in_view = {}
+block_stats = {"Complete": 0, "OOS": 0}
 hkroot_sequence = ""
 osnma_status = None
 
@@ -132,7 +134,7 @@ def setup_screen (title):
     set_title(title)
 
 def update_screen (sv_list):
-    cls()
+    #cls()
     with sc.location(1,1):
         sv_list_str = ""
         for sv in sv_list:
@@ -140,9 +142,14 @@ def update_screen (sv_list):
                 sv_list_str += fg.green + sv + fg.default + ', '
             else:
                 sv_list_str += fg.red + sv + fg.default + ', '
-        print ('SV in View: ', sv_list_str[:-2])
+        print ('[SV in View]\n')
+        print(sv_list_str[:-2])
+        print ('\n[Block Statistics]\n')
+        print (fg.green + 'Complete Blocks: ' + str(block_stats["Complete"]) + fg.default)
+        print (fg.red + 'Out of Sequence Blocks: ' + str(block_stats["OOS"]) + fg.default)
         for dsmid in dsm_messages:
-            print('\n', 'Type: ', dsm_messages[dsmid].getDSMType(), ' Blocks Available: ', str(dsm_messages[dsmid].getCurrBlocks()), '/', str(dsm_messages[dsmid].getNumBlocks()))
+            print('\n[DSM Blocks]\n')
+            print('Type: ', dsm_messages[dsmid].getDSMType(), ' Blocks Available: ', str(dsm_messages[dsmid].getCurrBlocks()), '/', str(dsm_messages[dsmid].getNumBlocks()))
             if dsm_messages[dsmid].isComplete():
                 parsed_dsm = parse_dsm_kroot_msg(dsm_messages[dsmid]) #avoid parsing at each iteration, to be cached
                 print('\n\tHash Function: ', parsed_dsm["HF"])
@@ -158,7 +165,7 @@ with open('../data_mataro2.csv') as csvfile:
     last_osnma = 0
 
     for row in parsed_data:
-        time.sleep(0.1) #simulated delay
+        time.sleep(0.3) #simulated delay
         if first:
             first=False
             continue
@@ -208,24 +215,28 @@ with open('../data_mataro2.csv') as csvfile:
                      sv_mack_buffers[sv_num].append(osnma & 0x00FFFFFFFF)
             
             if page_type not in page_types_sequence[page_counters[sv_num]]:
+                block_stats["OOS"] += 1
                 log_string += " ¡¡ PAGE SEQUENCE BROKEN !! Expected page Type = " + str(page_counters[sv_num])
                 page_counters[sv_num] = 0
                 sv_dsm_buffers[sv_num] = []
                 sv_mack_buffers[sv_num] = []
             
             if page_counters[sv_num] == 14:
+                block_stats["Complete"] += 1
                 logging.debug("SVID: " + sv_num + "DSM/MACK BLOCK COMPLETE (" + hex(sv_dsm_buffers[sv_num][0]) + "): " + str(list(map(hex,sv_dsm_buffers[sv_num][1:]))) + " | " + str(list(map(hex,sv_mack_buffers[sv_num]))))
-                logging.debug(hex(convert_mack_words_to_bytearray(sv_mack_buffers[sv_num])))
+                #mack = parse_mack_msg(convert_mack_words_to_bytearray(sv_mack_buffers[sv_num]), None)
+                #logging.info("KEY: " + binascii.hexlify(mack['Key']))
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
                 log_string += str(bytearray(sv_dsm_buffers[sv_num]))
                 dsm_id = (sv_dsm_buffers[sv_num][0] & 0xF0) >> 4
                 block_id = sv_dsm_buffers[sv_num][0] & 0x0F
+                logging.info("SVID: " + sv_num + "DSM/MACK BLOCK COMPLETE (" + str(block_id) + ")")
                 if dsm_id not in dsm_messages:
                     dsm_messages[dsm_id] = DSMMessage(dsm_id)
                 dsm_messages[dsm_id].addBlock(block_id, sv_dsm_buffers[sv_num][1:])
                 if dsm_messages[dsm_id].isComplete():
-                    logging.info("DSM MESSAGE COMPLETE !!")
                     log_string += "¡¡¡DSM MESSAGE COMPLETE!!! " + dsm_messages[dsm_id].__repr__() # Take care that no different SV buffers used for the same DSM Message (Assumming all sats transmit equally)
+                    logging.info(log_string)
                 sv_dsm_buffers[sv_num] = []
                 page_counters[sv_num] = 0
             else:
@@ -239,7 +250,7 @@ with open('../data_mataro2.csv') as csvfile:
             logging.debug("0 OSNMA WORD for SVID: " + sv_num)
         update_screen(sats_in_view)
 logging.info (str(dsm_messages))
-dsm_kr = parse_dsm_kroot_msg(dsm_messages[4])
+dsm_kr = parse_dsm_kroot_msg(dsm_messages[3])
 logging.info(str(dsm_kr))
 logging.info(str(sv_mack_buffers))
 logging.info(str(parse_mack_msg(sv_mack_buffers['14'], dsm_kr)))
