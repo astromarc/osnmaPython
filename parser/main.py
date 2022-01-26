@@ -1,6 +1,8 @@
-from osnmaPython import sv_data, DSMMessage
+from osnmaPython import sv_data, DSMMessage, osnma
 import osnmaPython
 import csv
+
+import time
 
 sv_vector = [None for i in range(36)] #Current Issue of Galileo OS ICD states that SV (satellites) are up to 36
 for i in range(36):# We create a list with 36 Objects type sv_data, 
@@ -9,20 +11,23 @@ for i in range(36):# We create a list with 36 Objects type sv_data,
 
 live = False #Variable to decide if we are using test data or live data
 record = True #if true we will save the recorded data (e.g., for future playback)
-record_filename = 'test.csv'
-testData = 'data.csv'
-COMPort = 'COM19'
+record_filename = '25-01-2022_2.csv'
+testData = '25-01-2022.csv'
+COMPort = 'COM12'
+boudRate = 115200
 
 if live:
     while True:
         #1st we get the uBlox data as a list of Ublox Words to get the ubloxPags
-        ubloxPages = osnmaPython.getUbloxData(record,record_filename,COMPort)
+        ubloxPages = osnmaPython.getUbloxData(record,record_filename,COMPort,boudRate)
         #2nd we transform the ubloxPages to Galileo Pages (as per UBX-19014286-R06 §3.15.1.5.1)
         #And got as an output the Galileo Space Vehicle, the Word Type, the Data, and the Osnma Page (seen as Reserved 1 in OS ICD 1.3)
         #Other information such as SAR is not necessary but ubloxData2GalileoICD can also get it
         [sv_id, word_type, data_page, osnma_page] = osnmaPython.ubloxData2GalileoICD(ubloxPages)
         sv_vector[sv_id-1].subFrameSequence(word_type,data_page, osnma_page)
-        print("SV: ",sv_vector[sv_id-1].getSVId()," num. consecutive Pages:",sv_vector[sv_id-1].getPagePosition())
+        print(sv_vector[sv_id-1].getSVId(),":",sv_vector[sv_id-1].getPagePosition(), int(word_type,2))
+        if sv_vector[sv_id-1].getDataFrameCompleteStatus():
+            print("Full dataframe for GAL SV:",sv_vector[sv_id-1].getSVId())
 else:
     with open(testData) as csvfile:
         parsed_data = csv.reader(csvfile, delimiter=',')
@@ -35,4 +40,8 @@ else:
             sv_vector[sv_id-1].subFrameSequence(word_type,data_page, osnma_page)
         #When we have a complete sub.Frame we will store the necessary data to compute the Global DSM Message
             if sv_vector[sv_id-1].getDataFrameCompleteStatus():
-                print(sv_vector[sv_id-1].getSVId(),":",sv_vector[sv_id-1].getOsnmaSubframe())
+                #little trick to convert array of Strings in binary to array of Integers
+                #print((int(sv_vector[sv_id-1].getDataSubframe()[14][-20:],2)))
+                print(sv_vector[sv_id-1].getSVId(),":", sv_vector[sv_id-1].getTime())
+                
+

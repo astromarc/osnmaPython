@@ -16,11 +16,17 @@ class sv_data:
         self.__osnma_subframe = [None for i in range(15)]
         self.__pageDummy = False
         self.__dataFrameCompleteStatus = False
+        self.__time = ""
+    def getTime(self):
+        return self.__time
     def getSVId(self):
         return self.__sv_id
     def getPagePosition(self):
         return self.__page_position
     def getDataFrameCompleteStatus(self):
+        if self.__page_position == len(word_types_sequence):
+            self.__dataFrameCompleteStatus = True
+        else: self.__dataFrameCompleteStatus = False
         return self.__dataFrameCompleteStatus
     def getDataSubframe(self):
         return self.__data_subframe
@@ -34,15 +40,16 @@ class sv_data:
             self.__dataFrameCompleteStatus = False
         else:
             self.__pageDummy = False
+            if self.__page_position == (len(word_types_sequence)):
+                self.__page_position = 0
+                self.__dataFrameCompleteStatus = True
             if int(word_type,2) in word_types_sequence[self.__page_position]:
                 self.__data_subframe[self.__page_position]=data
                 self.__osnma_subframe[self.__page_position]=reserved1
                 self.__page_position = self.__page_position+1
-                if self.__page_position == len(word_types_sequence):
-                    self.__dataFrameCompleteStatus = True
-                    self.__page_position = 0
-                    self.__data_subframe_hist.append(self.__data_subframe)
-                else: self.__dataFrameCompleteStatus = False
+                self.__dataFrameCompleteStatus = False
+                if int(word_type,2) == 0 & (data[0:9] == "000000100"):#That means we can get time from word 0
+                    self.__time = weekSeconds2Time(int(data[-20:],2)) #this Time is NOT constantly update (cannot be used as RTC reference)
             else:
                 self.__page_position = 0
                 self.__data_subframe = [None for i in range(15)]
@@ -54,7 +61,7 @@ class sv_data:
 # DSM Header (With DSM ID and DSM Block ID)
 # It assumes the list of osnma's words is sorted 
 class osnma:
-    def __init__(self,input_osnma_list):
+    def __init__(self,ids,input_osnma_list):
         osnma_list = input_osnma_list
         #for osnma_word in osnma_list:
         #    hkRoot_word = 
@@ -95,7 +102,7 @@ class DSMMessage: #Class to store the DSM Message (from several Space Vehicles)
     def __repr__(self):
         return self.__dsm_type + " (Type: " + str(self.__dsm_id) + ") " + "Num blocks: " + str(self.__num_blocks) + " Blocks: " + str(self.__dsm_blocks)
 
-def getUbloxData(record = False,filename='galileoTest.csv',COMPort='COM19'):
+def getUbloxData(record = False,filename='galileoTest.csv',COMPort='COM19',boudRate=38400):
     # This function takes as an input:
 
     from serial import Serial
@@ -105,7 +112,7 @@ def getUbloxData(record = False,filename='galileoTest.csv',COMPort='COM19'):
     ubxPages = []
     ubxPages_new = []
     
-    stream = Serial(COMPort, 9600, bytesize=8, parity='N', stopbits=1,)
+    stream = Serial(COMPort, boudRate, bytesize=8, parity='N', stopbits=1,)
     ubr = UBXReader(stream)
     (raw_data, parsed_data) = ubr.read()
     if parsed_data is not None:
@@ -236,3 +243,15 @@ def parse_mack_msg(msg, dsm_kroot):
     parsed_mack_msg["TagsAndInfo"] = tags_and_info
     parsed_mack_msg["Key"] = bytearray(mbytes[next_index:next_index+16])
     return parsed_mack_msg
+
+def weekSeconds2Time(weekSeconds): #function to return a string of hours in HH:mm:ss
+    hours = weekSeconds/3600
+    while hours >= 24:
+        hours = hours - 24
+    hour = int(hours)
+    minutes = hours-hour #minutes in hour format
+    minute = minutes*60  #minuts in minut format
+    seconds = minute - int (minute) # seconds in minut format
+    second = int(seconds*60) #seconds in second format
+    time = str(hour).zfill(2) + ":" + str(int(minute)).zfill(2) + ":" + str(second).zfill(2)
+    return time
