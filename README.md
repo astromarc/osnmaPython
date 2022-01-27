@@ -8,7 +8,9 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-In_progress-success.svg)]()
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 </div>
