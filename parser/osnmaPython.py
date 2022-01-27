@@ -12,7 +12,8 @@ class sv_data:
         self.__sv_id = sv_id
         self.__page_position = 0
         self.__data_subframe = [None for i in range(15)]
-        self.__data_subframe_hist = [] #As I/NAV message is composed of 24 sub-Frames, it is planned to add constraints here to have up to 24 frames
+        self.__data_dataFrame = [] #As I/NAV message is composed of 24 sub-Frames, it is planned to add constraints here to have up to 24 frames
+        self.__data_dataFrameTime = [] #As I/NAV message is composed of 24 sub-Frames, it is planned to add constraints here to have up to 24 frames
         self.__osnma_subframe = [None for i in range(15)]
         self.__pageDummy = False
         self.__dataFrameCompleteStatus = False
@@ -31,9 +32,13 @@ class sv_data:
     def getDataSubframe(self):
         return self.__data_subframe
     def getDataFrame(self):
-            return self.__data_subframe_hist
+            return self.__data_dataFrame
+    def getDataFrameTime(self):
+            return self.__data_dataFrameTime
     def getOsnmaSubframe(self):
             return self.__data_subframe
+    def getOsnmaNavData(self,ADKD,time):
+        pass
     def subFrameSequence(self,word_type,data,reserved1): #As pages follow a pre-defined order, we only consider we have a complete sub-frame if we get the 15 pages (even+odd pages)
         if int(word_type,2) == 63:  
             self.__pageDummy = True #Word Type as value 11111 (or 63) is considered as dummmy Page
@@ -55,7 +60,9 @@ class sv_data:
                 self.__data_subframe = [None for i in range(15)]
                 self.__osnma_subframe= [None for i in range(15)]
                 self.__dataFrameCompleteStatus = False
-
+            if self.getDataFrameCompleteStatus() == True:
+                self.__data_dataFrameTime.append((self.__time,self.__data_subframe))
+                self.__data_dataFrame.append(self.__data_subframe)
 #This class takes as an input a list of a complete sub-frame OSNMA (in integer format) and has a method to ouputs:
 # list of MACKs, HKROOT, NMEA Header (with all its values (NMAS, CID, CPKS, Reserved))
 # DSM Header (With DSM ID and DSM Block ID)
