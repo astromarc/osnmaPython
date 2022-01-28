@@ -159,7 +159,7 @@ def update_screen (sv_list):
 
 setup_screen('OSNMA Processor')
 
-with open('../data_mataro2.csv') as csvfile:
+with open('../data_mataro3.csv') as csvfile:
     parsed_data = csv.reader(csvfile, delimiter=',')
     first = True
     last_osnma = 0
@@ -169,15 +169,15 @@ with open('../data_mataro2.csv') as csvfile:
         if first:
             first=False
             continue
-        sv_num = row[1]
-        word1=int(row[8])
-        word2=int(row[9])
-        word3=int(row[10])
-        word4=int(row[11])
-        word5=int(row[12])
-        word6=int(row[13])
-        word7=int(row[14])
-        word8=int(row[15])
+        sv_num = row[2]
+        word1=int(row[9])
+        word2=int(row[10])
+        word3=int(row[11])
+        word4=int(row[12])
+        word5=int(row[13])
+        word6=int(row[14])
+        word7=int(row[15])
+        word8=int(row[16])
 
         res1= (word5 & 0x00003FFF)  << 26
         res2 = (word6 & 0xFFFFFFC0) >> 6
