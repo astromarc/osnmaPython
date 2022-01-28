@@ -134,7 +134,7 @@ def setup_screen (title):
     set_title(title)
 
 def update_screen (sv_list):
-    #cls()
+    cls()
     with sc.location(1,1):
         sv_list_str = ""
         for sv in sv_list:
