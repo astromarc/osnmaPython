@@ -124,6 +124,7 @@ page_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), 
 page_counters = {}
 sv_dsm_buffers = {}
 sv_mack_buffers = {}
+last_parsed_macks = {}
 dsm_messages = {}
 sats_in_view = {}
 block_stats = {"Complete": 0, "OOS": 0}
@@ -135,7 +136,7 @@ def setup_screen (title):
 
 def update_screen (sv_list):
     cls()
-    with sc.location(1,1):
+    with sc.location(1,0):
         sv_list_str = ""
         for sv in sv_list:
             if sv_list[sv][1]:
@@ -156,6 +157,9 @@ def update_screen (sv_list):
                 print('\tMAC Function: ', parsed_dsm["MF"])
                 print('\tKey Size: ', parsed_dsm["KS"])
                 print('\tTag Size: ', parsed_dsm["TS"])
+        print("\n[Last MACK Messages]\n")
+        for svid in last_parsed_macks:
+            print('\tSVID ('+ str(svid) +') MACK: ' + str(last_parsed_macks[svid]))
 
 setup_screen('OSNMA Processor')
 
@@ -224,8 +228,9 @@ with open('../data_mataro3.csv') as csvfile:
             if page_counters[sv_num] == 14:
                 block_stats["Complete"] += 1
                 logging.debug("SVID: " + sv_num + "DSM/MACK BLOCK COMPLETE (" + hex(sv_dsm_buffers[sv_num][0]) + "): " + str(list(map(hex,sv_dsm_buffers[sv_num][1:]))) + " | " + str(list(map(hex,sv_mack_buffers[sv_num]))))
-                #mack = parse_mack_msg(convert_mack_words_to_bytearray(sv_mack_buffers[sv_num]), None)
-                #logging.info("KEY: " + binascii.hexlify(mack['Key']))
+                mack = parse_mack_msg(sv_mack_buffers[sv_num], None)
+                last_parsed_macks[sv_num] = mack
+                logging.info("MACK MSG: " + str(mack))
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
                 log_string += str(bytearray(sv_dsm_buffers[sv_num]))
                 dsm_id = (sv_dsm_buffers[sv_num][0] & 0xF0) >> 4
