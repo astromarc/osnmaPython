@@ -14,16 +14,23 @@ class sv_data:
         self.__data_subframe = [None for i in range(15)]
         self.__data_dataFrame = [] #As I/NAV message is composed of 24 sub-Frames, it is planned to add constraints here to have up to 24 frames
         self.__data_dataFrameTime = [] #As I/NAV message is composed of 24 sub-Frames, it is planned to add constraints here to have up to 24 frames
+        self.__onsma_dataFrame = []
         self.__osnma_subframe = [None for i in range(15)]
         self.__pageDummy = False
         self.__dataFrameCompleteStatus = False
-        self.__time = ""
+        self.__timeNatural = ""
+        self.time = 0
+        self.__OsnmaDistributionStatus = False
+    def getTimeNatural(self):
+        return self.__timeNatural
     def getTime(self):
-        return self.__time
+            return self.__time
     def getSVId(self):
         return self.__sv_id
     def getPagePosition(self):
         return self.__page_position
+    def getOsnmaDistributionStatus(self):
+            return self.__OsnmaDistributionStatus
     def getDataFrameCompleteStatus(self):
         if self.__page_position == len(word_types_sequence):
             self.__dataFrameCompleteStatus = True
@@ -35,8 +42,10 @@ class sv_data:
             return self.__data_dataFrame
     def getDataFrameTime(self):
             return self.__data_dataFrameTime
-    def getOsnmaSubframe(self):
-            return self.__data_subframe
+    def getOsnmaSubFrame(self):
+        return self.__osnma_subframe
+    def getOsnmaFrame(self):
+            return self.__onsma_dataFrame
     def getOsnmaNavData(self,ADKD,time):
         pass
     def subFrameSequence(self,word_type,data,reserved1): #As pages follow a pre-defined order, we only consider we have a complete sub-frame if we get the 15 pages (even+odd pages)
@@ -54,32 +63,63 @@ class sv_data:
                 self.__page_position = self.__page_position+1
                 self.__dataFrameCompleteStatus = False
                 if int(word_type,2) == 0 & (data[0:9] == "000000100"):#That means we can get time from word 0
-                    self.__time = weekSeconds2Time(int(data[-20:],2)) #this Time is NOT constantly update (cannot be used as RTC reference)
+                    self.__timeNatural = weekSeconds2Time(int(data[-20:],2)) #this Time is NOT constantly update (cannot be used as RTC reference)
+                    self.__time = int(data[-20:],2)
+                if int(word_type,2) ==2:
+                    if int(reserved1,2) == 0:
+                        self.__OsnmaDistributionStatus = False
+                    if int(reserved1,2) != 0:
+                        self.__OsnmaDistributionStatus = True
             else:
                 self.__page_position = 0
                 self.__data_subframe = [None for i in range(15)]
                 self.__osnma_subframe= [None for i in range(15)]
                 self.__dataFrameCompleteStatus = False
             if self.getDataFrameCompleteStatus() == True:
-                self.__data_dataFrameTime.append((self.__time,self.__data_subframe))
+                self.__data_dataFrameTime.append((self.__timeNatural,self.__time,self.__data_subframe))#,dataSubFrame2Authdata(self.__data_subframe,0),dataSubFrame2Authdata(self.__data_subframe,4)))
                 self.__data_dataFrame.append(self.__data_subframe)
-#This class takes as an input a list of a complete sub-frame OSNMA (in integer format) and has a method to ouputs:
-# list of MACKs, HKROOT, NMEA Header (with all its values (NMAS, CID, CPKS, Reserved))
-# DSM Header (With DSM ID and DSM Block ID)
-# It assumes the list of osnma's words is sorted 
-class osnma:
-    def __init__(self,ids,input_osnma_list):
-        osnma_list = input_osnma_list
-        #for osnma_word in osnma_list:
-        #    hkRoot_word = 
+                self.__onsma_dataFrame.append(self.__osnma_subframe)
+        def mackSequence(self):
+            pass
+
+
+def computeTagMessageNopad(PRND, PRNA, GST, CTR, NMAS, navdata):
+    if int(PRND,2) == 255:
+        return PRNA+GST+CTR+NMAS+navdata
+    else:
+        return PRND+PRNA+GST+CTR+NMAS+navdata
+
+
+def dataSubFrame2Navdata(dataSubframe = [], ADKD = 0):
+    if ADKD == 0: 
+        authWord1 = dataSubframe[10][6:(len(dataSubframe[10])-2)]
+        authWord2 = dataSubframe[0][6:(len(dataSubframe[10])-2)]
+        authWord3 = dataSubframe[11][6:]
+        authWord4 = dataSubframe[1][6:(len(dataSubframe[10])-2)]
+        authWord5 = dataSubframe[12][6:(len(dataSubframe[10])-55)]
+        authData = authWord1 + authWord2 +authWord3 + authWord4 + authWord5
+    if ADKD == 4:
+        if int(dataSubframe[4][0:6],2) == 10: # As in position 4 we can have both 8 and 10 pages, we will keep it as "None" if page is not 10
+            authWord6 = dataSubframe[2][6:(len(dataSubframe[10])-3)]
+            authWord10 = dataSubframe[4][-42:]
+            authData = authWord6 + authWord10
+        else: authData = None
+    if ADKD == 12:
+        authData = None
+    return authData
+
+
 
 class DSMMessage: #Class to store the DSM Message (from several Space Vehicles)
+    #id is the DSM_ID (first 4 bits of the DSM ID)
+    # index is the DSM Block ID
     def __init__(self, id):
-        self.__dsm_id = id 
+        self.__dsm_id = id
         self.__dsm_blocks = [None for i in range(16)]
         self.__dsm_type = "DSM-PKR"
         self.__num_blocks = None
         self.__curr_blocks = 0
+        self.__keyTimeNatural = ""
         if id <= 11:
             self.__dsm_type = "DSM-KROOT"
     def getDSMId(self):
@@ -91,12 +131,12 @@ class DSMMessage: #Class to store the DSM Message (from several Space Vehicles)
     def getCurrBlocks(self):
         return self.__curr_blocks
     def addBlock(self, index, block):
-        assert (index < 16)
+        #assert (index < 16)
+        if self.__dsm_blocks[index] == None:
+            self.__curr_blocks += 1
         self.__dsm_blocks[index] = block
         if index == 0:
             self.__num_blocks = ((block[0] & 0xF0) >> 4) + 6
-        if not self.isComplete():
-            self.__curr_blocks += 1
     def isComplete(self):
         if self.__num_blocks != None:
             if (16 - self.__dsm_blocks.count(None)) == self.__num_blocks:
@@ -106,6 +146,29 @@ class DSMMessage: #Class to store the DSM Message (from several Space Vehicles)
         if self.isComplete():
             return [b for block in self.__dsm_blocks[:self.__num_blocks] for b in block]
         return None
+    def getKeyTimeNatural(self):
+        return self.__keyTimeNatural
+    def parse_dsm_kroot_msg (self):
+        parsed_dsm_kroot = {}
+        stream = self.getDSMBytes()
+        parsed_dsm_kroot["NBdk"] = Nbdk_lookup[(stream[0] & 0xF0) >> 4] #Number of DSM-KROOT Blocks
+        parsed_dsm_kroot["PKID"] = stream[0] & 0x0F       #  Public Key ID
+        parsed_dsm_kroot["CIDKR"] = (stream[1] & 0xC0) >> 6 #KROOT Chain ID (CID KR)
+        parsed_dsm_kroot["Reserved1"] = (stream[1] & 0x30) >> 4 
+        parsed_dsm_kroot["HF"] = HF_lookup[(stream[1] & 0x0C) >> 2] #Hash Function
+        parsed_dsm_kroot["MF"] = MF_lookup[stream[1] & 0x03] #Mac Function
+        parsed_dsm_kroot["KS"] = KS_lookup[(stream[2] & 0xF0) >> 4] # Key Size
+        parsed_dsm_kroot["TS"] = TS_lookup[stream[2] & 0x0F] #Tag Size
+        parsed_dsm_kroot["MACLT"] = stream[3] # MAC look-up table
+        parsed_dsm_kroot["Reserved2"] = (stream[4] & 0xF0) >> 4 
+        parsed_dsm_kroot["WNk"] = ((stream[4] & 0x0F) << 8) |stream[5] #Galileo Sytem Time (GST) Week Number
+        parsed_dsm_kroot["TOWHk"] = stream[6] # Galileo System Time (GST) Time of Week
+        parsed_dsm_kroot["alfa"] = (stream[7] << 40) | (stream[8] << 32) | (stream[9] << 24) | (stream[10] << 16) | (stream[11] << 8) | stream[12] # Random Pattern
+        bytes_key = parsed_dsm_kroot["KS"] // 8 
+        parsed_dsm_kroot["KROOT"] = stream[13:13+bytes_key] #KROOT
+        parsed_dsm_kroot["DS+Padding"] = stream[13+bytes_key:] # Digital Signature
+        self.__keyTimeNatural = weekSeconds2Time(stream[6])
+        return parsed_dsm_kroot
     def __repr__(self):
         return self.__dsm_type + " (Type: " + str(self.__dsm_id) + ") " + "Num blocks: " + str(self.__num_blocks) + " Blocks: " + str(self.__dsm_blocks)
 
@@ -197,28 +260,6 @@ def convert_mack_words_to_bytearray(words):
         last |= i
     return last
 
-def parse_dsm_kroot_msg (msg):
-    parsed_dsm_kroot = {}
-    stream = msg.getDSMBytes()
-    parsed_dsm_kroot["NBdk"] = Nbdk_lookup[(stream[0] & 0xF0) >> 4]
-    parsed_dsm_kroot["PKID"] = stream[0] & 0x0F
-    parsed_dsm_kroot["CIDKR"] = (stream[1] & 0xC0) >> 6
-    parsed_dsm_kroot["Reserved1"] = (stream[1] & 0x30) >> 4
-    parsed_dsm_kroot["HF"] = HF_lookup[(stream[1] & 0x0C) >> 2]
-    parsed_dsm_kroot["MF"] = MF_lookup[stream[1] & 0x03]
-    parsed_dsm_kroot["KS"] = KS_lookup[(stream[2] & 0xF0) >> 4]
-    parsed_dsm_kroot["TS"] = TS_lookup[stream[2] & 0x0F]
-    parsed_dsm_kroot["MACLT"] = stream[3]
-    parsed_dsm_kroot["Reserved2"] = (stream[4] & 0xF0) >> 4
-    parsed_dsm_kroot["WNk"] = ((stream[4] & 0x0F) << 8) |stream[5]
-    parsed_dsm_kroot["TOWHk"] = stream[6]
-    parsed_dsm_kroot["alfa"] = (stream[7] << 40) | (stream[8] << 32) | (stream[9] << 24) | (stream[10] << 16) | (stream[11] << 8) | stream[12]
-    bytes_key = parsed_dsm_kroot["KS"] // 8
-    parsed_dsm_kroot["KROOT"] = stream[13:13+bytes_key]
-    parsed_dsm_kroot["DS+Padding"] = stream[13+bytes_key:]
-    return parsed_dsm_kroot
-
-
 def parse_dsm_pkr_msg (msg):
     parsed_dsm_pkr = {}
 
@@ -231,12 +272,15 @@ def unpack_mack_array(mack_array):
         arr.append(quad & 0x000000FF)
     return arr
 
-def parse_mack_msg(msg, dsm_kroot):
+def parse_mack_msg(msg, dsm_kroot, kfile):
+    from math import floor
+    import binascii
     mbytes = unpack_mack_array(msg)
     parsed_mack_msg = {}
+    #logging.info("MACK: " + str(binascii.hexlify(bytearray(mbytes))))
     parsed_mack_msg["Tag0"] = bytearray(mbytes[0:5])  #Fixed to 40 bits (5 bytes) but should be variable depending on TS value in DSM-KROOT message
     parsed_mack_msg["MACSEQ"] = (mbytes[5] << 4) | (mbytes[6] & 0xF0) >> 4
-    num_tags = floor((480-128)/(40+16)) # Key(128) and tag(40) sizes shall be extracted from DSM-KROOT
+    num_tags = floor((480-128)/(40+16)) - 1# Key(128) and tag(40) sizes shall be extracted from DSM-KROOT
     tags_and_info = []
     next_index = 7
     for i in range(num_tags):
@@ -249,6 +293,8 @@ def parse_mack_msg(msg, dsm_kroot):
         next_index +=7
     parsed_mack_msg["TagsAndInfo"] = tags_and_info
     parsed_mack_msg["Key"] = bytearray(mbytes[next_index:next_index+16])
+    kfile.write(str(binascii.hexlify(parsed_mack_msg["Key"])) + "\n")
+    kfile.flush()
     return parsed_mack_msg
 
 def weekSeconds2Time(weekSeconds): #function to return a string of hours in HH:mm:ss
@@ -262,3 +308,20 @@ def weekSeconds2Time(weekSeconds): #function to return a string of hours in HH:m
     second = int(seconds*60) #seconds in second format
     time = str(hour).zfill(2) + ":" + str(int(minute)).zfill(2) + ":" + str(second).zfill(2)
     return time
+
+def osnmasubFrame2hkroot_mack(osnmaSubFrame):
+    hkroot = []
+    mack = []
+    for osnmapage in osnmaSubFrame:
+        hkroot.append(osnmapage[0:8])
+        mack.append(osnmapage[-32:])
+    return hkroot, mack
+
+
+def bitstring_to_bytes(s):
+    v = int(s, 2)
+    b = bytearray()
+    while v:
+        b.append(v & 0xff)
+        v >>= 8
+    return bytes(b[::-1])
