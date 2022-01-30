@@ -18,7 +18,7 @@
 ---
 
 
-[OSNMA](https://gssc.esa.int/navipedia/index.php/Galileo_Open_Service_Navigation_Message_Authentication) is one of Europe's Galileo coolest features: the authentication of GNSS Data. Devices such as Drones rely on having accurate not spoofed data, and as rapid as its market grows, as rapid grows the need of having anti-spoofing mechanisms.
+[OSNMA](https://gssc.esa.int/navipedia/index.php/Galileo_Open_Service_Navigation_Message_Authentication) is one of Europe's [Galileo](https://www.euspa.europa.eu/european-space/galileo/What-Galileo) coolest features: the authentication of GNSS Data. Devices such as Drones rely on having accurate not spoofed data, and as rapid as its market grows, as rapid grows the need of having anti-spoofing mechanisms.
 You can find that there are already spoofing detection mechanisms,  but there is still no mechanism that can ensure GNSS data has not been altered for cheap mass-market standalone GNSS Receivers that does not rely on on-line authentication.
 OSNMA is the unique Galieo GNSS feature that allows any receiver to make sure the data it is receiving has not been altered. OSNMA is expected to be one extra layer of security that can work together with other anti-spoofing/anti-jamming techniques.
 
