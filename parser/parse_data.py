@@ -67,9 +67,10 @@ def unpack_mack_array(mack_array):
 def parse_mack_msg(msg, dsm_kroot, kfile):
     mbytes = unpack_mack_array(msg)
     parsed_mack_msg = {}
+    logging.info("MACK: " + str(binascii.hexlify(bytearray(mbytes))))
     parsed_mack_msg["Tag0"] = bytearray(mbytes[0:5])  #Fixed to 40 bits (5 bytes) but should be variable depending on TS value in DSM-KROOT message
     parsed_mack_msg["MACSEQ"] = (mbytes[5] << 4) | (mbytes[6] & 0xF0) >> 4
-    num_tags = floor((480-128)/(40+16)) # Key(128) and tag(40) sizes shall be extracted from DSM-KROOT
+    num_tags = floor((480-128)/(40+16)) - 1# Key(128) and tag(40) sizes shall be extracted from DSM-KROOT
     tags_and_info = []
     next_index = 7
     for i in range(num_tags):
