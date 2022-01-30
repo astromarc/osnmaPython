@@ -64,7 +64,7 @@ def unpack_mack_array(mack_array):
         arr.append(quad & 0x000000FF)
     return arr
 
-def parse_mack_msg(msg, dsm_kroot):
+def parse_mack_msg(msg, dsm_kroot, kfile):
     mbytes = unpack_mack_array(msg)
     parsed_mack_msg = {}
     parsed_mack_msg["Tag0"] = bytearray(mbytes[0:5])  #Fixed to 40 bits (5 bytes) but should be variable depending on TS value in DSM-KROOT message
@@ -82,6 +82,8 @@ def parse_mack_msg(msg, dsm_kroot):
         next_index +=7
     parsed_mack_msg["TagsAndInfo"] = tags_and_info
     parsed_mack_msg["Key"] = bytearray(mbytes[next_index:next_index+16])
+    kfile.write(str(binascii.hexlify(parsed_mack_msg["Key"])) + "\n")
+    kfile.flush()
     return parsed_mack_msg
 
 class DSMMessage:
@@ -163,6 +165,8 @@ def update_screen (sv_list):
 
 setup_screen('OSNMA Processor')
 
+key_file = open('keys.txt', 'w')
+
 with open('../data_mataro3.csv') as csvfile:
     parsed_data = csv.reader(csvfile, delimiter=',')
     first = True
@@ -228,7 +232,7 @@ with open('../data_mataro3.csv') as csvfile:
             if page_counters[sv_num] == 14:
                 block_stats["Complete"] += 1
                 logging.debug("SVID: " + sv_num + "DSM/MACK BLOCK COMPLETE (" + hex(sv_dsm_buffers[sv_num][0]) + "): " + str(list(map(hex,sv_dsm_buffers[sv_num][1:]))) + " | " + str(list(map(hex,sv_mack_buffers[sv_num]))))
-                mack = parse_mack_msg(sv_mack_buffers[sv_num], None)
+                mack = parse_mack_msg(sv_mack_buffers[sv_num], None, key_file)
                 last_parsed_macks[sv_num] = mack
                 logging.info("MACK MSG: " + str(mack))
                 log_string += " ¡¡PAGE SQUENCE COMPLETE!! "
