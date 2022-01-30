@@ -18,7 +18,8 @@
 ---
 
 
-[OSNMA](https://gssc.esa.int/navipedia/index.php/Galileo_Open_Service_Navigation_Message_Authentication) is one of Europe's Galileo most cool features: the authentication of your GNSS Data. With the increase IoT and Drones market, GNSS spoofing is becoming a real threat. You can find that there are already spoofing detection mechanisms,  but there is still no mechanism that can ensure GNSS data has not been altered for cheap mass-market standalone GNSS Receivers not connected to the Internet.
+[OSNMA](https://gssc.esa.int/navipedia/index.php/Galileo_Open_Service_Navigation_Message_Authentication) is one of Europe's Galileo coolest features: the authentication of GNSS Data. Devices such as Drones rely on having accurate not spoofed data, and as rapid as its market grows, as rapid grows the need of having anti-spoofing mechanisms.
+You can find that there are already spoofing detection mechanisms,  but there is still no mechanism that can ensure GNSS data has not been altered for cheap mass-market standalone GNSS Receivers that does not rely on on-line authentication.
 
 This library provides any user the means to validate the data received **from mass market receivers** that can be bought for really cheap -[e.g., this NEO-M9N](https://www.mikroe.com/gnss-7-click). Specifically, this library has been developed based on Ublox Receivers, altough its core can work for any GNSS receivers that can get Galileo I/NAV Pages.
 
