@@ -20,8 +20,9 @@
 
 [OSNMA](https://gssc.esa.int/navipedia/index.php/Galileo_Open_Service_Navigation_Message_Authentication) is one of Europe's Galileo coolest features: the authentication of GNSS Data. Devices such as Drones rely on having accurate not spoofed data, and as rapid as its market grows, as rapid grows the need of having anti-spoofing mechanisms.
 You can find that there are already spoofing detection mechanisms,  but there is still no mechanism that can ensure GNSS data has not been altered for cheap mass-market standalone GNSS Receivers that does not rely on on-line authentication.
+OSNMA is the unique Galieo GNSS feature that allows any receiver to make sure the data it is receiving has not been altered. OSNMA is expected to be one extra layer of security that can work together with other anti-spoofing/anti-jamming techniques.
 
-This library provides any user the means to validate the data received **from mass market receivers** that can be bought for really cheap -[e.g., this NEO-M9N](https://www.mikroe.com/gnss-7-click). Specifically, this library has been developed based on Ublox Receivers, altough its core can work for any GNSS receivers that can get Galileo I/NAV Pages.
+This library provides any user the means to implement OSNMA **from mass market receivers** that can be bought for really cheap -[e.g., this NEO-M9N](https://www.mikroe.com/gnss-7-click). Specifically, this library has been developed based on Ublox Receivers, altough its core can work for any GNSS receivers that can get Galileo I/NAV Pages.
 
 *Note: the work in this library is not related to ublox as a company, we only use their products as they are well-documented and cost-effective. UBLOX is a trademark of u-blox Holding AG.*
 ## 📚 Applicable Documentation <a name = "about"></a>
@@ -80,7 +81,7 @@ TBW
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@jametller](https://github.com/jametller) - GNSS & Cryptography Expert
-- [@astromarc](https://github.com/jametller) - GNSS Engineer
+- [@astromarc](https://github.com/astromarc) - GNSS Engineer
 
 
 
