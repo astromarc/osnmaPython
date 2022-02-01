@@ -61,14 +61,15 @@ else:
                     parsed_mack = osnmaPython.parse_mack_msg(mack, None, key_file)
                     m_vec = []
                     for i in range(len(parsed_mack)):
-                        PRND = bin(parsed_mack['TagsAndInfo'][i]['PRN'])[2:]
-                        PRNA = bin(sv_vector[sv_id-1].getSVId())[2:]
-                        ADKD = bin(parsed_mack['TagsAndInfo'][i]['ADKD'])[2:]
-                        CTR = bin(i)[2:]
+                        PRND = bin(parsed_mack['TagsAndInfo'][i]['PRN'])[2:].zfill(8)
+                        PRNA = bin(sv_vector[sv_id-1].getSVId())[2:].zfill(8).zfill(8)
+                        ADKD = bin(parsed_mack['TagsAndInfo'][i]['ADKD'])[2:].zfill(8)
+                        CTR = bin(i)[2:].zfill(8)
                         navdata = osnmaPython.dataSubFrame2Navdata(sv_vector[sv_id-1].getDataSubframe(),int(ADKD,2)) #already in bits
-                        GST = bin(sv_vector[sv_id-1].getTime() - 30)[2:]
-                        NMASbin = bin(NMAS)[2:]
+                        GST = bin(sv_vector[sv_id-1].getTime() - 30)[2:].zfill(32)
+                        NMASbin = bin(NMAS)[2:].zfill(2)
                         if navdata is not None:
+                            navdata = osnmaPython.dataSubFrame2Navdata(sv_vector[sv_id-1].getDataSubframe(),int(ADKD,2)).zfill(549)
                             m = osnmaPython.computeTagMessageNopad(PRND, PRNA, GST, CTR, NMASbin, navdata)
                             m_vec.append(osnmaPython.bitstring_to_bytes(m))
                             m_file .write(str(binascii.hexlify(osnmaPython.bitstring_to_bytes(m))) + "\n")
