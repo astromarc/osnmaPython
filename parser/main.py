@@ -1,6 +1,7 @@
 from osnmaPython import sv_data, DSMMessage
 import osnmaPython
 import csv
+import binascii
 key_file = open('keys.txt', 'w')
 import time
 
@@ -19,6 +20,8 @@ record_filename = '25-01-2022_2.csv'
 testData = './test_data/25-01-2022.csv'
 COMPort = 'COM12'
 boudRate = 115200
+m_file = open('m.txt', 'w')
+
 
 if live:
     while True:
@@ -68,6 +71,8 @@ else:
                         if navdata is not None:
                             m = osnmaPython.computeTagMessageNopad(PRND, PRNA, GST, CTR, NMASbin, navdata)
                             m_vec.append(osnmaPython.bitstring_to_bytes(m))
+                            m_file .write(str(binascii.hexlify(osnmaPython.bitstring_to_bytes(m))) + "\n")
+                            m_file .flush()
                         print(m_vec)
                     DSM_vector[DSMId].addBlock(DSMBlockId, block)
                     if(DSM_vector[DSMId].isComplete()) & (DSMId<=11): #DSM from 0 to 11 mean DSM-KROOT
