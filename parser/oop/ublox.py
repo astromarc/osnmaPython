@@ -19,7 +19,7 @@ class UbloxParser:
         res1= (word5 & 0x00003FFF)  << 26
         res2 = (word6 & 0xFFFFFFC0) >> 6
         osnma = res1 | res2
-        page_type = (word1 & 0x3F000000) >> 24
+        word_type = (word1 & 0x3F000000) >> 24
         data_word = ((0x3FFFFFFF & word1) <<  98) | (word2 << 66) | (word3 << 34) | (((word4 & 0xFFFFC000) >> 14) << 16) | ((word5 & 0x3FFFC000) >> 14)
 
-        self.__page_processor(svid, page_type, osnma, data_word.to_bytes(16, 'big'))
+        self.__page_processor(svid, word_type, osnma, data_word.to_bytes(16, 'big'))
