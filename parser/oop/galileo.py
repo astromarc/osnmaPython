@@ -39,7 +39,7 @@ class SubframeProcessor:
     def subscribeOSNMADataReceiver (self, receiver):
         self.__osnma_receivers.append(receiver)
     
-    def proccessPage(svid, word_type, osnma, inav_data):
+    def proccessPage(self, svid, word_type, osnma, inav_data):
         switch(self.__state)
         if self.__state == SubframeProcessingStates.OUT_OF_SYNC:
             pass
