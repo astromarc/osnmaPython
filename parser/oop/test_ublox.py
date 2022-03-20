@@ -9,6 +9,9 @@ class TestUbloxParser(unittest.TestCase):
         return rx_page_data_only_1
     def process_page (self, svid, page_type, osnma, inav_data):
         self.assertEqual(inav_data, bytearray([0xaa, 0x55, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x55, 0xaa]))
+        self.assertEqual(svid, 3)
+        self.assertEqual(osnma, b'\x00\x00\x00\x00\x00')
+        self.assertEqual(page_type, 0x2a)
     def test_create(self):
         ubrx = ublox.UbloxParser(self, self)
         self.assertNotEqual(ubrx, None)
