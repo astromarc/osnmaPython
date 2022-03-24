@@ -1,5 +1,5 @@
 from bitarray import bitarray
-from bitarray.util import int2ba 
+from bitarray.util import int2ba, ba2int
 
 class ubloxWordsList2GalileoICD:
     def ublox2Galileo(self,ubloxList):
@@ -37,7 +37,7 @@ class ubloxWordsList2GalileoICD:
         self.__oddTail = self.__oddPage[114:120]
         self.__oddGalileo = self.__oddPage[0:120]
     def getWordType(self):
-        return self.__wordType.tobytes()
+        return ba2int(self.__wordType)
     def getData(self):
         return self.__data.tobytes()
     def getOsnma(self):

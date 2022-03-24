@@ -19,14 +19,20 @@ class readUbloxData(getUbloxWords):
         self.__filename = filename
         self.__delimeter = delimiter
         self.__file = open(self.__filename)
+        self.__fileRead = True
     def getUbloxWordsList(self):
-        return self.__file.readline().split(self.__delimeter)
+        if self.__file.readline() != '':
+            self.__fileRead = True
+            return self.__file.readline().split(self.__delimeter)
+        else:
+            self.__fileRead = False
     def closeFile(self):
         try: self.__file.close()
         except: print("File ",self.__file," cannot be closed")
     def openFile(self):
         self.__file = open(self.__filename)
-
+    def getFileRead(self):
+        return self.__fileRead 
 
 class readUbloxSerial(getUbloxWords):
     '''
