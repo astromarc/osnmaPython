@@ -18,14 +18,16 @@ class readUbloxData(getUbloxWords):
     def __init__(self,filename,delimiter):
         self.__filename = filename
         self.__delimeter = delimiter
-        self.__file = open(self.__filename)
+        with open(self.__filename, 'r') as csvfile:
+            reader = csv.reader(csvfile)
+            self.__list = list(reader)
         self.__fileRead = True
+        self.__index = -1
     def getUbloxWordsList(self):
-        if self.__file.readline() != '':
-            self.__fileRead = True
-            return self.__file.readline().split(self.__delimeter)
-        else:
-            self.__fileRead = False
+        if self.__index < len(self.__list)-1:
+            self.__index+=1
+            return self.__list[self.__index]
+        else: return None
     def closeFile(self):
         try: self.__file.close()
         except: print("File ",self.__file," cannot be closed")
