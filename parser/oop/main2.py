@@ -27,6 +27,5 @@ while ublox_words != None:
         sat.subFrameSequence(pageProcessor.getWordType(),pageProcessor.getData(),pageProcessor.getOsnma())
         if sat.getDataFrameCompleteStatus():
             pass
-            
     ublox_words = pageReader.getUbloxWordsList()
 
