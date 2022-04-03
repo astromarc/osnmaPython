@@ -9,7 +9,7 @@ class SubframeProcessingStates(enum.Enum):
     COMPLETING_SUBFRAME = 3
 
 # Page processor which receives page information, including data words, osnma per a given SVID
-# and ends up building subframes
+# and ends up building OSNMA and NAV data grouped in subrafmes.
 # For each complete subframe received, for a given SV ID, an object of this class may output:
 #  - All the words forming the subframe
 #  - The 15 OSNMA words
@@ -27,15 +27,19 @@ class SubframeProcessor:
         self.__osnma_data = []
         self.__subframe_receivers = []
         self.__svid = svid
-        self.__state_machine = {SubframeProcessingStates.OUT_OF_SYNC: self.out_of_sync_state, 
-                                SubframeProcessingStates.PROCESSING_SUBFRAME: self.processing_subframe,
-                                SubframeProcessingStates().COMPLETING_SUBFRAME: self.completing_subframe}
     def subscribeSubframeReceiver (self, receiver):
         self.__subframe_receivers.append(receiver)
     # State machine entry point
     def proccessPage(self, word_type, osnma, inav_data):
         # Execute the function corresponding to the current state and get the next state
-        self.__state = self.__state_machine[self.__state]()
+        if self.__state == SubframeProcessingStates.OUT_OF_SYNC:
+            self.out_of_sync_state(word_type, osnma, inav_data)
+        elif self.__state == SubframeProcessingStates.PROCESSING_SUBFRAME:
+            self.processing_subframe(word_type, osnma, inav_data)
+        elif self.__state == SubframeProcessingStates.COMPLETING_SUBFRAME:
+            self.completing_subframe(word_type, osnma, inav_data)
+        else:
+            raise Exception("Invalid state")
     # Out of sync state function. Skip words until word type becomes the desired one. Then change state to processing
     def out_of_sync_state(self, word_type, osnma, inav_data):
         if word_type not in word_types_sequence[self.__word_counter]:
@@ -53,11 +57,11 @@ class SubframeProcessor:
                 return self.completing_subframe(word_type, osnma, inav_data)
             else:
                 self.__word_counter += 1
-                return SubframeProcessingStates().PROCESSING_SUBFRAME
+                return SubframeProcessingStates.PROCESSING_SUBFRAME
     # Completing state. Output accumulated data, clean buffers
     def completing_subframe(self, word_type, osnma, inav_data):
         for receiver in self.__subframe_receivers:
-            receiver(self.__inav_data, self.__osnma_data)
+            receiver.new_subframe(self.__inav_data, self.__osnma_data)
         self.__word_counter = 0
         self.__inav_data = []
         self.__osnma_data = []
