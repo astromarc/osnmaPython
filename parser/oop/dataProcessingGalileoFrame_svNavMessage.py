@@ -1,5 +1,6 @@
 from bitarray import bitarray
 from bitarray.util import int2ba, ba2int
+from math import floor
 word_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), (0,), (1,), (3,), (5,), (0,), (0,)]
 
 
@@ -94,35 +95,60 @@ class svNavMessage:
         return self.__t0TimeNatural
     def getT0(self):
         return self.__t0Time
-        
+
 
 class svKrootOsnmaMack:
     def __init__(self):
         self.__CID = bytearray()
         self.__DSMBlockId = bytearray()
         self.__DSMId = bytearray()
-        self.__DSKPKS = bytearray()
+        self.__CDPKS = bytearray()
+        self.__NMAS = bytearray()
+        self.__reservedNMA = bytearray()
         self.__hkroot = [None for i in range(15)]
         self.__mack = [None for i in range(15)]
-    def osnmaSubFrame2hkRootMack(self, osnmaSubFrame=[]):
+        self.__DSMBlock = [None for i in range(13)]
+        self.__parsedMack = {}
+    def osnmaSubFrame2hkRootMack(self, osnmaSubFrame):
         self.__hkroot = [None for i in range(15)]
         self.__mack = [None for i in range(15)]
-        # for osnmaPage in osnmaSubFrame: TBW
-        #     hkroot.append(osnmaPage)
+        self.__DSMBlock = [None for i in range(13)]
+        for osnmaPage in osnmaSubFrame:
+            b = bitarray()
+            b.frombytes(osnmaPage)
+            self.__hkroot.append(b[0:8].tobytes())
+            self.__hkroot.pop(0)
+            self.__mack.append(b[-32:].tobytes())
+            self.__mack.pop(0)
+        b = bitarray()
+        b.frombytes(self.__hkroot[0])
+        self.__NMAS = b[0:2].tobytes()
+        self.__CID = b[2:4].tobytes()
+        self.__CDPKS = b[4:7].tobytes()
+        self.__reservedNMA = b[7]
+        b = bitarray()
+        b.frombytes(self.__hkroot[1])
+        self.__DSMId = b[0:4].tobytes()
+        self.__DSMBlockId = b[-4:].tobytes()
+        self.__DSMBlock = self.__hkroot[2:]
     def getCID(self):
         return self.__CID
     def getDSMBlockId(self):
         return self.__DSMBlockId
     def getDSMId(self):
         return self.__DSMId
-    def getDSKPKS(self):
-        return self.__DSKPKS
-    def getDSKPKS(self):
-        return self.__DSKPKS
+    def getCDPKS(self):
+        return self.__CDPKS
     def getHkroot(self):
         return self.__hkroot
     def getMack(self):
         return self.__mack
+    def getNMAS(self):
+        return self.__NMAS
+    def getReservedNMA(self):
+        return self.__reservedNMA
+    def getDSMBlock(self):
+        return self.__DSMBlock
 
 
 class svConstellation(svNavMessage):
@@ -139,5 +165,39 @@ class svConstellation(svNavMessage):
         return self.__sv[svId-1][1].getOsnmaSubFrame()
     def feedConstellation(self,svId=int,wordType=int,data=bitarray(),osnma=bitarray()):
         self.__sv[svId-1][1]
-        
 
+class NavMessageAuthenticator:
+    def __init__(self):
+        self.__ParsedMackMsg = {}
+        self.__tag0 = bitarray()
+        self.__MACSEQ = bitarray()
+        self.__mackReserved2 = bitarray()
+        self.__numTags = 0
+    def parseMackMessage(self,mack,keyLength, tagLength):
+        self.__concatenedMack = bitarray()
+        for mack_part in mack:
+            b = bitarray()
+            b.frombytes(mack_part)
+            self.__concatenedMack += b
+        self.__tag0 = self.__concatenedMack[0:tagLength].tobytes()
+        self.__MACSEQ = self.__concatenedMack[tagLength:(tagLength+12)].tobytes()
+        self.__mackReserved2 = self.__concatenedMack[-4:].tobytes()
+        self.__numTags = floor((480-keyLength)/(tagLength+16)) - 1
+        self.__ParsedMackMsg["Tag0"] = self.__tag0
+        self.__ParsedMackMsg["MACSEQ"] = self.__MACSEQ
+        #missing rest of the Tags (needed for cross-authentication)
+        startKeyPosition = tagLength+12+4+(tagLength+16)*self.__numTags
+        self.__teslaKey = self.__concatenedMack[startKeyPosition:(startKeyPosition+keyLength)].tobytes()
+        self.__ParsedMackMsg["Tesla Key"] = self.__teslaKey
+    def getConcatenedMack(self):
+        return self.__concatenedMack.tobytes()
+    def getTag0(self):
+        return self.__tag0
+    def getMacSeq(self):
+        return self.__MACSEQ
+    def getMackReserved2(self):
+        return self.__mackReserved2
+    def getParsedMackMessage(self):
+        return self.__ParsedMackMsg
+    def getTeslaKey(self):
+        return self.__teslaKey
