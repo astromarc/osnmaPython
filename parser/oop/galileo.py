@@ -1,5 +1,6 @@
 import collections
 import enum
+import logging
 
 word_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), (0,), (1,), (3,), (5,), (0,), (0,)]
 
@@ -19,7 +20,7 @@ class SubframeProcessingStates(enum.Enum):
 # An instance of this object may be made by each SV ID so that a specific state machine is kept
 # by each satellite.
 # States OUT_OF_SYNC, PROCESSING_SUBFRAME, FRAME_COMPLETE
-class SubframeProcessor:
+class SubframeProcessorSvid:
     def __init__(self, svid):
         self.__state = SubframeProcessingStates.OUT_OF_SYNC
         self.__word_counter = 0
@@ -30,8 +31,9 @@ class SubframeProcessor:
     def subscribeSubframeReceiver (self, receiver):
         self.__subframe_receivers.append(receiver)
     # State machine entry point
-    def proccessPage(self, word_type, osnma, inav_data):
+    def process_page(self, word_type, osnma, inav_data):
         # Execute the function corresponding to the current state and get the next state
+        logging.debug('Processing page for satellite ID ' + str(self.__svid))
         if self.__state == SubframeProcessingStates.OUT_OF_SYNC:
             self.out_of_sync_state(word_type, osnma, inav_data)
         elif self.__state == SubframeProcessingStates.PROCESSING_SUBFRAME:
@@ -65,4 +67,13 @@ class SubframeProcessor:
         self.__word_counter = 0
         self.__inav_data = []
         self.__osnma_data = []
+        logging.debug('Subframe complete for SV ID ' + str(self.__svid))
         return SubframeProcessingStates.PROCESSING_SUBFRAME
+
+class SubframeProcessorConstellation:
+    def __init__(self):
+        self.__svids = {}
+    def process_page(self, svid, word_type, osnma_word, inav_data):
+        if svid not in self.__svids:
+            self.__svids[svid] = SubframeProcessorSvid(svid)
+        self.__svids[svid].process_page (word_type, osnma_word, inav_data)
