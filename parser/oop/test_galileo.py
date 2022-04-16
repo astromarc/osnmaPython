@@ -1,5 +1,7 @@
 import unittest
 import galileo
+from bitarray import bitarray
+from bitarray.util import int2ba
 
 class TestSubframeProcessor(unittest.TestCase):
     def new_subframe(self, inav, osnma):
@@ -27,6 +29,31 @@ class TestSubframeProcessor(unittest.TestCase):
         sp.process_page(0, 14, 'N')
         self.__its_time = True
         sp.process_page(0, 15, 'O')
+
+class TestMackParser(unittest.TestCase):
+    def test_real_data(self):
+        mack=[0xE094B3FB, 0xA533A6A6, 0xB55DFED5, 0x05055EBE, 0xC4E3A8FF, 0x40B580AE, 0xB1511905, 0x78A85B87, 
+        0x9301C6B3, 0xE3315F47, 0x1B0517B9, 0x8FD42A4A, 0xFD0EA36D, 0x1DA2DE40, 0x6B930000]
+
+        parsed_mack = galileo.parse_mack_msg(mack)
+        self.assertEqual(parsed_mack["Tag0"], int2ba(0xE094B3FBA5, length=40, endian='big', signed=False))
+        self.assertEqual(parsed_mack["MACSEQ"], int2ba(0x33A, length=12, endian='big', signed=False))
+        self.assertEqual(parsed_mack['TagsAndInfo'][0]['Tag'], int2ba(0xA6B55DFED5, length=40, endian='big', signed=False))
+        self.assertEqual(parsed_mack['TagsAndInfo'][0]['PRN'], 5)
+        self.assertEqual(parsed_mack['TagsAndInfo'][0]['ADKD'], 0)
+        self.assertEqual(parsed_mack['TagsAndInfo'][1]['Tag'], int2ba(0x5EBEC4E3A8, length=40, endian='big', signed=False))
+        self.assertEqual(parsed_mack['TagsAndInfo'][1]['PRN'], 255)
+        self.assertEqual(parsed_mack['TagsAndInfo'][1]['ADKD'], 4)
+        self.assertEqual(parsed_mack['TagsAndInfo'][2]['Tag'], int2ba(0xB580AEB151, length=40, endian='big', signed=False))
+        self.assertEqual(parsed_mack['TagsAndInfo'][2]['PRN'], 25)
+        self.assertEqual(parsed_mack['TagsAndInfo'][2]['ADKD'], 0)
+        self.assertEqual(parsed_mack['TagsAndInfo'][3]['Tag'], int2ba(0x78A85B8793, length=40, endian='big', signed=False))
+        self.assertEqual(parsed_mack['TagsAndInfo'][3]['PRN'], 1)
+        self.assertEqual(parsed_mack['TagsAndInfo'][3]['ADKD'], 12)
+        self.assertEqual(parsed_mack['TagsAndInfo'][4]['Tag'], int2ba(0xB3E3315F47, length=40, endian='big', signed=False))
+        self.assertEqual(parsed_mack['TagsAndInfo'][4]['PRN'], 27)
+        self.assertEqual(parsed_mack['TagsAndInfo'][4]['ADKD'], 0)
+        
 
 if __name__ == "__main__":
     unittest.main()

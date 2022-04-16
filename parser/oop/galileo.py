@@ -1,6 +1,9 @@
 import collections
 import enum
 import logging
+from bitarray import bitarray
+from bitarray.util import ba2int
+from math import floor
 
 word_types_sequence = [(2,), (4,), (6,), (7,9), (8,10), (0,), (0,), (0,), (0,), (0,), (1,), (3,), (5,), (0,), (0,)]
 
@@ -70,6 +73,7 @@ class SubframeProcessorSvid:
         logging.debug('Subframe complete for SV ID ' + str(self.__svid))
         return SubframeProcessingStates.PROCESSING_SUBFRAME
 
+# This class is an aggregator of SubframeProcessorSvid for all satellites in view
 class SubframeProcessorConstellation:
     def __init__(self):
         self.__svids = {}
@@ -77,3 +81,34 @@ class SubframeProcessorConstellation:
         if svid not in self.__svids:
             self.__svids[svid] = SubframeProcessorSvid(svid)
         self.__svids[svid].process_page (word_type, osnma_word, inav_data)
+
+def parse_mack_msg(msg):
+    mbytes = bitarray()
+    for i in range(15):
+        mbytes.frombytes(int(msg[i]).to_bytes(4,'big'))
+    parsed_mack_msg = {}
+    parsed_mack_msg["Tag0"] = mbytes[0:40]  #Fixed to 40 bits (5 bytes) but should be variable depending on TS value in DSM-KROOT message
+    parsed_mack_msg["MACSEQ"] = mbytes[40:52]
+    num_tags = floor((480-128)/(40+16)) - 1 # Key(128) and tag(40) sizes shall be extracted from DSM-KROOT
+    tags_and_info = []
+    next_index = 56
+    for i in range(num_tags):
+        ti = {}
+        ti["Tag"] = mbytes[next_index:next_index+40]
+        ti["Tag-Info"] = mbytes[next_index+40:next_index+56]
+        ti["PRN"] = ba2int(ti["Tag-Info"][0:8])
+        ti["ADKD"] = ba2int(ti["Tag-Info"][8:12])
+        tags_and_info.append(ti)
+        next_index +=56
+    parsed_mack_msg["TagsAndInfo"] = tags_and_info
+    parsed_mack_msg["Key"] = mbytes[next_index:next_index+128]
+    return parsed_mack_msg
+
+# Class responsible for processing MACK message from different satellites,
+# Parssing it and storing it for furhter use. It interfaces (via subscription) with
+# SubframeProcessorSvid.
+class MackMessageProcessor:
+    def __init__(self):
+        pass
+    def new_subframe(self, inav_data, osnma_data):
+        pass
