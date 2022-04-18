@@ -40,10 +40,10 @@ class svNavMessage:
                 if wordType == 5: # to get the Time
                     b = bitarray()
                     b.frombytes(data)
-                    GST_current_WN = b[0:12]
+                    GST_current_WN = b[73:85]
                     GST_current_TOW = b[85:105]
-                    GST_t0_TOW_int = ba2int(GST_current_TOW)-25 #we need to go up to 
-                    GST_t0_TOW = int2ba(GST_t0_TOW_int)
+                    GST_t0_TOW_int = ba2int(GST_current_TOW)-25 #we need to go up to the start of the Sub-Frame, and word 5 is 
+                    GST_t0_TOW = int2ba(GST_t0_TOW_int,20)
                     GST_t0 = GST_current_WN+GST_t0_TOW
                     self.__t0Time = GST_t0.tobytes()
                     self.__t0TimeNatural = self.weekSeconds2Time(GST_t0_TOW_int)
@@ -67,10 +67,19 @@ class svNavMessage:
         minute = minutes*60  #minuts in minut format
         seconds = minute - int (minute) # seconds in minut format
         second = int(seconds*60) #seconds in second format
-        time = str(hour).zfill(2) + ":" + str(int(minute)).zfill(2) + ":" + str(second).zfill(2)
+        millis = seconds*60 - int(seconds*60)
+        time = str(hour).zfill(2) + ":" + str(int(minute)).zfill(2) + ":" + str(second).zfill(2) + "."+str(millis)
         return  time
-    def getDataOnGST(self,gst=bytearray()):
+    def setDataFrameCompleteStatus(self, status = bool()):
+        self.__dataFrameCompleteStatus = status
+        self.__data_dataFrame.append([self.__t0TimeNatural,self.__t0Time,self.__data_subframe])
+        self.__data_dataFrame.pop(0)
+    def getDataOnGST(self,gst):
         for  item in self.__data_dataFrame:
+            if (item[1] == gst) and gst is not None:
+                return item[2]
+    def getOsnmaOnGST(self,gst=bytearray()):
+        for item in self.__onsma_dataFrame:
             if (item[1] == gst) and gst is not None:
                 return item[2]
     def getSVId(self):
@@ -99,11 +108,11 @@ class svNavMessage:
 
 class svKrootOsnmaMack:
     def __init__(self):
-        self.__CID = bytearray()
+        self.__CID = int()
         self.__DSMBlockId = bytearray()
         self.__DSMId = bytearray()
-        self.__CDPKS = bytearray()
-        self.__NMAS = bytearray()
+        self.__CDPKS = int()
+        self.__NMAS = int()
         self.__reservedNMA = bytearray()
         self.__hkroot = [None for i in range(15)]
         self.__mack = [None for i in range(15)]
@@ -122,9 +131,9 @@ class svKrootOsnmaMack:
             self.__mack.pop(0)
         b = bitarray()
         b.frombytes(self.__hkroot[0])
-        self.__NMAS = b[0:2].tobytes()
-        self.__CID = b[2:4].tobytes()
-        self.__CDPKS = b[4:7].tobytes()
+        self.__NMAS = ba2int(b[0:2])
+        self.__CID = ba2int(b[2:4])
+        self.__CDPKS = ba2int(b[4:7])
         self.__reservedNMA = b[7]
         b = bitarray()
         b.frombytes(self.__hkroot[1])
@@ -153,18 +162,37 @@ class svKrootOsnmaMack:
 
 class svConstellation(svNavMessage):
     def __init__(self,numSV):
-        self.__sv = [[None,None] for i in range(numSV)]
+        self.__numSv = numSV
+        self.__sv = [[None,None] for i in range(self.__numSv)]
         for i in range(numSV): 
             self.__sv[i][0] = i+1
             self.__sv[i][1] = svNavMessage()
+    def getSvDataFrameCompleteStatus(self,svId):
+        return self.__sv[svId-1][1].getDataFrameCompleteStatus()
+    def getSvDataFrame(self,svId):
+        return self.__sv[svId-1][1].getDataFrame()
     def getSvNavMessageObject(self, svId):
         return self.__sv[svId-1][1]
     def getSvDataSubFrame(self, svId):
         return self.__sv[svId-1][1].getDataSubframe()
-    def getSvOsnma(self, svId):
-        return self.__sv[svId-1][1].getOsnmaSubFrame()
-    def feedConstellation(self,svId=int,wordType=int,data=bitarray(),osnma=bitarray()):
-        self.__sv[svId-1][1]
+    def getSvOsnmaDistributionStatus(self, svId):
+        return self.__sv[svId-1][1].getOsnmaDistributionStatus()
+    def getSvGST(self, svId):
+        return self.__sv[svId-1][1].getT0()
+    def getSvDataOnGST(self, svId, GST):
+        return self.__sv[svId-1][1].getDataOnGST(GST)
+    def getSvOsnmaOnGST(self, svId, GST):
+        return self.__sv[svId-1][1].getOsnmaOnGST(GST)
+    def feedConstellation(self,svId=int,wordType=int,data=bytes(),osnma=bytes()):
+        self.__sv[svId-1][1].subFrameSequence(wordType, data, osnma)
+    def notifier(self):
+        svCompleted = []
+        for i in range(self.__numSv):
+            if self.__sv[i][1].getDataFrameCompleteStatus():
+                svCompleted.append(self.__sv[i][0])
+        return svCompleted
+        
+
 
 class NavMessageAuthenticator:
     def __init__(self):
