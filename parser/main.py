@@ -59,22 +59,28 @@ else:
                     block = [int(i,2) for i in hkroot[2:]]
                     mack = [int(i,2) for i in mack]
                     parsed_mack = osnmaPython.parse_mack_msg(mack, None, key_file)
-                    m_vec = []
-                    for i in range(len(parsed_mack)):
-                        PRND = bin(parsed_mack['TagsAndInfo'][i]['PRN'])[2:].zfill(8)
-                        PRNA = bin(sv_vector[sv_id-1].getSVId())[2:].zfill(8).zfill(8)
-                        ADKD = bin(parsed_mack['TagsAndInfo'][i]['ADKD'])[2:].zfill(8)
-                        CTR = bin(i)[2:].zfill(8)
-                        navdata = osnmaPython.dataSubFrame2Navdata(sv_vector[sv_id-1].getDataSubframe(),int(ADKD,2)) #already in bits
-                        GST = bin(sv_vector[sv_id-1].getTime() - 30)[2:].zfill(32)
-                        NMASbin = bin(NMAS)[2:].zfill(2)
-                        if navdata is not None:
-                            navdata = osnmaPython.dataSubFrame2Navdata(sv_vector[sv_id-1].getDataSubframe(),int(ADKD,2)).zfill(549)
-                            m = osnmaPython.computeTagMessageNopad(PRND, PRNA, GST, CTR, NMASbin, navdata)
-                            m_vec.append(osnmaPython.bitstring_to_bytes(m))
-                            m_file .write(str(binascii.hexlify(osnmaPython.bitstring_to_bytes(m))) + "\n")
-                            m_file .flush()
-                        print(m_vec)
-                    DSM_vector[DSMId].addBlock(DSMBlockId, block)
-                    if(DSM_vector[DSMId].isComplete()) & (DSMId<=11): #DSM from 0 to 11 mean DSM-KROOT
-                        DSM_vector[DSMId].parse_dsm_kroot_msg() # When DSM Is complete and DSM is type DSM-KROOT we can parse the DSM-KROOT message
+                    #print(parsed_mack)
+                    print("Tag0",parsed_mack['Tag0'],"    ", end="")
+                    print("Key",parsed_mack['Key'])
+                    
+                    
+                    # CROSS AUTHENTICATION
+                    # m_vec = []
+                    # for i in range(len(parsed_mack)):
+                    #     PRND = bin(parsed_mack['TagsAndInfo'][i]['PRN'])[2:].zfill(8)
+                    #     PRNA = bin(sv_vector[sv_id-1].getSVId())[2:].zfill(8).zfill(8)
+                    #     ADKD = bin(parsed_mack['TagsAndInfo'][i]['ADKD'])[2:].zfill(8)
+                    #     CTR = bin(i)[2:].zfill(8)
+                    #     navdata = osnmaPython.dataSubFrame2Navdata(sv_vector[sv_id-1].getDataSubframe(),int(ADKD,2)) #already in bits
+                    #     GST = bin(sv_vector[sv_id-1].getTime() - 30)[2:].zfill(32)
+                    #     NMASbin = bin(NMAS)[2:].zfill(2)
+                    #     if navdata is not None:
+                    #         navdata = osnmaPython.dataSubFrame2Navdata(sv_vector[sv_id-1].getDataSubframe(),int(ADKD,2)).zfill(549)
+                    #         m = osnmaPython.computeTagMessageNopad(PRND, PRNA, GST, CTR, NMASbin, navdata)
+                    #         m_vec.append(osnmaPython.bitstring_to_bytes(m))
+                    #         m_file .write(str(binascii.hexlify(osnmaPython.bitstring_to_bytes(m))) + "\n")
+                    #         m_file .flush()
+                    #     #print(m_vec)
+                    # DSM_vector[DSMId].addBlock(DSMBlockId, block)
+                    # if(DSM_vector[DSMId].isComplete()) & (DSMId<=11): #DSM from 0 to 11 mean DSM-KROOT
+                    #     DSM_vector[DSMId].parse_dsm_kroot_msg() # When DSM Is complete and DSM is type DSM-KROOT we can parse the DSM-KROOT message

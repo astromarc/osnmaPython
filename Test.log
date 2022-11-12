@@ -1,0 +1,1583 @@
+20:16:35.888,INFO,SV14 received page 0
+20:16:35.898,INFO,SV2 received page 0
+20:16:35.908,INFO,SV11 received page 2
+20:16:35.918,INFO,SV14 received page 2
+20:16:35.928,INFO,SV25 received page 2
+20:16:35.938,INFO,SV2 received page 2
+20:16:35.948,INFO,SV11 received page 4
+20:16:35.958,INFO,SV14 received page 4
+20:16:35.968,INFO,SV25 received page 4
+20:16:35.978,INFO,SV11 received page 6
+20:16:35.988,INFO,SV14 received page 6
+20:16:35.998,INFO,SV2 received page 6
+20:16:36.8,INFO,SV11 received page 9
+20:16:36.19,INFO,SV14 received page 9
+20:16:36.28,INFO,SV25 received page 9
+20:16:36.39,INFO,SV2 received page 9
+20:16:36.48,INFO,SV11 received page 10
+20:16:36.58,INFO,SV14 received page 10
+20:16:36.68,INFO,SV25 received page 10
+20:16:36.78,INFO,SV11 received page 0
+20:16:36.88,INFO,SV14 received page 0
+20:16:36.98,INFO,SV2 received page 0
+20:16:36.108,INFO,SV11 received page 0
+20:16:36.118,INFO,SV14 received page 0
+20:16:36.128,INFO,SV25 received page 0
+20:16:36.138,INFO,SV2 received page 0
+20:16:36.148,INFO,SV11 received page 0
+20:16:36.168,INFO,SV14 received page 0
+20:16:36.188,INFO,SV25 received page 0
+20:16:36.208,INFO,SV11 received page 0
+20:16:36.218,INFO,SV14 received page 0
+20:16:36.228,INFO,SV2 received page 0
+20:16:36.238,INFO,SV11 received page 0
+20:16:36.248,INFO,SV14 received page 0
+20:16:36.258,INFO,SV25 received page 0
+20:16:36.268,INFO,SV2 received page 0
+20:16:36.293,INFO,SV11 received page 1
+20:16:36.332,INFO,SV14 received page 1
+20:16:36.348,INFO,SV25 received page 1
+20:16:36.373,INFO,SV11 received page 3
+20:16:36.378,INFO,SV14 received page 3
+20:16:36.388,INFO,SV2 received page 3
+20:16:36.398,INFO,SV11 received page 5
+20:16:36.408,INFO,SV14 received page 5
+20:16:36.418,INFO,SV25 received page 5
+20:16:36.428,INFO,SV2 received page 5
+20:16:36.438,INFO,SV11 received page 0
+20:16:36.452,INFO,SV24 received page 0
+20:16:36.468,INFO,SV14 received page 0
+20:16:36.478,INFO,SV25 received page 0
+20:16:36.488,INFO,SV11 received page 0
+20:16:36.488,INFO,SV11 completed SubFrame and Transmits OSNMA
+20:16:36.493,INFO,DSM#11 Received Block# 1
+20:16:36.498,INFO,SV24 received page 0
+20:16:36.508,INFO,SV14 received page 0
+20:16:36.508,INFO,SV14 completed SubFrame and Does Not Transmits OSNMA
+20:16:36.526,INFO,SV2 received page 0
+20:16:36.534,INFO,SV11 received page 2
+20:16:36.543,INFO,SV24 received page 2
+20:16:36.554,INFO,SV14 received page 2
+20:16:36.575,INFO,SV25 received page 2
+20:16:36.583,INFO,SV2 received page 2
+20:16:36.593,INFO,SV11 received page 4
+20:16:36.603,INFO,SV24 received page 4
+20:16:36.613,INFO,SV14 received page 4
+20:16:36.625,INFO,SV25 received page 4
+20:16:36.633,INFO,SV11 received page 6
+20:16:36.653,INFO,SV24 received page 6
+20:16:36.664,INFO,SV14 received page 6
+20:16:36.687,INFO,SV2 received page 6
+20:16:36.706,INFO,SV11 received page 7
+20:16:36.727,INFO,SV24 received page 7
+20:16:36.773,INFO,SV14 received page 7
+20:16:36.793,INFO,SV25 received page 7
+20:16:36.808,INFO,SV2 received page 7
+20:16:36.823,INFO,SV11 received page 8
+20:16:36.828,INFO,SV24 received page 8
+20:16:36.839,INFO,SV14 received page 8
+20:16:36.848,INFO,SV25 received page 8
+20:16:36.863,INFO,SV11 received page 0
+20:16:36.892,INFO,SV24 received page 0
+20:16:36.928,INFO,SV14 received page 0
+20:16:36.958,INFO,SV2 received page 0
+20:16:36.968,INFO,SV11 received page 0
+20:16:36.998,INFO,SV24 received page 0
+20:16:37.58,INFO,SV14 received page 0
+20:16:37.85,INFO,SV25 received page 0
+20:16:37.108,INFO,SV2 received page 0
+20:16:37.148,INFO,SV11 received page 0
+20:16:37.163,INFO,SV24 received page 0
+20:16:37.183,INFO,SV14 received page 0
+20:16:37.193,INFO,SV25 received page 0
+20:16:37.203,INFO,SV11 received page 0
+20:16:37.213,INFO,SV24 received page 0
+20:16:37.223,INFO,SV14 received page 0
+20:16:37.233,INFO,SV2 received page 0
+20:16:37.245,INFO,SV11 received page 0
+20:16:37.276,INFO,SV24 received page 0
+20:16:37.283,INFO,SV14 received page 0
+20:16:37.296,INFO,SV25 received page 0
+20:16:37.328,INFO,SV2 received page 0
+20:16:37.359,INFO,SV11 received page 1
+20:16:37.379,INFO,SV24 received page 1
+20:16:37.420,INFO,SV14 received page 1
+20:16:37.433,INFO,SV25 received page 1
+20:16:37.443,INFO,SV11 received page 3
+20:16:37.450,INFO,SV24 received page 3
+20:16:37.463,INFO,SV14 received page 3
+20:16:37.483,INFO,SV2 received page 3
+20:16:37.501,INFO,SV11 received page 5
+20:16:37.552,INFO,SV24 received page 5
+20:16:37.567,INFO,SV14 received page 5
+20:16:37.588,INFO,SV25 received page 5
+20:16:37.608,INFO,SV2 received page 5
+20:16:37.638,INFO,SV11 received page 0
+20:16:37.648,INFO,SV24 received page 0
+20:16:37.658,INFO,SV14 received page 0
+20:16:37.668,INFO,SV25 received page 0
+20:16:37.678,INFO,SV11 received page 0
+20:16:37.678,INFO,SV11 completed SubFrame and Transmits OSNMA
+20:16:37.678,INFO,DSM#11 Received Block# 2
+20:16:37.705,INFO,SV24 received page 0
+20:16:37.705,INFO,SV24 completed SubFrame and Does Not Transmits OSNMA
+20:16:37.738,INFO,SV14 received page 0
+20:16:37.738,INFO,SV14 completed SubFrame and Does Not Transmits OSNMA
+20:16:37.758,INFO,SV2 received page 0
+20:16:37.798,INFO,SV11 received page 2
+20:16:37.845,INFO,SV24 received page 2
+20:16:37.857,INFO,SV14 received page 2
+20:16:37.868,INFO,SV25 received page 2
+20:16:37.898,INFO,SV2 received page 2
+20:16:37.918,INFO,SV11 received page 4
+20:16:37.948,INFO,SV24 received page 4
+20:16:38.13,INFO,SV14 received page 4
+20:16:38.43,INFO,SV25 received page 4
+20:16:38.68,INFO,SV11 received page 6
+20:16:38.133,INFO,SV24 received page 6
+20:16:38.224,INFO,SV14 received page 6
+20:16:38.252,INFO,SV2 received page 6
+20:16:38.268,INFO,SV11 received page 9
+20:16:38.305,INFO,SV24 received page 9
+20:16:38.333,INFO,SV14 received page 9
+20:16:38.343,INFO,SV25 received page 9
+20:16:38.388,INFO,SV2 received page 9
+20:16:38.423,INFO,SV11 received page 10
+20:16:38.437,INFO,SV24 received page 10
+20:16:38.453,INFO,SV14 received page 10
+20:16:38.478,INFO,SV25 received page 10
+20:16:38.516,INFO,SV11 received page 0
+20:16:38.547,INFO,SV24 received page 0
+20:16:38.563,INFO,SV14 received page 0
+20:16:38.579,INFO,SV2 received page 0
+20:16:38.593,INFO,SV11 received page 0
+20:16:38.632,INFO,SV24 received page 0
+20:16:38.664,INFO,SV14 received page 0
+20:16:38.688,INFO,SV25 received page 0
+20:16:38.723,INFO,SV2 received page 0
+20:16:38.743,INFO,SV11 received page 0
+20:16:38.780,INFO,SV24 received page 0
+20:16:38.802,INFO,SV14 received page 0
+20:16:38.843,INFO,SV25 received page 0
+20:16:38.868,INFO,SV11 received page 0
+20:16:38.908,INFO,SV24 received page 0
+20:16:38.968,INFO,SV14 received page 0
+20:16:38.988,INFO,SV2 received page 0
+20:16:39.48,INFO,SV11 received page 0
+20:16:39.73,INFO,SV24 received page 0
+20:16:39.88,INFO,SV14 received page 0
+20:16:39.128,INFO,SV25 received page 0
+20:16:39.146,INFO,SV2 received page 0
+20:16:39.158,INFO,SV11 received page 1
+20:16:39.178,INFO,SV24 received page 1
+20:16:39.197,INFO,SV14 received page 1
+20:16:39.213,INFO,SV25 received page 1
+20:16:39.223,INFO,SV11 received page 3
+20:16:39.238,INFO,SV24 received page 3
+20:16:39.258,INFO,SV14 received page 3
+20:16:39.298,INFO,SV12 received page 3
+20:16:39.323,INFO,SV2 received page 3
+20:16:39.359,INFO,SV11 received page 5
+20:16:39.392,INFO,SV24 received page 5
+20:16:39.428,INFO,SV14 received page 5
+20:16:39.468,INFO,SV25 received page 5
+20:16:39.478,INFO,SV2 received page 5
+20:16:39.488,INFO,SV11 received page 0
+20:16:39.498,INFO,SV24 received page 0
+20:16:39.518,INFO,SV14 received page 0
+20:16:39.528,INFO,SV25 received page 0
+20:16:39.553,INFO,SV11 received page 0
+20:16:39.555,INFO,SV11 completed SubFrame and Transmits OSNMA
+20:16:39.559,INFO,DSM#11 Received Block# 3
+20:16:39.568,INFO,SV24 received page 0
+20:16:39.573,INFO,SV24 completed SubFrame and Does Not Transmits OSNMA
+20:16:39.613,INFO,SV14 received page 0
+20:16:39.614,INFO,SV14 completed SubFrame and Does Not Transmits OSNMA
+20:16:39.626,INFO,SV2 received page 0
+20:16:39.668,INFO,SV11 received page 2
+20:16:39.726,INFO,SV24 received page 2
+20:16:39.748,INFO,SV14 received page 2
+20:16:39.793,INFO,SV25 received page 2
+20:16:39.823,INFO,SV2 received page 2
+20:16:39.853,INFO,SV11 received page 4
+20:16:39.880,INFO,SV24 received page 4
+20:16:39.893,INFO,SV11 received page 6
+20:16:39.931,INFO,SV24 received page 6
+20:16:39.962,INFO,SV14 received page 6
+20:16:39.980,INFO,SV2 received page 6
+20:16:39.992,INFO,SV11 received page 7
+20:16:40.13,INFO,SV24 received page 7
+20:16:40.23,INFO,SV14 received page 7
+20:16:40.58,INFO,SV25 received page 7
+20:16:40.94,INFO,SV2 received page 7
+20:16:40.138,INFO,SV11 received page 8
+20:16:40.168,INFO,SV24 received page 8
+20:16:40.178,INFO,SV14 received page 8
+20:16:40.203,INFO,SV25 received page 8
+20:16:40.223,INFO,SV11 received page 0
+20:16:40.244,INFO,SV24 received page 0
+20:16:40.253,INFO,SV14 received page 0
+20:16:40.263,INFO,SV2 received page 0
+20:16:40.275,INFO,SV11 received page 0
+20:16:40.283,INFO,SV24 received page 0
+20:16:40.293,INFO,SV14 received page 0
+20:16:40.303,INFO,SV25 received page 0
+20:16:40.318,INFO,SV2 received page 0
+20:16:40.343,INFO,SV11 received page 0
+20:16:40.358,INFO,SV24 received page 0
+20:16:40.383,INFO,SV14 received page 0
+20:16:40.413,INFO,SV25 received page 0
+20:16:40.433,INFO,SV11 received page 0
+20:16:40.450,INFO,SV24 received page 0
+20:16:40.488,INFO,SV14 received page 0
+20:16:40.503,INFO,SV2 received page 0
+20:16:40.520,INFO,SV11 received page 0
+20:16:40.602,INFO,SV24 received page 0
+20:16:40.653,INFO,SV14 received page 0
+20:16:40.712,INFO,SV25 received page 0
+20:16:40.742,INFO,SV2 received page 0
+20:16:40.758,INFO,SV11 received page 1
+20:16:40.789,INFO,SV24 received page 1
+20:16:40.818,INFO,SV14 received page 1
+20:16:40.833,INFO,SV25 received page 1
+20:16:40.843,INFO,SV11 received page 3
+20:16:40.854,INFO,SV24 received page 3
+20:16:40.864,INFO,SV14 received page 3
+20:16:40.873,INFO,SV2 received page 3
+20:16:40.888,INFO,SV11 received page 5
+20:16:40.917,INFO,SV24 received page 5
+20:16:40.928,INFO,SV14 received page 5
+20:16:40.947,INFO,SV25 received page 5
+20:16:40.958,INFO,SV2 received page 5
+20:16:40.978,INFO,SV11 received page 0
+20:16:41.7,INFO,SV24 received page 0
+20:16:41.66,INFO,SV14 received page 0
+20:16:41.76,INFO,SV25 received page 0
+20:16:41.83,INFO,SV11 received page 0
+20:16:41.86,INFO,SV11 completed SubFrame and Transmits OSNMA
+20:16:41.89,INFO,DSM#11 Received Block# 4
+20:16:41.93,INFO,SV24 received page 0
+20:16:41.93,INFO,SV24 completed SubFrame and Does Not Transmits OSNMA
+20:16:41.104,INFO,SV14 received page 0
+20:16:41.173,INFO,SV2 received page 0
+20:16:41.203,INFO,SV11 received page 2
+20:16:41.230,INFO,SV24 received page 2
+20:16:41.263,INFO,SV14 received page 2
+20:16:41.283,INFO,SV25 received page 2
+20:16:41.291,INFO,SV2 received page 2
+20:16:41.308,INFO,SV11 received page 4
+20:16:41.340,INFO,SV24 received page 4
+20:16:41.361,INFO,SV14 received page 4
+20:16:41.465,INFO,SV25 received page 4
+20:16:41.578,INFO,SV11 received page 6
+20:16:41.693,INFO,SV24 received page 6
+20:16:41.703,INFO,SV14 received page 6
+20:16:41.713,INFO,SV2 received page 6
+20:16:41.723,INFO,SV11 received page 9
+20:16:41.733,INFO,SV24 received page 9
+20:16:41.743,INFO,SV14 received page 9
+20:16:41.753,INFO,SV25 received page 9
+20:16:41.773,INFO,SV2 received page 9
+20:16:41.778,INFO,SV11 received page 10
+20:16:41.788,INFO,SV24 received page 10
+20:16:41.828,INFO,SV14 received page 10
+20:16:41.858,INFO,SV25 received page 10
+20:16:41.893,INFO,SV11 received page 0
+20:16:41.919,INFO,SV24 received page 0
+20:16:41.945,INFO,SV14 received page 0
+20:16:41.996,INFO,SV2 received page 0
+20:16:42.77,INFO,SV11 received page 0
+20:16:42.93,INFO,SV24 received page 0
+20:16:42.113,INFO,SV14 received page 0
+20:16:42.138,INFO,SV25 received page 0
+20:16:42.217,INFO,SV2 received page 0
+20:16:42.248,INFO,SV11 received page 0
+20:16:42.260,INFO,SV24 received page 0
+20:16:42.273,INFO,SV14 received page 0
+20:16:42.301,INFO,SV25 received page 0
+20:16:42.323,INFO,SV11 received page 0
+20:16:42.352,INFO,SV24 received page 0
+20:16:42.370,INFO,SV14 received page 0
+20:16:42.380,INFO,SV2 received page 0
+20:16:42.393,INFO,SV11 received page 0
+20:16:42.408,INFO,SV24 received page 0
+20:16:42.428,INFO,SV14 received page 0
+20:16:42.438,INFO,SV25 received page 0
+20:16:42.448,INFO,SV2 received page 0
+20:16:42.478,INFO,SV11 received page 1
+20:16:42.494,INFO,SV24 received page 1
+20:16:42.558,INFO,SV14 received page 1
+20:16:42.569,INFO,SV25 received page 1
+20:16:42.594,INFO,SV11 received page 3
+20:16:42.614,INFO,SV24 received page 3
+20:16:42.626,INFO,SV14 received page 3
+20:16:42.633,INFO,SV2 received page 3
+20:16:42.658,INFO,SV11 received page 5
+20:16:42.675,INFO,SV24 received page 5
+20:16:42.688,INFO,SV14 received page 5
+20:16:42.703,INFO,SV25 received page 5
+20:16:42.713,INFO,SV2 received page 5
+20:16:42.723,INFO,SV11 received page 0
+20:16:42.733,INFO,SV24 received page 0
+20:16:42.743,INFO,SV14 received page 0
+20:16:42.753,INFO,SV25 received page 0
+20:16:42.763,INFO,SV11 received page 0
+20:16:42.763,INFO,SV11 completed SubFrame and Transmits OSNMA
+20:16:42.763,INFO,DSM#11 Received Block# 5
+20:16:42.773,INFO,SV24 received page 0
+20:16:42.773,INFO,SV24 completed SubFrame and Does Not Transmits OSNMA
+20:16:42.797,INFO,SV14 received page 0
+20:16:42.797,INFO,SV14 completed SubFrame and Does Not Transmits OSNMA
+20:16:42.803,INFO,SV25 received page 0
+20:16:42.813,INFO,SV2 received page 0
+20:16:42.838,INFO,SV11 received page 2
+20:16:42.853,INFO,SV24 received page 2
+20:16:42.868,INFO,SV14 received page 2
+20:16:42.888,INFO,SV25 received page 2
+20:16:42.898,INFO,SV2 received page 2
+20:16:42.906,INFO,SV11 received page 4
+20:16:42.914,INFO,SV24 received page 4
+20:16:42.922,INFO,SV14 received page 4
+20:16:42.930,INFO,SV25 received page 4
+20:16:42.946,INFO,SV11 received page 6
+20:16:42.962,INFO,SV24 received page 6
+20:16:42.970,INFO,SV14 received page 6
+20:16:42.978,INFO,SV2 received page 6
+20:16:42.986,INFO,SV11 received page 7
+20:16:42.994,INFO,SV14 received page 7
+20:16:43.10,INFO,SV25 received page 7
+20:16:43.20,INFO,SV2 received page 7
+20:16:43.38,INFO,SV11 received page 8
+20:16:43.58,INFO,SV24 received page 8
+20:16:43.69,INFO,SV14 received page 8
+20:16:43.79,INFO,SV25 received page 8
+20:16:43.89,INFO,SV11 received page 0
+20:16:43.99,INFO,SV14 received page 0
+20:16:43.110,INFO,SV2 received page 0
+20:16:43.120,INFO,SV11 received page 0
+20:16:43.128,INFO,SV14 received page 0
+20:16:43.143,INFO,SV25 received page 0
+20:16:43.166,INFO,SV2 received page 0
+20:16:43.182,INFO,SV11 received page 0
+20:16:43.193,INFO,SV24 received page 0
+20:16:43.213,INFO,SV14 received page 0
+20:16:43.231,INFO,SV25 received page 0
+20:16:43.242,INFO,SV11 received page 0
+20:16:43.251,INFO,SV24 received page 0
+20:16:43.261,INFO,SV14 received page 0
+20:16:43.271,INFO,SV2 received page 0
+20:16:43.284,INFO,SV11 received page 0
+20:16:43.309,INFO,SV14 received page 0
+20:16:43.317,INFO,SV25 received page 0
+20:16:43.338,INFO,SV2 received page 0
+20:16:43.360,INFO,SV11 received page 1
+20:16:43.376,INFO,SV24 received page 1
+20:16:43.404,INFO,SV14 received page 1
+20:16:43.413,INFO,SV25 received page 1
+20:16:43.433,INFO,SV11 received page 3
+20:16:43.458,INFO,SV24 received page 3
+20:16:43.463,INFO,SV14 received page 3
+20:16:43.473,INFO,SV2 received page 3
+20:16:43.483,INFO,SV11 received page 5
+20:16:43.493,INFO,SV14 received page 5
+20:16:43.503,INFO,SV25 received page 5
+20:16:43.513,INFO,SV2 received page 5
+20:16:43.523,INFO,SV11 received page 0
+20:16:43.533,INFO,SV14 received page 0
+20:16:43.543,INFO,SV25 received page 0
+20:16:43.556,INFO,SV11 received page 0
+20:16:43.558,INFO,SV11 completed SubFrame and Transmits OSNMA
+20:16:43.568,INFO,DSM#11 Received Block# 6
+20:16:43.573,INFO,SV24 received page 0
+20:16:43.583,INFO,SV14 received page 0
+20:16:43.583,INFO,SV14 completed SubFrame and Does Not Transmits OSNMA
+20:16:43.592,INFO,SV2 received page 0
+20:16:43.609,INFO,SV11 received page 2
+20:16:43.613,INFO,SV14 received page 2
+20:16:43.628,INFO,SV25 received page 2
+20:16:43.638,INFO,SV2 received page 2
+20:16:43.650,INFO,SV11 received page 4
+20:16:43.668,INFO,SV14 received page 4
+20:16:43.676,INFO,SV25 received page 4
+20:16:43.684,INFO,SV11 received page 6
+20:16:43.692,INFO,SV14 received page 6
+20:16:43.700,INFO,SV2 received page 6
+20:16:43.708,INFO,SV11 received page 9
+20:16:43.716,INFO,SV14 received page 9
+20:16:43.724,INFO,SV25 received page 9
+20:16:43.732,INFO,SV2 received page 9
+20:16:43.740,INFO,SV11 received page 10
+20:16:43.756,INFO,SV24 received page 10
+20:16:43.780,INFO,SV14 received page 10
+20:16:43.796,INFO,SV25 received page 10
+20:16:43.812,INFO,SV11 received page 0
+20:16:43.816,INFO,SV24 received page 0
+20:16:43.832,INFO,SV14 received page 0
+20:16:43.842,INFO,SV2 received page 0
+20:16:43.851,INFO,SV11 received page 0
+20:16:43.858,INFO,SV14 received page 0
+20:16:43.868,INFO,SV25 received page 0
+20:16:43.878,INFO,SV2 received page 0
+20:16:43.894,INFO,SV11 received page 0
+20:16:43.903,INFO,SV24 received page 0
+20:16:43.913,INFO,SV14 received page 0
+20:16:43.923,INFO,SV25 received page 0
+20:16:43.933,INFO,SV11 received page 0
+20:16:43.943,INFO,SV24 received page 0
+20:16:43.955,INFO,SV14 received page 0
+20:16:43.963,INFO,SV2 received page 0
+20:16:43.978,INFO,SV11 received page 0
+20:16:43.988,INFO,SV14 received page 0
+20:16:44.3,INFO,SV25 received page 0
+20:16:44.18,INFO,SV2 received page 0
+20:16:44.38,INFO,SV11 received page 1
+20:16:44.48,INFO,SV24 received page 1
+20:16:44.59,INFO,SV14 received page 1
+20:16:44.77,INFO,SV25 received page 1
+20:16:44.97,INFO,SV11 received page 3
+20:16:44.117,INFO,SV24 received page 3
+20:16:44.148,INFO,SV14 received page 3
+20:16:44.159,INFO,SV2 received page 3
+20:16:44.169,INFO,SV11 received page 5
+20:16:44.179,INFO,SV14 received page 5
+20:16:44.188,INFO,SV25 received page 5
+20:16:44.198,INFO,SV2 received page 5
+20:16:44.208,INFO,SV11 received page 0
+20:16:44.226,INFO,SV14 received page 0
+20:16:44.240,INFO,SV25 received page 0
+20:16:44.248,INFO,SV11 received page 0
+20:16:44.248,INFO,SV11 completed SubFrame and Transmits OSNMA
+20:16:44.250,INFO,DSM#11 Received Block# 7
+20:16:44.258,INFO,SV24 received page 0
+20:16:44.278,INFO,SV14 received page 0
+20:16:44.278,INFO,SV14 completed SubFrame and Does Not Transmits OSNMA
+20:16:44.290,INFO,SV2 received page 0
+20:16:44.298,INFO,SV11 received page 2
+20:16:44.306,INFO,SV14 received page 2
+20:16:44.324,INFO,SV25 received page 2
+20:16:44.334,INFO,SV2 received page 2
+20:16:44.344,INFO,SV11 received page 4
+20:16:44.352,INFO,SV24 received page 4
+20:16:44.363,INFO,SV14 received page 4
+20:16:44.373,INFO,SV25 received page 4
+20:16:44.384,INFO,SV11 received page 6
+20:16:44.395,INFO,SV36 received page 6
+20:16:44.411,INFO,SV14 received page 6
+20:16:44.424,INFO,SV2 received page 6
+20:16:44.453,INFO,SV11 received page 7
+20:16:44.473,INFO,SV14 received page 7
+20:16:44.487,INFO,SV25 received page 7
+20:16:44.493,INFO,SV2 received page 7
+20:16:44.502,INFO,SV11 received page 8
+20:16:44.513,INFO,SV36 received page 8
+20:16:44.525,INFO,SV14 received page 8
+20:16:44.543,INFO,SV25 received page 8
+20:16:44.553,INFO,SV11 received page 0
+20:16:44.563,INFO,SV14 received page 0
+20:16:44.576,INFO,SV2 received page 0
+20:16:44.586,INFO,SV11 received page 0
+20:16:44.609,INFO,SV14 received page 0
+20:16:44.623,INFO,SV25 received page 0
+20:16:44.633,INFO,SV2 received page 0
+20:16:44.643,INFO,SV11 received page 0
+20:16:44.653,INFO,SV36 received page 0
+20:16:44.673,INFO,SV14 received page 0
+20:16:44.690,INFO,SV25 received page 0
+20:16:44.703,INFO,SV11 received page 0
+20:16:44.728,INFO,SV36 received page 0
+20:16:44.744,INFO,SV14 received page 0
+20:16:44.760,INFO,SV2 received page 0
+20:16:44.776,INFO,SV11 received page 0
+20:16:44.784,INFO,SV14 received page 0
+20:16:44.808,INFO,SV25 received page 0
+20:16:44.832,INFO,SV2 received page 0
+20:16:44.840,INFO,SV11 received page 1
+20:16:44.856,INFO,SV36 received page 1
+20:16:44.864,INFO,SV14 received page 1
+20:16:44.872,INFO,SV25 received page 1
+20:16:44.880,INFO,SV11 received page 3
+20:16:44.888,INFO,SV36 received page 3
+20:16:44.896,INFO,SV14 received page 3
+20:16:44.920,INFO,SV2 received page 3
+20:16:44.928,INFO,SV11 received page 5
+20:16:44.936,INFO,SV14 received page 5
+20:16:44.960,INFO,SV25 received page 5
+20:16:44.968,INFO,SV2 received page 5
+20:16:44.976,INFO,SV11 received page 0
+20:16:44.984,INFO,SV36 received page 0
+20:16:44.992,INFO,SV14 received page 0
+20:16:45.0,INFO,SV25 received page 0
+20:16:45.8,INFO,SV11 received page 0
+20:16:45.8,INFO,SV11 completed SubFrame and Transmits OSNMA
+20:16:45.8,INFO,DSM#11 Received Block# 0
+20:16:45.8,INFO,DSM#11 has a total of 8 blocks
+20:16:45.8,INFO,DSM#11 is complete
+20:16:45.153,INFO,Digital Signature 7bcd48e1a98fa4e1d989909076a9c51bd8fd13b450dd34771d4c6d0a1f773a01f81f8523daa1a0b2c44fd4079bfe08b9d96b3a8c2c6e0b894f2f0658c31c08d3 verified against GSC Public Key MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErZl4QOS6BOJl6zeHCTnwGpmgYHEbgezdrKuYu/ghBqHcKerOpF1eEDAU1azJ0vGwe4cYiwzYm2IiC30L1EjlVQ==
+20:16:45.153,INFO,HKROOT decoded: 7109f58d05a61919f65f7826c7d59f0a
+20:16:45.159,INFO,Tesla Key: c9c967709e736a874b50cbf2fc70e1a4 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:16:45.163,INFO,SV11 is Self-Authenticated
+20:16:45.163,INFO,SV11 cannot authenticate ADKD12 NavData due to lack of Tags
+20:16:45.163,INFO,SV11 cannot authenticate ADKD0 NavData from SV 25 due to the lack of navigation data
+20:16:45.163,INFO,SV11 has successfully Cross-Authenticated ADKD0 NavData from SV 14
+20:16:45.168,INFO,SV11 cannot authenticate ADKD0 NavData from SV 24 due to the lack of navigation data
+20:16:45.276,INFO,SV36 received page 0
+20:16:45.383,INFO,SV14 received page 0
+20:16:45.387,INFO,SV14 completed SubFrame and Does Not Transmits OSNMA
+20:16:45.506,INFO,SV2 received page 0
+20:16:45.628,INFO,SV11 received page 2
+20:16:45.738,INFO,SV14 received page 2
+20:16:45.859,INFO,SV25 received page 2
+20:16:45.978,INFO,SV2 received page 2
+20:16:46.89,INFO,SV11 received page 4
+20:16:46.218,INFO,SV36 received page 4
+20:16:46.328,INFO,SV14 received page 4
+20:16:46.438,INFO,SV25 received page 4
+20:16:46.543,INFO,SV11 received page 6
+20:16:46.653,INFO,SV24 received page 6
+20:16:46.763,INFO,SV14 received page 6
+20:16:46.883,INFO,SV2 received page 6
+20:16:47.6,INFO,SV11 received page 9
+20:16:47.113,INFO,SV14 received page 9
+20:16:47.228,INFO,SV25 received page 9
+20:16:47.343,INFO,SV2 received page 9
+20:16:47.448,INFO,SV11 received page 10
+20:16:47.565,INFO,SV24 received page 10
+20:16:47.678,INFO,SV14 received page 10
+20:16:47.783,INFO,SV25 received page 10
+20:16:47.888,INFO,SV11 received page 0
+20:16:48.8,INFO,SV24 received page 0
+20:16:48.114,INFO,SV14 received page 0
+20:16:48.223,INFO,SV2 received page 0
+20:16:48.340,INFO,SV11 received page 0
+20:16:48.446,INFO,SV24 received page 0
+20:16:48.547,INFO,SV14 received page 0
+20:16:48.653,INFO,SV25 received page 0
+20:16:48.778,INFO,SV2 received page 0
+20:16:48.878,INFO,SV11 received page 0
+20:16:48.984,INFO,SV24 received page 0
+20:16:49.93,INFO,SV14 received page 0
+20:16:49.203,INFO,SV25 received page 0
+20:16:49.303,INFO,SV11 received page 0
+20:16:49.408,INFO,SV24 received page 0
+20:16:49.513,INFO,SV14 received page 0
+20:16:49.618,INFO,SV2 received page 0
+20:16:49.722,INFO,SV11 received page 0
+20:16:49.833,INFO,SV14 received page 0
+20:16:49.934,INFO,SV25 received page 0
+20:16:50.43,INFO,SV2 received page 0
+20:16:50.153,INFO,SV11 received page 1
+20:16:50.253,INFO,SV36 received page 1
+20:16:50.368,INFO,SV14 received page 1
+20:16:50.488,INFO,SV25 received page 1
+20:16:50.593,INFO,SV11 received page 3
+20:16:50.703,INFO,SV24 received page 3
+20:16:50.803,INFO,SV14 received page 3
+20:16:50.933,INFO,SV2 received page 3
+20:16:51.43,INFO,SV11 received page 5
+20:16:51.158,INFO,SV24 received page 5
+20:16:51.265,INFO,SV14 received page 5
+20:16:51.368,INFO,SV25 received page 5
+20:16:51.486,INFO,SV2 received page 5
+20:16:51.608,INFO,SV11 received page 0
+20:16:51.713,INFO,SV36 received page 0
+20:16:51.823,INFO,SV14 received page 0
+20:16:51.938,INFO,SV25 received page 0
+20:16:52.49,INFO,SV11 received page 0
+20:16:52.50,INFO,SV11 completed SubFrame and Transmits OSNMA
+20:16:52.58,INFO,Tesla Key: cda40763a9206bca42042a04ce744ad2 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:16:52.58,INFO,SV11 is Self-Authenticated
+20:16:52.58,INFO,SV11 cannot authenticate ADKD12 NavData due to lack of Tags
+20:16:52.58,INFO,SV11 cannot authenticate ADKD0 NavData from SV 33 due to the lack of navigation data
+20:16:52.58,INFO,SV11 is Self-Autenticated with PRN 255
+20:16:52.58,INFO,SV11 cannot authenticate ADKD0 NavData from SV 5 due to the lack of navigation data
+20:16:52.58,INFO,SV11 cannot authenticate ADKD0 NavData from SV 25 due to the lack of navigation data
+20:16:52.173,INFO,SV36 received page 0
+20:16:52.293,INFO,SV14 received page 0
+20:16:52.293,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:16:52.298,INFO,Tesla Key: cda40763a9206bca42042a04ce744ad2 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:16:52.298,INFO,SV14 cannot perform Self-Authentication as it is missing the delayed Tag0 
+20:16:52.303,INFO,SV14 cannot authenticate ADKD12 NavData due to lack of Tags
+20:16:52.303,INFO,SV14 cannot authenticate ADKD0 NavData from SV 0 due to the lack of navigation data
+20:16:52.303,INFO,SV14 cannot authenticate ADKD0 NavData from SV 0 due to the lack of navigation data
+20:16:52.303,INFO,SV14 cannot authenticate ADKD0 NavData from SV 0 due to the lack of navigation data
+20:16:52.303,INFO,SV14 cannot authenticate ADKD0 NavData from SV 0 due to the lack of navigation data
+20:16:52.303,INFO,SV14 cannot authenticate ADKD0 NavData from SV 0 due to the lack of navigation data
+20:16:52.413,INFO,SV2 received page 0
+20:16:52.518,INFO,SV11 received page 2
+20:16:52.623,INFO,SV24 received page 2
+20:16:52.723,INFO,SV14 received page 2
+20:16:52.823,INFO,SV25 received page 2
+20:16:52.938,INFO,SV2 received page 2
+20:16:53.38,INFO,SV11 received page 4
+20:16:53.148,INFO,SV24 received page 4
+20:16:53.256,INFO,SV14 received page 4
+20:16:53.368,INFO,SV25 received page 4
+20:16:53.477,INFO,SV11 received page 6
+20:16:53.583,INFO,SV36 received page 6
+20:16:53.688,INFO,SV14 received page 6
+20:16:53.793,INFO,SV2 received page 6
+20:16:53.893,INFO,SV11 received page 7
+20:16:53.993,INFO,SV14 received page 7
+20:16:54.108,INFO,SV25 received page 7
+20:16:54.218,INFO,SV2 received page 7
+20:16:54.343,INFO,SV11 received page 8
+20:16:54.468,INFO,SV36 received page 8
+20:16:54.583,INFO,SV14 received page 8
+20:16:54.693,INFO,SV25 received page 8
+20:16:54.813,INFO,SV11 received page 0
+20:16:54.923,INFO,SV36 received page 0
+20:16:55.33,INFO,SV14 received page 0
+20:16:55.153,INFO,SV2 received page 0
+20:16:55.273,INFO,SV11 received page 0
+20:16:55.388,INFO,SV14 received page 0
+20:16:55.493,INFO,SV25 received page 0
+20:16:55.603,INFO,SV2 received page 0
+20:16:55.718,INFO,SV11 received page 0
+20:16:55.822,INFO,SV36 received page 0
+20:16:55.933,INFO,SV14 received page 0
+20:16:56.36,INFO,SV25 received page 0
+20:16:56.146,INFO,SV11 received page 0
+20:16:56.253,INFO,SV14 received page 0
+20:16:56.367,INFO,SV2 received page 0
+20:16:56.478,INFO,SV11 received page 0
+20:16:56.587,INFO,SV24 received page 0
+20:16:56.703,INFO,SV14 received page 0
+20:16:56.821,INFO,SV25 received page 0
+20:16:56.928,INFO,SV2 received page 0
+20:16:57.40,INFO,SV11 received page 1
+20:16:57.153,INFO,SV36 received page 1
+20:16:57.268,INFO,SV14 received page 1
+20:16:57.378,INFO,SV25 received page 1
+20:16:57.488,INFO,SV11 received page 3
+20:16:57.598,INFO,SV36 received page 3
+20:16:57.708,INFO,SV14 received page 3
+20:16:57.828,INFO,SV2 received page 3
+20:16:57.938,INFO,SV11 received page 5
+20:16:58.48,INFO,SV24 received page 5
+20:16:58.159,INFO,SV14 received page 5
+20:16:58.268,INFO,SV25 received page 5
+20:16:58.383,INFO,SV2 received page 5
+20:16:58.487,INFO,SV11 received page 0
+20:16:58.588,INFO,SV36 received page 0
+20:16:58.703,INFO,SV24 received page 0
+20:16:58.808,INFO,SV14 received page 0
+20:16:58.913,INFO,SV25 received page 0
+20:16:59.17,INFO,SV11 received page 0
+20:16:59.17,INFO,SV11 completed SubFrame and Transmits OSNMA
+20:16:59.18,INFO,Tesla Key: aaf675d134af8d80de16eddbad7a3cc9 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:16:59.18,INFO,SV11 is Self-Authenticated
+20:16:59.18,INFO,SV11 cannot authenticate ADKD12 NavData due to lack of Tags
+20:16:59.18,INFO,SV11 cannot authenticate ADKD0 NavData from SV 25 due to the lack of navigation data
+20:16:59.18,INFO,SV11 cannot authenticate ADKD0 NavData from SV 24 due to the lack of navigation data
+20:16:59.18,INFO,SV11 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:16:59.133,INFO,SV14 received page 0
+20:16:59.133,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:16:59.133,INFO,Tesla Key: aaf675d134af8d80de16eddbad7a3cc9 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:16:59.133,INFO,SV14 is Self-Authenticated
+20:16:59.133,INFO,SV14 cannot authenticate ADKD12 NavData due to lack of Tags
+20:16:59.133,INFO,SV14 cannot authenticate ADKD0 NavData from SV 24 due to the lack of navigation data
+20:16:59.133,INFO,SV14 cannot authenticate ADKD0 NavData from SV 25 due to the lack of navigation data
+20:16:59.133,INFO,SV14 cannot authenticate ADKD0 NavData from SV 33 due to the lack of navigation data
+20:16:59.238,INFO,SV2 received page 0
+20:16:59.348,INFO,SV11 received page 2
+20:16:59.449,INFO,SV24 received page 2
+20:16:59.554,INFO,SV14 received page 2
+20:16:59.658,INFO,SV25 received page 2
+20:16:59.768,INFO,SV2 received page 2
+20:16:59.878,INFO,SV11 received page 4
+20:16:59.993,INFO,SV36 received page 4
+20:17:00.103,INFO,SV14 received page 4
+20:17:00.203,INFO,SV25 received page 4
+20:17:00.308,INFO,SV11 received page 6
+20:17:00.422,INFO,SV24 received page 6
+20:17:00.538,INFO,SV14 received page 6
+20:17:00.648,INFO,SV2 received page 6
+20:17:00.758,INFO,SV11 received page 9
+20:17:00.868,INFO,SV24 received page 9
+20:17:00.973,INFO,SV14 received page 9
+20:17:01.86,INFO,SV25 received page 9
+20:17:01.198,INFO,SV2 received page 9
+20:17:01.307,INFO,SV11 received page 10
+20:17:01.418,INFO,SV24 received page 10
+20:17:01.527,INFO,SV14 received page 10
+20:17:01.628,INFO,SV25 received page 10
+20:17:01.744,INFO,SV11 received page 0
+20:17:01.857,INFO,SV24 received page 0
+20:17:01.958,INFO,SV14 received page 0
+20:17:02.73,INFO,SV2 received page 0
+20:17:02.178,INFO,SV11 received page 0
+20:17:02.288,INFO,SV24 received page 0
+20:17:02.408,INFO,SV14 received page 0
+20:17:02.517,INFO,SV25 received page 0
+20:17:02.628,INFO,SV2 received page 0
+20:17:02.728,INFO,SV11 received page 0
+20:17:02.845,INFO,SV24 received page 0
+20:17:02.948,INFO,SV14 received page 0
+20:17:03.58,INFO,SV25 received page 0
+20:17:03.163,INFO,SV11 received page 0
+20:17:03.298,INFO,SV24 received page 0
+20:17:03.398,INFO,SV14 received page 0
+20:17:03.503,INFO,SV2 received page 0
+20:17:03.608,INFO,SV11 received page 0
+20:17:03.720,INFO,SV14 received page 0
+20:17:03.828,INFO,SV25 received page 0
+20:17:03.938,INFO,SV2 received page 0
+20:17:04.46,INFO,SV11 received page 1
+20:17:04.168,INFO,SV24 received page 1
+20:17:04.275,INFO,SV14 received page 1
+20:17:04.378,INFO,SV25 received page 1
+20:17:04.478,INFO,SV11 received page 3
+20:17:04.587,INFO,SV24 received page 3
+20:17:04.688,INFO,SV14 received page 3
+20:17:04.788,INFO,SV2 received page 3
+20:17:04.893,INFO,SV11 received page 5
+20:17:05.10,INFO,SV24 received page 5
+20:17:05.113,INFO,SV11 received page 5
+20:17:05.218,INFO,SV14 received page 5
+20:17:05.323,INFO,SV25 received page 5
+20:17:05.428,INFO,SV2 received page 5
+20:17:05.538,INFO,SV11 received page 0
+20:17:05.638,INFO,SV24 received page 0
+20:17:05.746,INFO,SV11 received page 0
+20:17:05.849,INFO,SV36 received page 0
+20:17:05.958,INFO,SV12 received page 0
+20:17:06.78,INFO,SV11 received page 2
+20:17:06.188,INFO,SV14 received page 2
+20:17:06.296,INFO,SV25 received page 2
+20:17:06.398,INFO,SV2 received page 2
+20:17:06.508,INFO,SV11 received page 4
+20:17:06.618,INFO,SV36 received page 4
+20:17:06.733,INFO,SV14 received page 4
+20:17:06.838,INFO,SV25 received page 4
+20:17:06.943,INFO,SV11 received page 6
+20:17:07.43,INFO,SV24 received page 6
+20:17:07.147,INFO,SV14 received page 6
+20:17:07.258,INFO,SV2 received page 6
+20:17:07.368,INFO,SV11 received page 7
+20:17:07.488,INFO,SV24 received page 7
+20:17:07.598,INFO,SV14 received page 7
+20:17:07.708,INFO,SV25 received page 7
+20:17:07.808,INFO,SV2 received page 7
+20:17:07.917,INFO,SV11 received page 8
+20:17:08.33,INFO,SV36 received page 8
+20:17:08.138,INFO,SV14 received page 8
+20:17:08.246,INFO,SV25 received page 8
+20:17:08.358,INFO,SV14 received page 0
+20:17:08.469,INFO,SV11 received page 0
+20:17:08.577,INFO,SV14 received page 0
+20:17:08.688,INFO,SV25 received page 0
+20:17:08.806,INFO,SV2 received page 0
+20:17:08.923,INFO,SV11 received page 0
+20:17:09.29,INFO,SV14 received page 0
+20:17:09.136,INFO,SV25 received page 0
+20:17:09.251,INFO,SV11 received page 0
+20:17:09.368,INFO,SV24 received page 0
+20:17:09.478,INFO,SV14 received page 0
+20:17:09.588,INFO,SV2 received page 0
+20:17:09.711,INFO,SV11 received page 0
+20:17:09.833,INFO,SV24 received page 0
+20:17:09.949,INFO,SV14 received page 0
+20:17:10.59,INFO,SV25 received page 0
+20:17:10.167,INFO,SV2 received page 0
+20:17:10.268,INFO,SV11 received page 1
+20:17:10.378,INFO,SV24 received page 1
+20:17:10.486,INFO,SV14 received page 1
+20:17:10.593,INFO,SV25 received page 1
+20:17:10.708,INFO,SV11 received page 3
+20:17:10.828,INFO,SV25 received page 3
+20:17:10.939,INFO,SV11 received page 5
+20:17:11.48,INFO,SV14 received page 5
+20:17:11.153,INFO,SV25 received page 5
+20:17:11.258,INFO,SV2 received page 5
+20:17:11.358,INFO,SV11 received page 0
+20:17:11.478,INFO,SV25 received page 0
+20:17:11.588,INFO,SV11 received page 0
+20:17:11.708,INFO,SV36 received page 0
+20:17:11.828,INFO,SV14 received page 0
+20:17:11.938,INFO,SV11 received page 2
+20:17:12.48,INFO,SV24 received page 2
+20:17:12.156,INFO,SV14 received page 2
+20:17:12.278,INFO,SV25 received page 2
+20:17:12.388,INFO,SV2 received page 2
+20:17:12.498,INFO,SV11 received page 4
+20:17:12.610,INFO,SV14 received page 4
+20:17:12.718,INFO,SV11 received page 6
+20:17:12.818,INFO,SV24 received page 6
+20:17:12.928,INFO,SV14 received page 6
+20:17:13.38,INFO,SV2 received page 6
+20:17:13.138,INFO,SV11 received page 9
+20:17:13.248,INFO,SV24 received page 9
+20:17:13.356,INFO,SV11 received page 10
+20:17:13.456,INFO,SV36 received page 10
+20:17:13.563,INFO,SV14 received page 10
+20:17:13.673,INFO,SV25 received page 10
+20:17:13.788,INFO,SV11 received page 0
+20:17:13.898,INFO,SV14 received page 0
+20:17:14.18,INFO,SV2 received page 0
+20:17:14.140,INFO,SV25 received page 0
+20:17:14.251,INFO,SV2 received page 0
+20:17:14.365,INFO,SV11 received page 0
+20:17:14.475,INFO,SV36 received page 0
+20:17:14.578,INFO,SV14 received page 0
+20:17:14.679,INFO,SV25 received page 0
+20:17:14.788,INFO,SV11 received page 0
+20:17:14.902,INFO,SV36 received page 0
+20:17:15.9,INFO,SV14 received page 0
+20:17:15.117,INFO,SV11 received page 0
+20:17:15.219,INFO,SV14 received page 0
+20:17:15.338,INFO,SV25 received page 0
+20:17:15.453,INFO,SV2 received page 0
+20:17:15.555,INFO,SV11 received page 1
+20:17:15.673,INFO,SV14 received page 1
+20:17:15.777,INFO,SV25 received page 1
+20:17:15.889,INFO,SV11 received page 3
+20:17:16.8,INFO,SV14 received page 3
+20:17:16.115,INFO,SV2 received page 3
+20:17:16.238,INFO,SV11 received page 5
+20:17:16.348,INFO,SV14 received page 5
+20:17:16.458,INFO,SV11 received page 0
+20:17:16.568,INFO,SV36 received page 0
+20:17:16.671,INFO,SV25 received page 0
+20:17:16.789,INFO,SV11 received page 0
+20:17:16.891,INFO,SV36 received page 0
+20:17:16.998,INFO,SV14 received page 0
+20:17:17.98,INFO,SV2 received page 0
+20:17:17.198,INFO,SV11 received page 0
+20:17:17.318,INFO,SV14 received page 0
+20:17:17.425,INFO,SV2 received page 0
+20:17:17.538,INFO,SV11 received page 0
+20:17:17.639,INFO,SV24 received page 0
+20:17:17.750,INFO,SV14 received page 0
+20:17:17.861,INFO,SV2 received page 0
+20:17:17.969,INFO,SV11 received page 2
+20:17:18.87,INFO,SV24 received page 2
+20:17:18.196,INFO,SV14 received page 2
+20:17:18.309,INFO,SV25 received page 2
+20:17:18.414,INFO,SV2 received page 2
+20:17:18.523,INFO,SV11 received page 4
+20:17:18.638,INFO,SV24 received page 4
+20:17:18.740,INFO,SV14 received page 4
+20:17:18.849,INFO,SV2 received page 4
+20:17:18.958,INFO,SV11 received page 6
+20:17:19.68,INFO,SV36 received page 6
+20:17:19.169,INFO,SV14 received page 6
+20:17:19.269,INFO,SV2 received page 6
+20:17:19.388,INFO,SV11 received page 7
+20:17:19.489,INFO,SV24 received page 7
+20:17:19.589,INFO,SV14 received page 7
+20:17:19.697,INFO,SV25 received page 7
+20:17:19.809,INFO,SV14 received page 8
+20:17:19.928,INFO,SV2 received page 8
+20:17:20.34,INFO,SV11 received page 0
+20:17:20.149,INFO,SV24 received page 0
+20:17:20.258,INFO,SV14 received page 0
+20:17:20.364,INFO,SV2 received page 0
+20:17:20.479,INFO,SV11 received page 0
+20:17:20.588,INFO,SV24 received page 0
+20:17:20.699,INFO,SV14 received page 0
+20:17:20.807,INFO,SV25 received page 0
+20:17:20.913,INFO,SV2 received page 0
+20:17:21.29,INFO,SV11 received page 0
+20:17:21.140,INFO,SV14 received page 0
+20:17:21.258,INFO,SV2 received page 0
+20:17:21.369,INFO,SV11 received page 0
+20:17:21.478,INFO,SV24 received page 0
+20:17:21.583,INFO,SV14 received page 0
+20:17:21.688,INFO,SV2 received page 0
+20:17:21.797,INFO,SV11 received page 0
+20:17:21.909,INFO,SV24 received page 0
+20:17:22.18,INFO,SV14 received page 0
+20:17:22.132,INFO,SV25 received page 0
+20:17:22.249,INFO,SV2 received page 0
+20:17:22.358,INFO,SV11 received page 1
+20:17:22.459,INFO,SV24 received page 1
+20:17:22.583,INFO,SV14 received page 1
+20:17:22.688,INFO,SV2 received page 1
+20:17:22.799,INFO,SV11 received page 3
+20:17:22.907,INFO,SV24 received page 3
+20:17:23.19,INFO,SV14 received page 3
+20:17:23.128,INFO,SV2 received page 3
+20:17:23.237,INFO,SV11 received page 5
+20:17:23.338,INFO,SV24 received page 5
+20:17:23.448,INFO,SV14 received page 5
+20:17:23.562,INFO,SV25 received page 5
+20:17:23.667,INFO,SV11 received page 0
+20:17:23.768,INFO,SV24 received page 0
+20:17:23.868,INFO,SV14 received page 0
+20:17:23.969,INFO,SV2 received page 0
+20:17:24.89,INFO,SV11 received page 0
+20:17:24.195,INFO,SV24 received page 0
+20:17:24.309,INFO,SV14 received page 0
+20:17:24.309,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:17:24.318,INFO,Tesla Key: 7d2e35178b650f8ea335218d27dd969d belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:24.318,INFO,SV14 cannot perform Self-Authentication as it is missing the delayed Tag0 
+20:17:24.425,INFO,SV2 received page 0
+20:17:24.528,INFO,SV11 received page 2
+20:17:24.636,INFO,SV24 received page 2
+20:17:24.738,INFO,SV14 received page 2
+20:17:24.839,INFO,SV25 received page 2
+20:17:24.948,INFO,SV12 received page 2
+20:17:25.53,INFO,SV2 received page 2
+20:17:25.169,INFO,SV11 received page 4
+20:17:25.275,INFO,SV24 received page 4
+20:17:25.379,INFO,SV14 received page 4
+20:17:25.488,INFO,SV2 received page 4
+20:17:25.602,INFO,SV11 received page 6
+20:17:25.719,INFO,SV24 received page 6
+20:17:25.838,INFO,SV14 received page 6
+20:17:25.946,INFO,SV2 received page 6
+20:17:26.48,INFO,SV11 received page 9
+20:17:26.156,INFO,SV24 received page 9
+20:17:26.258,INFO,SV14 received page 9
+20:17:26.368,INFO,SV25 received page 9
+20:17:26.474,INFO,SV2 received page 9
+20:17:26.578,INFO,SV11 received page 10
+20:17:26.688,INFO,SV24 received page 10
+20:17:26.798,INFO,SV14 received page 10
+20:17:26.900,INFO,SV2 received page 10
+20:17:27.17,INFO,SV11 received page 0
+20:17:27.118,INFO,SV14 received page 0
+20:17:27.239,INFO,SV2 received page 0
+20:17:27.346,INFO,SV11 received page 0
+20:17:27.458,INFO,SV14 received page 0
+20:17:27.578,INFO,SV25 received page 0
+20:17:27.686,INFO,SV2 received page 0
+20:17:27.789,INFO,SV11 received page 0
+20:17:27.898,INFO,SV36 received page 0
+20:17:28.6,INFO,SV14 received page 0
+20:17:28.128,INFO,SV2 received page 0
+20:17:28.243,INFO,SV11 received page 0
+20:17:28.344,INFO,SV24 received page 0
+20:17:28.458,INFO,SV14 received page 0
+20:17:28.572,INFO,SV2 received page 0
+20:17:28.678,INFO,SV11 received page 0
+20:17:28.788,INFO,SV24 received page 0
+20:17:28.898,INFO,SV14 received page 0
+20:17:29.8,INFO,SV25 received page 0
+20:17:29.108,INFO,SV2 received page 0
+20:17:29.209,INFO,SV11 received page 1
+20:17:29.318,INFO,SV24 received page 1
+20:17:29.427,INFO,SV14 received page 1
+20:17:29.538,INFO,SV2 received page 1
+20:17:29.648,INFO,SV11 received page 3
+20:17:29.753,INFO,SV24 received page 3
+20:17:29.858,INFO,SV14 received page 3
+20:17:29.968,INFO,SV2 received page 3
+20:17:30.79,INFO,SV11 received page 5
+20:17:30.188,INFO,SV24 received page 5
+20:17:30.297,INFO,SV14 received page 5
+20:17:30.409,INFO,SV25 received page 5
+20:17:30.514,INFO,SV2 received page 5
+20:17:30.618,INFO,SV11 received page 0
+20:17:30.728,INFO,SV24 received page 0
+20:17:30.838,INFO,SV14 received page 0
+20:17:30.947,INFO,SV2 received page 0
+20:17:31.62,INFO,SV11 received page 0
+20:17:31.62,INFO,SV11 completed SubFrame and Does Not Transmits OSNMA
+20:17:31.168,INFO,SV24 received page 0
+20:17:31.278,INFO,SV14 received page 0
+20:17:31.278,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:17:31.283,INFO,Tesla Key: 3122d8b1340687e478db4b9699a9b792 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:31.283,INFO,SV14 cannot perform Self-Authentication as it is missing the delayed Tag0 
+20:17:31.288,INFO,SV14 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:17:31.288,INFO,SV14 cannot be Self-Autenticated with PRN255 (ADKD4) due to lack of Navigation Data
+20:17:31.288,INFO,SV14 cannot authenticate ADKD0 NavData from SV 5 due to the lack of navigation data
+20:17:31.288,INFO,SV14 cannot authenticate ADKD0 NavData from SV 11 due to the lack of navigation data
+20:17:31.396,INFO,SV2 received page 0
+20:17:31.396,INFO,SV2 completed SubFrame and Transmits OSNMA
+20:17:31.399,INFO,Tesla Key: 3122d8b1340687e478db4b9699a9b792 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:31.399,INFO,SV2 cannot perform Self-Authentication as it is missing the delayed Tag0 
+20:17:31.400,INFO,SV2 cannot authenticate ADKD12 NavData due to lack of Tags
+20:17:31.507,INFO,SV11 received page 2
+20:17:31.615,INFO,SV24 received page 2
+20:17:31.718,INFO,SV14 received page 2
+20:17:31.828,INFO,SV25 received page 2
+20:17:31.937,INFO,SV2 received page 2
+20:17:32.41,INFO,SV11 received page 4
+20:17:32.143,INFO,SV24 received page 4
+20:17:32.248,INFO,SV14 received page 4
+20:17:32.351,INFO,SV2 received page 4
+20:17:32.458,INFO,SV11 received page 6
+20:17:32.568,INFO,SV14 received page 6
+20:17:32.683,INFO,SV2 received page 6
+20:17:32.787,INFO,SV11 received page 7
+20:17:32.888,INFO,SV36 received page 7
+20:17:32.988,INFO,SV14 received page 7
+20:17:33.98,INFO,SV25 received page 7
+20:17:33.205,INFO,SV2 received page 7
+20:17:33.307,INFO,SV11 received page 8
+20:17:33.417,INFO,SV24 received page 8
+20:17:33.528,INFO,SV14 received page 8
+20:17:33.638,INFO,SV2 received page 8
+20:17:33.738,INFO,SV11 received page 0
+20:17:33.838,INFO,SV24 received page 0
+20:17:33.938,INFO,SV14 received page 0
+20:17:34.48,INFO,SV12 received page 0
+20:17:34.153,INFO,SV2 received page 0
+20:17:34.253,INFO,SV11 received page 0
+20:17:34.357,INFO,SV14 received page 0
+20:17:34.468,INFO,SV25 received page 0
+20:17:34.568,INFO,SV2 received page 0
+20:17:34.677,INFO,SV11 received page 0
+20:17:34.788,INFO,SV14 received page 0
+20:17:34.897,INFO,SV2 received page 0
+20:17:35.1,INFO,SV11 received page 0
+20:17:35.118,INFO,SV36 received page 0
+20:17:35.218,INFO,SV14 received page 0
+20:17:35.328,INFO,SV2 received page 0
+20:17:35.438,INFO,SV11 received page 0
+20:17:35.538,INFO,SV14 received page 0
+20:17:35.648,INFO,SV25 received page 0
+20:17:35.783,INFO,SV2 received page 0
+20:17:35.894,INFO,SV11 received page 1
+20:17:36.8,INFO,SV24 received page 1
+20:17:36.108,INFO,SV14 received page 1
+20:17:36.218,INFO,SV2 received page 1
+20:17:36.324,INFO,SV11 received page 3
+20:17:36.428,INFO,SV36 received page 3
+20:17:36.538,INFO,SV24 received page 3
+20:17:36.658,INFO,SV14 received page 3
+20:17:36.768,INFO,SV2 received page 3
+20:17:36.878,INFO,SV11 received page 5
+20:17:36.978,INFO,SV14 received page 5
+20:17:37.89,INFO,SV25 received page 5
+20:17:37.198,INFO,SV2 received page 5
+20:17:37.308,INFO,SV11 received page 0
+20:17:37.413,INFO,SV36 received page 0
+20:17:37.526,INFO,SV14 received page 0
+20:17:37.626,INFO,SV2 received page 0
+20:17:37.738,INFO,SV11 received page 0
+20:17:37.738,INFO,SV11 completed SubFrame and Does Not Transmits OSNMA
+20:17:37.858,INFO,SV36 received page 0
+20:17:37.967,INFO,SV14 received page 0
+20:17:37.967,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:17:37.967,INFO,Tesla Key: 2ce7331b56a4b4e03a64471ddf0c02eb belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:37.967,INFO,SV14 is Self-Authenticated
+20:17:37.967,INFO,SV14 has successfully Cross-Authenticated ADKD12 NavData from SV 14
+20:17:37.967,INFO,SV14 cannot authenticate ADKD0 NavData from SV 11 due to the lack of navigation data
+20:17:37.967,INFO,SV14 cannot authenticate ADKD0 NavData from SV 31 due to the lack of navigation data
+20:17:37.967,INFO,SV14 cannot authenticate ADKD0 NavData from SV 7 due to the lack of navigation data
+20:17:38.78,INFO,SV12 received page 0
+20:17:38.188,INFO,SV2 received page 0
+20:17:38.188,INFO,SV2 completed SubFrame and Transmits OSNMA
+20:17:38.188,INFO,Tesla Key: 2ce7331b56a4b4e03a64471ddf0c02eb belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:38.188,INFO,SV2 cannot perform Self-Authentication as it is missing the delayed Tag0 
+20:17:38.188,INFO,SV2 cannot authenticate ADKD12 NavData due to lack of Tags
+20:17:38.188,INFO,SV2 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:17:38.188,INFO,SV2 cannot authenticate ADKD0 NavData from SV 7 due to the lack of navigation data
+20:17:38.188,INFO,SV2 cannot authenticate ADKD0 NavData from SV 11 due to the lack of navigation data
+20:17:38.289,INFO,SV11 received page 2
+20:17:38.398,INFO,SV14 received page 2
+20:17:38.508,INFO,SV25 received page 2
+20:17:38.618,INFO,SV2 received page 2
+20:17:38.718,INFO,SV11 received page 4
+20:17:38.818,INFO,SV14 received page 4
+20:17:38.933,INFO,SV2 received page 4
+20:17:39.38,INFO,SV11 received page 6
+20:17:39.148,INFO,SV14 received page 6
+20:17:39.248,INFO,SV2 received page 6
+20:17:39.357,INFO,SV11 received page 9
+20:17:39.468,INFO,SV14 received page 9
+20:17:39.578,INFO,SV25 received page 9
+20:17:39.688,INFO,SV2 received page 9
+20:17:39.793,INFO,SV11 received page 10
+20:17:39.918,INFO,SV36 received page 10
+20:17:40.28,INFO,SV14 received page 10
+20:17:40.128,INFO,SV2 received page 10
+20:17:40.228,INFO,SV11 received page 0
+20:17:40.348,INFO,SV36 received page 0
+20:17:40.463,INFO,SV14 received page 0
+20:17:40.568,INFO,SV2 received page 0
+20:17:40.678,INFO,SV11 received page 0
+20:17:40.788,INFO,SV14 received page 0
+20:17:40.898,INFO,SV25 received page 0
+20:17:41.3,INFO,SV2 received page 0
+20:17:41.108,INFO,SV11 received page 0
+20:17:41.218,INFO,SV36 received page 0
+20:17:41.333,INFO,SV14 received page 0
+20:17:41.436,INFO,SV2 received page 0
+20:17:41.549,INFO,SV11 received page 0
+20:17:41.653,INFO,SV36 received page 0
+20:17:41.758,INFO,SV14 received page 0
+20:17:41.868,INFO,SV2 received page 0
+20:17:41.975,INFO,SV11 received page 0
+20:17:42.80,INFO,SV14 received page 0
+20:17:42.188,INFO,SV25 received page 0
+20:17:42.300,INFO,SV2 received page 0
+20:17:42.408,INFO,SV11 received page 1
+20:17:42.518,INFO,SV36 received page 1
+20:17:42.623,INFO,SV14 received page 1
+20:17:42.728,INFO,SV2 received page 1
+20:17:42.837,INFO,SV11 received page 3
+20:17:42.948,INFO,SV36 received page 3
+20:17:43.68,INFO,SV14 received page 3
+20:17:43.183,INFO,SV2 received page 3
+20:17:43.286,INFO,SV11 received page 5
+20:17:43.387,INFO,SV14 received page 5
+20:17:43.498,INFO,SV25 received page 5
+20:17:43.608,INFO,SV2 received page 5
+20:17:43.738,INFO,SV11 received page 0
+20:17:43.848,INFO,SV36 received page 0
+20:17:43.958,INFO,SV14 received page 0
+20:17:44.68,INFO,SV2 received page 0
+20:17:44.178,INFO,SV11 received page 0
+20:17:44.178,INFO,SV11 completed SubFrame and Does Not Transmits OSNMA
+20:17:44.298,INFO,SV36 received page 0
+20:17:44.408,INFO,SV14 received page 0
+20:17:44.408,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:17:44.408,INFO,DSM#11 has a total of 8 blocks
+20:17:44.413,INFO,Tesla Key: c83a4235a1b6342d0755aecefade6fea belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:44.413,INFO,SV14 is Self-Authenticated
+20:17:44.413,INFO,SV14 has successfully Cross-Authenticated ADKD12 NavData from SV 14
+20:17:44.413,INFO,SV14 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:17:44.413,INFO,SV14 is Self-Autenticated with PRN 255
+20:17:44.413,INFO,SV14 cannot authenticate ADKD0 NavData from SV 5 due to the lack of navigation data
+20:17:44.413,INFO,SV14 has successfully Cross-Authenticated ADKD0 NavData from SV 11
+20:17:44.528,INFO,SV2 received page 0
+20:17:44.528,INFO,SV2 completed SubFrame and Transmits OSNMA
+20:17:44.533,INFO,Tesla Key: c83a4235a1b6342d0755aecefade6fea belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:44.533,INFO,SV2 is Self-Authenticated
+20:17:44.533,INFO,SV2 cannot authenticate ADKD12 NavData due to lack of Tags
+20:17:44.533,INFO,SV2 cannot authenticate ADKD0 NavData from SV 31 due to the lack of navigation data
+20:17:44.533,INFO,SV2 is Self-Autenticated with PRN 255
+20:17:44.533,INFO,SV2 cannot authenticate ADKD0 NavData from SV 1 due to the lack of navigation data
+20:17:44.533,INFO,SV2 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:17:44.638,INFO,SV11 received page 2
+20:17:44.753,INFO,SV14 received page 2
+20:17:44.858,INFO,SV25 received page 2
+20:17:44.959,INFO,SV2 received page 2
+20:17:45.67,INFO,SV11 received page 4
+20:17:45.168,INFO,SV36 received page 4
+20:17:45.278,INFO,SV14 received page 4
+20:17:45.383,INFO,SV2 received page 4
+20:17:45.488,INFO,SV11 received page 6
+20:17:45.597,INFO,SV36 received page 6
+20:17:45.703,INFO,SV14 received page 6
+20:17:45.808,INFO,SV2 received page 6
+20:17:45.918,INFO,SV11 received page 7
+20:17:46.28,INFO,SV14 received page 7
+20:17:46.143,INFO,SV25 received page 7
+20:17:46.248,INFO,SV2 received page 7
+20:17:46.368,INFO,SV11 received page 8
+20:17:46.481,INFO,SV36 received page 8
+20:17:46.584,INFO,SV14 received page 8
+20:17:46.698,INFO,SV2 received page 8
+20:17:46.798,INFO,SV11 received page 0
+20:17:46.918,INFO,SV36 received page 0
+20:17:47.28,INFO,SV14 received page 0
+20:17:47.138,INFO,SV2 received page 0
+20:17:47.258,INFO,SV11 received page 0
+20:17:47.374,INFO,SV14 received page 0
+20:17:47.478,INFO,SV25 received page 0
+20:17:47.588,INFO,SV2 received page 0
+20:17:47.688,INFO,SV11 received page 0
+20:17:47.798,INFO,SV36 received page 0
+20:17:47.918,INFO,SV14 received page 0
+20:17:48.27,INFO,SV2 received page 0
+20:17:48.128,INFO,SV11 received page 0
+20:17:48.238,INFO,SV36 received page 0
+20:17:48.348,INFO,SV14 received page 0
+20:17:48.468,INFO,SV2 received page 0
+20:17:48.578,INFO,SV11 received page 0
+20:17:48.688,INFO,SV14 received page 0
+20:17:48.789,INFO,SV25 received page 0
+20:17:48.908,INFO,SV2 received page 0
+20:17:49.18,INFO,SV11 received page 1
+20:17:49.118,INFO,SV36 received page 1
+20:17:49.227,INFO,SV14 received page 1
+20:17:49.328,INFO,SV2 received page 1
+20:17:49.438,INFO,SV11 received page 3
+20:17:49.557,INFO,SV36 received page 3
+20:17:49.658,INFO,SV14 received page 3
+20:17:49.768,INFO,SV2 received page 3
+20:17:49.888,INFO,SV11 received page 5
+20:17:49.998,INFO,SV14 received page 5
+20:17:50.98,INFO,SV25 received page 5
+20:17:50.201,INFO,SV2 received page 5
+20:17:50.318,INFO,SV11 received page 0
+20:17:50.418,INFO,SV36 received page 0
+20:17:50.523,INFO,SV14 received page 0
+20:17:50.628,INFO,SV2 received page 0
+20:17:50.728,INFO,SV11 received page 0
+20:17:50.728,INFO,SV11 completed SubFrame and Does Not Transmits OSNMA
+20:17:50.843,INFO,SV36 received page 0
+20:17:50.948,INFO,SV14 received page 0
+20:17:50.948,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:17:50.951,INFO,Tesla Key: b2f54d14b050f944e3a9815f4ef63312 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:50.951,INFO,SV14 is Self-Authenticated
+20:17:50.951,INFO,SV14 cannot authenticate ADKD12 NavData due to lack of Tags
+20:17:50.951,INFO,SV14 has successfully Cross-Authenticated ADKD0 NavData from SV 11
+20:17:50.951,INFO,SV14 cannot authenticate ADKD0 NavData from SV 31 due to the lack of navigation data
+20:17:50.951,INFO,SV14 cannot authenticate ADKD0 NavData from SV 7 due to the lack of navigation data
+20:17:51.52,INFO,SV12 received page 0
+20:17:51.158,INFO,SV2 received page 0
+20:17:51.158,INFO,SV2 completed SubFrame and Transmits OSNMA
+20:17:51.168,INFO,Tesla Key: b2f54d14b050f944e3a9815f4ef63312 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:51.168,INFO,SV2 is Self-Authenticated
+20:17:51.178,INFO,SV2 cannot authenticate ADKD12 NavData due to lack of Tags
+20:17:51.178,INFO,SV2 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:17:51.178,INFO,SV2 cannot authenticate ADKD0 NavData from SV 7 due to the lack of navigation data
+20:17:51.178,INFO,SV2 has successfully Cross-Authenticated ADKD0 NavData from SV 11
+20:17:51.300,INFO,SV11 received page 2
+20:17:51.408,INFO,SV14 received page 2
+20:17:51.509,INFO,SV25 received page 2
+20:17:51.618,INFO,SV2 received page 2
+20:17:51.738,INFO,SV11 received page 4
+20:17:51.858,INFO,SV36 received page 4
+20:17:51.968,INFO,SV14 received page 4
+20:17:52.78,INFO,SV2 received page 4
+20:17:52.184,INFO,SV11 received page 6
+20:17:52.288,INFO,SV36 received page 6
+20:17:52.398,INFO,SV14 received page 6
+20:17:52.498,INFO,SV2 received page 6
+20:17:52.601,INFO,SV11 received page 9
+20:17:52.705,INFO,SV14 received page 9
+20:17:52.808,INFO,SV25 received page 9
+20:17:52.913,INFO,SV2 received page 9
+20:17:53.18,INFO,SV11 received page 10
+20:17:53.128,INFO,SV36 received page 10
+20:17:53.248,INFO,SV14 received page 10
+20:17:53.358,INFO,SV2 received page 10
+20:17:53.468,INFO,SV11 received page 0
+20:17:53.588,INFO,SV36 received page 0
+20:17:53.699,INFO,SV14 received page 0
+20:17:53.818,INFO,SV2 received page 0
+20:17:53.941,INFO,SV11 received page 0
+20:17:54.58,INFO,SV14 received page 0
+20:17:54.165,INFO,SV25 received page 0
+20:17:54.268,INFO,SV2 received page 0
+20:17:54.377,INFO,SV11 received page 0
+20:17:54.478,INFO,SV36 received page 0
+20:17:54.578,INFO,SV14 received page 0
+20:17:54.687,INFO,SV2 received page 0
+20:17:54.798,INFO,SV11 received page 0
+20:17:54.908,INFO,SV36 received page 0
+20:17:55.13,INFO,SV14 received page 0
+20:17:55.137,INFO,SV2 received page 0
+20:17:55.257,INFO,SV11 received page 0
+20:17:55.378,INFO,SV14 received page 0
+20:17:55.485,INFO,SV25 received page 0
+20:17:55.593,INFO,SV2 received page 0
+20:17:55.708,INFO,SV11 received page 1
+20:17:55.818,INFO,SV36 received page 1
+20:17:55.928,INFO,SV14 received page 1
+20:17:56.38,INFO,SV2 received page 1
+20:17:56.148,INFO,SV11 received page 3
+20:17:56.263,INFO,SV36 received page 3
+20:17:56.390,INFO,SV14 received page 3
+20:17:56.501,INFO,SV2 received page 3
+20:17:56.603,INFO,SV11 received page 5
+20:17:56.704,INFO,SV36 received page 5
+20:17:56.808,INFO,SV14 received page 5
+20:17:56.915,INFO,SV25 received page 5
+20:17:57.28,INFO,SV2 received page 5
+20:17:57.138,INFO,SV11 received page 0
+20:17:57.238,INFO,SV36 received page 0
+20:17:57.348,INFO,SV14 received page 0
+20:17:57.448,INFO,SV2 received page 0
+20:17:57.559,INFO,SV12 received page 0
+20:17:57.678,INFO,SV11 received page 0
+20:17:57.678,INFO,SV11 completed SubFrame and Does Not Transmits OSNMA
+20:17:57.778,INFO,SV36 received page 0
+20:17:57.888,INFO,SV14 received page 0
+20:17:57.888,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:17:57.893,INFO,Tesla Key: 8c4cded09db0d4250e49c7c846e64cec belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:57.893,INFO,SV14 is Self-Authenticated
+20:17:57.893,INFO,SV14 cannot authenticate ADKD12 NavData due to lack of Tags
+20:17:57.893,INFO,SV14 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:17:57.893,INFO,SV14 is Self-Autenticated with PRN 255
+20:17:57.893,INFO,SV14 cannot authenticate ADKD0 NavData from SV 5 due to the lack of navigation data
+20:17:57.893,INFO,SV14 has successfully Cross-Authenticated ADKD0 NavData from SV 11
+20:17:57.997,INFO,SV2 received page 0
+20:17:57.997,INFO,SV2 completed SubFrame and Transmits OSNMA
+20:17:57.997,INFO,Tesla Key: 8c4cded09db0d4250e49c7c846e64cec belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:17:57.997,INFO,SV2 is Self-Authenticated
+20:17:57.997,INFO,SV2 cannot authenticate ADKD12 NavData due to lack of Tags
+20:17:57.997,INFO,SV2 cannot authenticate ADKD0 NavData from SV 31 due to the lack of navigation data
+20:17:57.997,INFO,SV2 is Self-Autenticated with PRN 255
+20:17:57.997,INFO,SV2 cannot authenticate ADKD0 NavData from SV 1 due to the lack of navigation data
+20:17:57.997,INFO,SV2 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:17:58.98,INFO,SV11 received page 2
+20:17:58.208,INFO,SV14 received page 2
+20:17:58.315,INFO,SV25 received page 2
+20:17:58.428,INFO,SV2 received page 2
+20:17:58.553,INFO,SV11 received page 4
+20:17:58.658,INFO,SV36 received page 4
+20:17:58.758,INFO,SV14 received page 4
+20:17:58.868,INFO,SV2 received page 4
+20:17:58.976,INFO,SV11 received page 6
+20:17:59.88,INFO,SV14 received page 6
+20:17:59.192,INFO,SV2 received page 6
+20:17:59.295,INFO,SV11 received page 7
+20:17:59.408,INFO,SV36 received page 7
+20:17:59.518,INFO,SV14 received page 7
+20:17:59.638,INFO,SV25 received page 7
+20:17:59.758,INFO,SV2 received page 7
+20:17:59.867,INFO,SV11 received page 8
+20:17:59.978,INFO,SV36 received page 8
+20:18:00.88,INFO,SV14 received page 8
+20:18:00.203,INFO,SV2 received page 8
+20:18:00.308,INFO,SV11 received page 0
+20:18:00.408,INFO,SV36 received page 0
+20:18:00.528,INFO,SV14 received page 0
+20:18:00.633,INFO,SV2 received page 0
+20:18:00.738,INFO,SV11 received page 0
+20:18:00.848,INFO,SV14 received page 0
+20:18:00.951,INFO,SV25 received page 0
+20:18:01.59,INFO,SV2 received page 0
+20:18:01.173,INFO,SV11 received page 0
+20:18:01.278,INFO,SV36 received page 0
+20:18:01.388,INFO,SV14 received page 0
+20:18:01.493,INFO,SV2 received page 0
+20:18:01.607,INFO,SV11 received page 0
+20:18:01.708,INFO,SV36 received page 0
+20:18:01.818,INFO,SV14 received page 0
+20:18:01.929,INFO,SV2 received page 0
+20:18:02.43,INFO,SV11 received page 0
+20:18:02.153,INFO,SV14 received page 0
+20:18:02.259,INFO,SV25 received page 0
+20:18:02.374,INFO,SV2 received page 0
+20:18:02.478,INFO,SV11 received page 1
+20:18:02.588,INFO,SV36 received page 1
+20:18:02.698,INFO,SV14 received page 1
+20:18:02.808,INFO,SV2 received page 1
+20:18:02.918,INFO,SV11 received page 3
+20:18:03.28,INFO,SV36 received page 3
+20:18:03.138,INFO,SV14 received page 3
+20:18:03.248,INFO,SV12 received page 3
+20:18:03.368,INFO,SV2 received page 3
+20:18:03.488,INFO,SV11 received page 5
+20:18:03.588,INFO,SV14 received page 5
+20:18:03.698,INFO,SV25 received page 5
+20:18:03.807,INFO,SV2 received page 5
+20:18:03.918,INFO,SV11 received page 0
+20:18:04.27,INFO,SV36 received page 0
+20:18:04.128,INFO,SV14 received page 0
+20:18:04.236,INFO,SV2 received page 0
+20:18:04.338,INFO,SV11 received page 0
+20:18:04.338,INFO,SV11 completed SubFrame and Does Not Transmits OSNMA
+20:18:04.448,INFO,SV14 received page 0
+20:18:04.448,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:18:04.448,INFO,Tesla Key: 4c675659d8e0a876e093e4bcee89c953 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:18:04.448,INFO,SV14 is Self-Authenticated
+20:18:04.448,INFO,SV14 cannot authenticate ADKD12 NavData due to lack of Tags
+20:18:04.448,INFO,SV14 has successfully Cross-Authenticated ADKD0 NavData from SV 11
+20:18:04.448,INFO,SV14 cannot authenticate ADKD0 NavData from SV 31 due to the lack of navigation data
+20:18:04.448,INFO,SV14 cannot authenticate ADKD0 NavData from SV 7 due to the lack of navigation data
+20:18:04.548,INFO,SV2 received page 0
+20:18:04.549,INFO,SV2 completed SubFrame and Transmits OSNMA
+20:18:04.549,INFO,Tesla Key: 4c675659d8e0a876e093e4bcee89c953 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:18:04.557,INFO,SV2 is Self-Authenticated
+20:18:04.558,INFO,SV2 cannot authenticate ADKD12 NavData due to lack of Tags
+20:18:04.558,INFO,SV2 cannot authenticate ADKD0 NavData from SV 7 due to the lack of navigation data
+20:18:04.558,INFO,SV2 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:18:04.558,INFO,SV2 has successfully Cross-Authenticated ADKD0 NavData from SV 11
+20:18:04.668,INFO,SV11 received page 2
+20:18:04.776,INFO,SV36 received page 2
+20:18:04.889,INFO,SV14 received page 2
+20:18:04.995,INFO,SV25 received page 2
+20:18:05.103,INFO,SV2 received page 2
+20:18:05.208,INFO,SV11 received page 4
+20:18:05.317,INFO,SV36 received page 4
+20:18:05.438,INFO,SV14 received page 4
+20:18:05.547,INFO,SV2 received page 4
+20:18:05.658,INFO,SV11 received page 6
+20:18:05.768,INFO,SV36 received page 6
+20:18:05.877,INFO,SV14 received page 6
+20:18:05.988,INFO,SV2 received page 6
+20:18:06.100,INFO,SV11 received page 9
+20:18:06.204,INFO,SV36 received page 9
+20:18:06.318,INFO,SV14 received page 9
+20:18:06.428,INFO,SV25 received page 9
+20:18:06.538,INFO,SV2 received page 9
+20:18:06.659,INFO,SV11 received page 10
+20:18:06.765,INFO,SV36 received page 10
+20:18:06.878,INFO,SV14 received page 10
+20:18:06.987,INFO,SV2 received page 10
+20:18:07.88,INFO,SV11 received page 0
+20:18:07.188,INFO,SV36 received page 0
+20:18:07.298,INFO,SV14 received page 0
+20:18:07.408,INFO,SV2 received page 0
+20:18:07.528,INFO,SV11 received page 0
+20:18:07.628,INFO,SV36 received page 0
+20:18:07.738,INFO,SV14 received page 0
+20:18:07.848,INFO,SV25 received page 0
+20:18:07.958,INFO,SV2 received page 0
+20:18:08.68,INFO,SV11 received page 0
+20:18:08.175,INFO,SV36 received page 0
+20:18:08.277,INFO,SV14 received page 0
+20:18:08.378,INFO,SV2 received page 0
+20:18:08.488,INFO,SV11 received page 0
+20:18:08.598,INFO,SV14 received page 0
+20:18:08.708,INFO,SV2 received page 0
+20:18:08.833,INFO,SV11 received page 0
+20:18:08.938,INFO,SV14 received page 0
+20:18:09.41,INFO,SV25 received page 0
+20:18:09.143,INFO,SV2 received page 0
+20:18:09.249,INFO,SV11 received page 1
+20:18:09.367,INFO,SV36 received page 1
+20:18:09.478,INFO,SV14 received page 1
+20:18:09.599,INFO,SV2 received page 1
+20:18:09.708,INFO,SV12 received page 1
+20:18:09.821,INFO,SV11 received page 3
+20:18:09.939,INFO,SV36 received page 3
+20:18:10.58,INFO,SV14 received page 3
+20:18:10.158,INFO,SV12 received page 3
+20:18:10.260,INFO,SV2 received page 3
+20:18:10.368,INFO,SV11 received page 5
+20:18:10.468,INFO,SV14 received page 5
+20:18:10.573,INFO,SV25 received page 5
+20:18:10.677,INFO,SV2 received page 5
+20:18:10.798,INFO,SV11 received page 0
+20:18:10.908,INFO,SV36 received page 0
+20:18:11.29,INFO,SV14 received page 0
+20:18:11.143,INFO,SV2 received page 0
+20:18:11.258,INFO,SV11 received page 0
+20:18:11.258,INFO,SV11 completed SubFrame and Does Not Transmits OSNMA
+20:18:11.368,INFO,SV36 received page 0
+20:18:11.473,INFO,SV14 received page 0
+20:18:11.473,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:18:11.478,INFO,Tesla Key: 4478008c1698cc2bbadee5104184de28 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:18:11.478,INFO,SV14 is Self-Authenticated
+20:18:11.478,INFO,SV14 cannot authenticate ADKD12 NavData due to lack of Tags
+20:18:11.483,INFO,SV14 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:18:11.483,INFO,SV14 is Self-Autenticated with PRN 255
+20:18:11.483,INFO,SV14 cannot authenticate ADKD0 NavData from SV 5 due to the lack of navigation data
+20:18:11.483,INFO,SV14 has successfully Cross-Authenticated ADKD0 NavData from SV 11
+20:18:11.588,INFO,SV2 received page 0
+20:18:11.588,INFO,SV2 completed SubFrame and Transmits OSNMA
+20:18:11.592,INFO,DSM#11 has a total of 8 blocks
+20:18:11.598,INFO,Tesla Key: 4478008c1698cc2bbadee5104184de28 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:18:11.598,INFO,SV2 is Self-Authenticated
+20:18:11.598,INFO,SV2 cannot authenticate ADKD12 NavData due to lack of Tags
+20:18:11.598,INFO,SV2 cannot authenticate ADKD0 NavData from SV 31 due to the lack of navigation data
+20:18:11.598,INFO,SV2 is Self-Autenticated with PRN 255
+20:18:11.598,INFO,SV2 cannot authenticate ADKD0 NavData from SV 1 due to the lack of navigation data
+20:18:11.598,INFO,SV2 cannot authenticate ADKD0 NavData from SV 7 due to the lack of navigation data
+20:18:11.708,INFO,SV11 received page 2
+20:18:11.813,INFO,SV14 received page 2
+20:18:11.923,INFO,SV25 received page 2
+20:18:12.38,INFO,SV2 received page 2
+20:18:12.147,INFO,SV11 received page 4
+20:18:12.247,INFO,SV36 received page 4
+20:18:12.368,INFO,SV14 received page 4
+20:18:12.474,INFO,SV2 received page 4
+20:18:12.593,INFO,SV11 received page 6
+20:18:12.698,INFO,SV36 received page 6
+20:18:12.808,INFO,SV14 received page 6
+20:18:12.928,INFO,SV2 received page 6
+20:18:13.33,INFO,SV11 received page 7
+20:18:13.148,INFO,SV36 received page 7
+20:18:13.268,INFO,SV14 received page 7
+20:18:13.388,INFO,SV25 received page 7
+20:18:13.508,INFO,SV2 received page 7
+20:18:13.618,INFO,SV11 received page 8
+20:18:13.723,INFO,SV36 received page 8
+20:18:13.838,INFO,SV14 received page 8
+20:18:13.946,INFO,SV2 received page 8
+20:18:14.49,INFO,SV11 received page 0
+20:18:14.158,INFO,SV14 received page 0
+20:18:14.293,INFO,SV2 received page 0
+20:18:14.395,INFO,SV11 received page 0
+20:18:14.518,INFO,SV36 received page 0
+20:18:14.629,INFO,SV14 received page 0
+20:18:14.739,INFO,SV25 received page 0
+20:18:14.848,INFO,SV2 received page 0
+20:18:14.959,INFO,SV11 received page 0
+20:18:15.68,INFO,SV36 received page 0
+20:18:15.178,INFO,SV14 received page 0
+20:18:15.278,INFO,SV2 received page 0
+20:18:15.395,INFO,SV11 received page 0
+20:18:15.507,INFO,SV36 received page 0
+20:18:15.613,INFO,SV14 received page 0
+20:18:15.719,INFO,SV2 received page 0
+20:18:15.837,INFO,SV11 received page 0
+20:18:15.938,INFO,SV14 received page 0
+20:18:16.54,INFO,SV25 received page 0
+20:18:16.163,INFO,SV2 received page 0
+20:18:16.268,INFO,SV11 received page 1
+20:18:16.380,INFO,SV36 received page 1
+20:18:16.488,INFO,SV14 received page 1
+20:18:16.598,INFO,SV2 received page 1
+20:18:16.708,INFO,SV11 received page 3
+20:18:16.818,INFO,SV36 received page 3
+20:18:16.938,INFO,SV14 received page 3
+20:18:17.47,INFO,SV2 received page 3
+20:18:17.159,INFO,SV11 received page 5
+20:18:17.268,INFO,SV36 received page 5
+20:18:17.376,INFO,SV14 received page 5
+20:18:17.488,INFO,SV25 received page 5
+20:18:17.600,INFO,SV2 received page 5
+20:18:17.708,INFO,SV11 received page 0
+20:18:17.818,INFO,SV36 received page 0
+20:18:17.928,INFO,SV14 received page 0
+20:18:18.36,INFO,SV2 received page 0
+20:18:18.138,INFO,SV11 received page 0
+20:18:18.138,INFO,SV11 completed SubFrame and Does Not Transmits OSNMA
+20:18:18.248,INFO,SV36 received page 0
+20:18:18.348,INFO,SV14 received page 0
+20:18:18.348,INFO,SV14 completed SubFrame and Transmits OSNMA
+20:18:18.348,INFO,Tesla Key: e28a33f5ae12725ad2e509bdb495e6a1 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:18:18.348,INFO,SV14 is Self-Authenticated
+20:18:18.348,INFO,SV14 cannot authenticate ADKD12 NavData due to lack of Tags
+20:18:18.348,INFO,SV14 has successfully Cross-Authenticated ADKD0 NavData from SV 11
+20:18:18.348,INFO,SV14 cannot authenticate ADKD0 NavData from SV 31 due to the lack of navigation data
+20:18:18.348,INFO,SV14 cannot authenticate ADKD0 NavData from SV 7 due to the lack of navigation data
+20:18:18.448,INFO,SV2 received page 0
+20:18:18.448,INFO,SV2 completed SubFrame and Transmits OSNMA
+20:18:18.450,INFO,Tesla Key: e28a33f5ae12725ad2e509bdb495e6a1 belongs to a chain with root 7109f58d05a61919f65f7826c7d59f0a
+20:18:18.450,INFO,SV2 is Self-Authenticated
+20:18:18.450,INFO,SV2 cannot authenticate ADKD12 NavData due to lack of Tags
+20:18:18.450,INFO,SV2 cannot authenticate ADKD0 NavData from SV 7 due to the lack of navigation data
+20:18:18.450,INFO,SV2 cannot authenticate ADKD0 NavData from SV 8 due to the lack of navigation data
+20:18:18.450,INFO,SV2 has successfully Cross-Authenticated ADKD0 NavData from SV 11
+20:18:18.558,INFO,SV11 received page 2
+20:18:18.678,INFO,SV14 received page 2
+20:18:18.788,INFO,SV25 received page 2
+20:18:18.899,INFO,SV2 received page 2
+20:18:19.5,INFO,SV11 received page 4
+20:18:19.108,INFO,SV36 received page 4
+20:18:19.217,INFO,SV14 received page 4
+20:18:19.338,INFO,SV2 received page 4
+20:18:19.453,INFO,SV11 received page 6
+20:18:19.558,INFO,SV14 received page 6
+20:18:19.666,INFO,SV2 received page 6
+20:18:19.769,INFO,SV11 received page 9
+20:18:19.878,INFO,SV36 received page 9
+20:18:19.978,INFO,SV14 received page 9
+20:18:20.88,INFO,SV25 received page 9
+20:18:20.198,INFO,SV2 received page 9
+20:18:20.307,INFO,SV11 received page 10
+20:18:20.418,INFO,SV36 received page 10
+20:18:20.528,INFO,SV14 received page 10
+20:18:20.638,INFO,SV2 received page 10
+20:18:20.743,INFO,SV11 received page 0
+20:18:20.848,INFO,SV36 received page 0
+20:18:20.948,INFO,SV14 received page 0
+20:18:21.58,INFO,SV2 received page 0
+20:18:21.168,INFO,SV11 received page 0
+20:18:21.273,INFO,SV14 received page 0
+20:18:21.388,INFO,SV25 received page 0
+20:18:21.494,INFO,SV2 received page 0
+20:18:21.608,INFO,SV11 received page 0
+20:18:21.708,INFO,SV36 received page 0
+20:18:21.818,INFO,SV14 received page 0
+20:18:21.928,INFO,SV2 received page 0
+20:18:22.38,INFO,SV11 received page 0
+20:18:22.143,INFO,SV36 received page 0
+20:18:22.248,INFO,SV14 received page 0
+20:18:22.350,INFO,SV2 received page 0
+20:18:22.457,INFO,SV11 received page 0
+20:18:22.568,INFO,SV14 received page 0
+20:18:22.679,INFO,SV25 received page 0
+20:18:22.793,INFO,SV2 received page 0
+20:18:22.898,INFO,SV11 received page 1
+20:18:23.8,INFO,SV36 received page 1
+20:18:23.108,INFO,SV14 received page 1
+20:18:23.213,INFO,SV2 received page 1
+20:18:23.318,INFO,SV11 received page 3
+20:18:23.428,INFO,SV36 received page 3
+20:18:23.538,INFO,SV14 received page 3
+20:18:23.653,INFO,SV2 received page 3
+20:18:23.759,INFO,SV11 received page 5
+20:18:23.868,INFO,SV14 received page 5

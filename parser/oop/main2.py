@@ -95,7 +95,7 @@ while ublox_words != None:
     pageProcessor.ublox2Galileo(ublox_words)
     if pageProcessor.getSvId() == satID:
         sat.subFrameSequence(pageProcessor.getWordType(),pageProcessor.getData(),pageProcessor.getOsnma())
-        
+        #print(pageProcessor.getWordType())
         if sat.getDataFrameCompleteStatus() & sat.getOsnmaDistributionStatus():
             timeDataFrame = sat.getT0()
             timeBitArray = bitarray()
@@ -108,6 +108,7 @@ while ublox_words != None:
             timeNavData = bitarray()
             timeNavDataBytes = computeDelayedTime(sat.getT0(),60)
             timeNavData.frombytes(timeNavDataBytes)
+            print("Time is:",weekSeconds2Time(ba2int(timeBitArray[12:])))
             print("Satellite:", satID)
             print("WN Key/Current", ba2int(timeBitArray[0:12]),"; TOW Key/Current", ba2int(timeBitArray[12:]))
             print("WN Tag0", ba2int(timet0[0:12]),"; TOW tag0", ba2int(timet0[12:]))

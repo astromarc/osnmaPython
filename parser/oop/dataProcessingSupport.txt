@@ -1,0 +1,11 @@
+def weekSeconds2Time(weekSeconds): #function to return a string of hours in HH:mm:ss (to be updated)
+        hours = weekSeconds/3600
+        while hours >= 24:
+            hours = hours - 24
+        hour = int(hours)
+        minutes = hours-hour #minutes in hour format
+        minute = minutes*60  #minuts in minut format
+        seconds = minute - int (minute) # seconds in minut format
+        second = int(seconds*60) #seconds in second format
+        time = str(hour).zfill(2) + ":" + str(int(minute)).zfill(2) + ":" + str(second).zfill(2)
+        return  time

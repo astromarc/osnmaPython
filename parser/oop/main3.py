@@ -45,6 +45,7 @@ def computeDelayedTime (GST_T0,delay):
 
 while ublox_words != None:
     pageProcessor.ublox2Galileo(ublox_words)
+    print(pageProcessor.getSvId())
     galCons.feedConstellation(pageProcessor.getSvId(), pageProcessor.getWordType(), pageProcessor.getData(), pageProcessor.getOsnma())
     if len(galCons.notifier()) != 0:
         #print(galCons.notifier())
@@ -56,7 +57,7 @@ while ublox_words != None:
                         timeDataFrame = galCons.getSvGST(sv)
                         timeBitArray = bitarray()
                         timeBitArray.frombytes(timeDataFrame)
-                        
+                        timeBitArray[12:]
                         time0Bytes = computeDelayedTime(timeDataFrame,30)
                         timet0 = bitarray()
                         timet0.frombytes(time0Bytes)
@@ -77,7 +78,7 @@ while ublox_words != None:
                         authenticator.parseMackMessage(osnmaDivider.getMack(),128,40)
                         tag0 = bitarray()
                         tag0.frombytes(authenticator.getTag0())
-                        
+                        print("Parsed Mack",authenticator.getParsedMackMessage())
                         
                         osnmaKey = galCons.getSvOsnmaOnGST(sv, timeDataFrame)
                         osnmaDivider.osnmaSubFrame2hkRootMack(osnmaKey)
@@ -98,6 +99,7 @@ while ublox_words != None:
                         print("Computed Hash: ", ba2hex(h))
                         if ba2hex(h) == ba2hex(tag0):
                             print("Self-Authentication is proven")
+                        
                         galCons.feedConstellation(pageProcessor.getSvId(), pageProcessor.getWordType(), pageProcessor.getData(), pageProcessor.getOsnma()) #WorkAround to avoid repeated CompleteStatus
                         
                 except: print("Not Enough Data to Compute Self-Authentication")

@@ -19,7 +19,7 @@ while True:
    ubxList = []
    now = datetime.now()
    current_time = now.strftime("%H:%M:%S.%f'")[:-3]
-   stream = Serial('COM6', 9600, bytesize=8, parity='N', stopbits=1,)
+   stream = Serial('COM6', 38400,timeout=0.1, bytesize=8, parity='N', stopbits=1,)
    ubr = UBXReader(stream)
    (raw_data, parsed_data) = ubr.read()
    if parsed_data is not None:
@@ -43,7 +43,7 @@ while True:
          if x != "<UBX(RXM-SFRBX":
             ubxSplit = x.split('=')[1].split(")")[0]
             ubxList.append(ubxSplit)
-      with open('data4.csv', 'a', newline='') as f:
+      with open('24-01-2022_oldCode.csv', 'a', newline='') as f:
          write = csv.writer(f)
          write.writerow(ubxList)
          f.close()
