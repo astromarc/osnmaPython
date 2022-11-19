@@ -68,14 +68,11 @@ pip install pySerial
 ```
 pip install pyubx2 
 ```
-
+3. ecdsa:
+```
+pip install ecdsa 
+```
 ### Installing
-
-
-
-```
-TBW
-```
 
 
 ## ✍️ Authors <a name = "authors"></a>
