@@ -34,25 +34,46 @@ For GALILEO's documentation, please find last issues on [GSC site](https://www.g
 For UBLOX documentation, please find updated documents on their [webpage](https://www.u-blox.com/en/product-resources)
 
 ```
-AD.1 The European GNSS (Galileo) Open Service Navigation Message Authentication (OSNMA) User Interface Control Document for the Test Phase 
+[RD-1] The European GNSS (Galileo) Open Service Navigation Message Authentication (OSNMA) User Interface Control Document for the Test Phase 
 Short title: OSNMA User ICD for the Test Phase
 Issue: 1.0
 ```
 ```
-AD.2 The European GNSS (Galileo) Open Service Signal-In-Space Interface Control Document
+[RD-2]The European GNSS (Galileo) Open Service Signal-In-Space Interface Control Document
 Short Title: OS SIS ICD
 Issue: 2.0
 ```
 ```
-AD.3 NEO-M9N - Standard precision GNSS module - Integration manual
+[RD-3] NEO-M9N - Standard precision GNSS module - Integration manual
 Short Title: NEO-M9N Integration Manual
 Reference: UBX-19014286
 Issue: R06
 ```
+```
+[RD-4]	The European GNSS (Galileo) Open Service Navigation Message Authentication
+(OSNMA) Receiver Guidelines for the Test Phase
+Short Title: OSNMA Receiver Guidelines for the Test Phase
+Reference: N/A
+Issue: 1.0
+```
+```
+[RD-5]	The European GNSS (Galileo) Open Service Signal-In-Space Interface Control Document
+Short title: OS SIS ICD
+Reference: N/A
+Issue: 2.0
+```
+```
+[RD-6]	GNSS Data Processing Volume I: Fundamentals and Algorithms
+Short title: OS SIS ICD
+Reference: ESA TM-23
+Available online on https://gssc.esa.int/navipedia/GNSS_Book/ESA_GNSS-Book_TM-23_Vol_I.pdf
+```
+
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-TBW
+Make sure to download the word/pdf document in our ./docs folder and follow the Software Operations Manual Section!
+
 
 ### Prerequisites
 
@@ -72,8 +93,19 @@ pip install pyubx2
 ```
 pip install ecdsa 
 ```
-### Installing
+### Configuring the uBlox Receiver
 
+Make sure to configure the uBlox receiver to ONLY output the SFBRX and Galileo from Ublox! See our Sofware Manual in /docs
+
+### Configuration
+
+From mainHMI_Laptop.py or mainHMI_Rasp.py, configure the parameters as indicated in the code, editing it with your favorite editor.
+This includes if you want to save the Received Data as well as the naming for the logs generated.
+
+### Launch
+
+Execute the python script and enjoy! You should be seeing logs and updates as per the following image:
+![](./docs/design_manual/hmi_animation.gif)
 
 ## ✍️ Authors <a name = "authors"></a>
 
