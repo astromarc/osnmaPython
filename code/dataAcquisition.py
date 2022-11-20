@@ -28,7 +28,7 @@ It has the following methods:
         self.__filename = filename
         self.__delimeter = delimiter
         with open(self.__filename, 'r') as csvfile:
-            reader = csv.reader(csvfile)
+            reader = csv.reader((line.replace('\0','') for line in csvfile), delimiter=",") #replacing NULs that sometimes appear
             self.__list = list(reader)
         self.__fileRead = True
         self.__index = - 1
