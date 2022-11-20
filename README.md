@@ -93,6 +93,14 @@ pip install pyubx2
 ```
 pip install ecdsa 
 ```
+4. bitarray:
+```
+pip install bitarray 
+```
+4. rich:
+```
+pip install rich 
+```
 ### Configuring the uBlox Receiver
 
 Make sure to configure the uBlox receiver to ONLY output the SFBRX and Galileo from Ublox! See our Sofware Manual in /docs
