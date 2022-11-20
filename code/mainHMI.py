@@ -18,8 +18,10 @@ from dataProcessingOsnma_svKrootOsnmaMack import osnmaSplitter, mackParser
 from dataProcessingGalileoFrame_Constellation import svConstellation
 from dataProcessingOsnma_DSM import concatenateBytes, DSM_Getter
 from dataProcessingOsnma_Authenticator import NavDataAuthenticator, keyChain, checkRootKey
-from dataVisualisationSupport import updateLogs, Clock, DSM_Info, svTable
 from logger import log_centralise
+## From the two following includings, comment the one you want to use
+from dataVisualisationSupport_raspberry import updateLogs, Clock, DSM_Info, svTable 
+#from dataVisualisationSupport import updateLogs, Clock, DSM_Info, svTable
 
 
 
@@ -36,8 +38,8 @@ logFile = dt_string+".log"
 # Comment both lines for Real data
 test_data = "./test_data/17_11_2022.csv"
 timeSleep = 0.0001
-pageReader = readUbloxData(test_data, ',') # Uncomment if you want to use Test Data
-#pageReader = readUbloxSerial(inputRecord, 'COM6', 38400, True)
+#pageReader = readUbloxData(test_data, ',') # Uncomment if you want to use Test Data
+pageReader = readUbloxSerial(inputRecord, '/dev/ttyACM0', 38400, True)
 
 numGalSat = 36 # Number of Galileo Satellites
 
