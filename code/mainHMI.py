@@ -35,9 +35,9 @@ logFile = dt_string+".log"
 
 ## Configuration of Test/Live Data
 # Location of the CSV for test data, with the list (Comma separated) of the ublox words, and timeSleep between page readings.
-# Comment both lines for Real data
-test_data = "./test_data/17_11_2022.csv"
-timeSleep = 0.0001
+# Comment Following lines for Real data
+test_data = "./test_data/2022_11_20-16_35.csv"
+timeSleep = 0.00001
 #pageReader = readUbloxData(test_data, ',') # Uncomment if you want to use Test Data
 pageReader = readUbloxSerial(inputRecord, '/dev/ttyACM0', 38400, True)
 
@@ -48,10 +48,10 @@ pemFileLocation = "./code/OSNMA_PublicKey_20210920133026.pem"
 
 ## HMI Configuration
 # Number of rows of shown logs
-numRows = 4
+numRows = 6
 sizeHeader = 1
-ratioSVCommonInfo = 3
-sizeFooter = 8
+ratioSVCommonInfo = 4
+sizeFooter = 12
 ratioMain = 2
 # Log configuration 
 log_centralise(
