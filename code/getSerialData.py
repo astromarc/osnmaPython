@@ -38,7 +38,7 @@ while True:
    print(current_time,"Seconds since last reception:",deltaTime,"Record Status:",record,"Received:",ubxList_new)
    
    if record:
-      #ubxList.append(current_time)
+      #ubxList.append(current_time) #Uncomment if you want time
       for x in ubxList_new:
          if x != "<UBX(RXM-SFRBX":
             ubxSplit = x.split('=')[1].split(")")[0]
