@@ -39,7 +39,7 @@ logFile = dt_string+".log"
 test_data = "./test_data/2022_11_20-16_35.csv"
 timeSleep = 0.00001
 #pageReader = readUbloxData(test_data, ',') # Uncomment if you want to use Test Data
-pageReader = readUbloxSerial(inputRecord, '/dev/ttyACM0', 38400, True)
+pageReader = readUbloxSerial(inputRecord, '/dev/ttyACM0', 115200, True)
 
 numGalSat = 36 # Number of Galileo Satellites
 
