@@ -16,11 +16,11 @@ class updateLogs:
         self.__numRows = numRows
     def __rich__(self) -> Table:
         table3 = Table()
-        table3.add_column("Date and Time")
-        table3.add_column("Category")
-        table3.add_column("Message")
+        table3.add_column("Date and Time", width=13)
+        table3.add_column("Category", width=4)
+        table3.add_column("Message", width=35)
         with open(self.__logFile, 'r') as csvfile:
-            csvreader = list(csv.reader(csvfile))
+            csvreader = list(csv.reader((line.replace('\0','') for line in csvfile), delimiter=",")) #replacing NULs that sometimes appear
             for row in csvreader[-self.__numRows:]:
                 try:
                     if row[1] == "WARNING":
