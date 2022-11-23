@@ -114,7 +114,7 @@ This includes if you want to save the Received Data as well as the naming for th
 
 Execute the python script "mainHMI.py" and enjoy! You should be seeing logs and updates as per the following image:
 ![](./docs/design_manual/hmi_animation.gif)
-![](./docs/design_manual/hmi_animation_rasp.gif
+![](./docs/design_manual/hmi_animation_rasp.gif)
 
 ## ✍️ Authors <a name = "authors"></a>
 
