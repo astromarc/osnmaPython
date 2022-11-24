@@ -57,7 +57,7 @@ ratioMain = 2
 log_centralise(
             "a", # "a" for append 
             logFile, # Name of file 
-            '%(asctime)s,%(levelname)s,%(message)s') # Format of logging
+            '%(asctime)s.%(msecs)d,%(levelname)s,%(message)s') # Format of logging
 #####
 
 updatedTable = updateLogs(logFile,numRows)
