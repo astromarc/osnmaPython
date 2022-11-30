@@ -31,15 +31,15 @@ from dataVisualisationSupport_raspberry import updateLogs, Clock, DSM_Info, svTa
 now = datetime.now()
 dt_string = now.strftime("%Y_%m_%d-%H_%M")
 inputRecord = dt_string+".csv"
-logFile = dt_string+".log"
+logFile = dt_string+"HMI"+".log"
 
 ## Configuration of Test/Live Data
 # Location of the CSV for test data, with the list (Comma separated) of the ublox words, and timeSleep between page readings.
 # Comment Following lines for Real data
-test_data = "./test_data/2022_11_20-16_35.csv"
-timeSleep = 0.00001
-#pageReader = readUbloxData(test_data, ',') # Uncomment if you want to use Test Data
-pageReader = readUbloxSerial(inputRecord, '/dev/ttyACM0', 115200, True)
+test_data = "./test_data/2022_11_30-19_17.csv"
+timeSleep = 0.00
+pageReader = readUbloxData(test_data, ',') # Uncomment if you want to use Test Data
+#pageReader = readUbloxSerial(inputRecord, 'COM7', 115200, True)
 
 numGalSat = 36 # Number of Galileo Satellites
 
@@ -68,8 +68,8 @@ Satellites = svTable()
 console = Console()
 layout = Layout()
 
-DSM_NMAS_Dict = {1:"Test",2:"Operational",3:"Don't Use"}
-DSM_CDPKS_Dict = {1:"Nominal", 2:"End Of Chain", 3:"Chain Revoked", 4: "New Public Key", 5:"Publick Key Revoked"}
+DSM_NMAS_Dict = {1:"Test",2:"Operational",3:"Don't Use",0:"Reserved"}
+DSM_CDPKS_Dict = {1:"Nominal", 2:"End Of Chain", 3:"Chain Revoked", 4: "New Public Key", 5:"Publick Key Revoked",0:"Reserved"}
 
 layout.split(
     Layout(name="header", size=sizeHeader),
@@ -128,6 +128,7 @@ with Live(layout, screen=True, redirect_stderr=False) as live:
                 Satellites.updateParameters(galCons)
                 
                 if svDataFrameStatus and galCons.getSvOsnmaStatus(svId):
+                    #Satellites.updateParameters(galCons)
                     DSM_ID, DSM_BID, DSM_Block, DSM_NMAS, DSM_CID, DSM_CDPKS, NMAS_Header= DSM_Getter(galCons,svId)
                     DSM_Block = concatenateBytes(DSM_Block)
                     if DSM_NMAS <=2:
